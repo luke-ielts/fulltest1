@@ -343,22 +343,12 @@ function save(){
   $("saveStatus").textContent="Saving…";
   saveTimer=setTimeout(persist,250);
 }
-function persist(keepalive=false){
+const STORE_KEY="lm-reading-full";
+function persist(){
   if(!progressReady) return;
   clearTimeout(saveTimer);
-  const body=JSON.stringify({state:S,revision:revision=Math.max(Date.now(),revision+1)});
-  const write=async()=>{
-    try{
-      const response=await fetch("/api/progress",{method:"PUT",headers:{"Content-Type":"application/json"},body,keepalive});
-      if(!response.ok) throw new Error("Save failed");
-      $("saveStatus").textContent="Progress saved";
-    }catch{
-      $("saveStatus").textContent="Not saved — check connection. Tap to retry.";
-    }
-  };
-  if(keepalive) return write();
-  saveQueue=saveQueue.then(write);
-  return saveQueue;
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); $("saveStatus").textContent="Progress saved on this phone"; }
+  catch(e){ $("saveStatus").textContent="Progress can't be saved in this browser"; }
 }
 $("saveStatus").onclick=()=>persist();
 window.addEventListener("online",()=>persist());
@@ -668,10 +658,7 @@ function toast(msg){
 /* ---------- boot ---------- */
 overlay.innerHTML='<div class="card" role="status"><h2>Opening your reading test…</h2><p class="hint">Checking for saved progress.</p></div>';
 async function restore(){
-  const response=await fetch("/api/progress",{cache:"no-store"});
-  if(!response.ok) throw new Error("Load failed");
-  const saved=await response.json();
-  if(saved) S=saved;
+  try{ const v=localStorage.getItem(STORE_KEY); if(v) S=JSON.parse(v); }catch(e){}
 }
 for(;;){
   try { await restore(); break; }
