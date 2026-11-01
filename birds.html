@@ -370,9 +370,9 @@ function renderStart(){
     <div class="field"><label for="nameIn">Your name</label>
       <input id="nameIn" maxlength="120" autocomplete="name" placeholder="e.g. Sara Al-Harbi" value="${esc(S.name)}"></div>
     <button class="big" id="startBtn" ${S.name.trim()?"":"disabled"}>Start the test</button>
-    <p><a href="/collecting">Try Collecting as a Hobby · 16-minute reading</a></p>
-    <p><a href="/driverless">Try Driverless cars · 16-minute reading</a></p>
-    <p><a href="/">Full reading mock test</a></p>
+    <p><a href="collecting">Try Collecting as a Hobby · 16-minute reading</a></p>
+    <p><a href="driverless">Try Driverless cars · 16-minute reading</a></p>
+    <p><a href="./">Full reading mock test</a></p>
     <p class="hint">Turn on Do Not Disturb and keep your phone upright. Your progress is saved for this browser if the page reloads.</p>
   </div>`;
   const ni=$("nameIn"), sb=$("startBtn");
