@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reading Mock Test · Luke Murgatroyd</title>
+<meta name="description" content="Practice IELTS Academic Reading with Luke Murgatroyd: a full 60-minute mock test, 40 questions, instant scoring, and detailed answer explanations.">
+<meta name="siteName" content="Reading Mock Test · Luke Murgatroyd">
+<meta name="siteDescription" content="Practice IELTS Academic Reading with a full 60-minute mock test, instant scoring, and detailed answer explanations.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reading Mock Test · Luke Murgatroyd">
+<meta property="og:title" content="Reading Mock Test · Luke Murgatroyd">
+<meta property="og:description" content="Practice IELTS Academic Reading with a full 60-minute mock test, instant scoring, and detailed answer explanations.">
+<meta name="theme-color" content="#02437E">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: one-screen exam app — part tabs on top, passage scrolls above a pinned question panel (side by side on wide screens), drag the divider to resize. */
+:root{
+  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6;
+  --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5; --part:#9A5B00; --part-soft:#FFF1D6;
+  --warn:#A45500; --mark:#FFE27A; --mark-ink:#152033;
+  --f-read:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs:1; --qh:52%;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A; --part:#F0B35A; --part-soft:#3A2A10;
+  --warn:#F0B35A; --mark:#E8C84A; --mark-ink:#111;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A; --part:#F0B35A; --part-soft:#3A2A10;
+  --warn:#F0B35A; --mark:#E8C84A; --mark-ink:#111;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.45}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.save-status{border:0;background:transparent;color:var(--muted);font-size:11px;max-width:150px;text-align:right;padding:4px}
+@media(max-width:480px){.bar{flex-wrap:wrap}.save-status{order:4;flex-basis:100%;max-width:none;text-align:left}.save-status:empty{display:none}}
+/* top bar */
+.bar{display:flex;align-items:center;gap:10px;padding-block:10px;background:var(--surface);border-bottom:1px solid var(--line);flex:none}
+.bar .ttl{flex:1;min-width:0}
+.bar .ttl b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .ttl span{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px;padding:6px 10px;border-radius:8px;background:var(--brand-soft);color:var(--brand);min-width:72px;text-align:center}
+.timer.warn{color:var(--warn)} .timer.crit{background:var(--bad-soft);color:var(--bad)}
+.tools{display:flex;gap:4px}
+.ibtn{border:1px solid var(--line);background:var(--surface);border-radius:8px;height:36px;min-width:36px;padding:0 8px;font-weight:700;font-size:14px}
+
+/* part tabs */
+.tabs{flex:none;display:flex;gap:6px;padding-block:8px;background:var(--surface);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tab{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 8px;display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.tab b{font-size:14px}
+.tab span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tab[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.tab[aria-selected="true"] span{color:var(--brand-ink);opacity:.85}
+
+/* main split */
+.main{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+.passage{flex:1;min-height:0;overflow-y:auto;padding-block:18px 28px;-webkit-overflow-scrolling:touch}
+.ptext{max-width:66ch;margin:0 auto;font-family:var(--f-read);font-size:calc(17px * var(--fs));line-height:1.62}
+.ptext h1{font-family:var(--f-read);font-weight:600;font-size:1.35em;line-height:1.2;margin:0 0 4px;text-wrap:balance}
+.ptext h3{font-family:var(--f-read);font-weight:600;font-size:1em;font-style:italic;margin:0 0 6px;padding-left:36px}
+.ptext .src{font-family:var(--f-ui);font-size:13px;color:var(--muted);margin:0 0 18px}
+.para{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;margin:0 0 14px}
+.para .lt{font-family:var(--f-ui);font-weight:700;font-size:13px;color:var(--brand);background:var(--brand-soft);border-radius:6px;height:24px;width:24px;display:grid;place-items:center;margin-top:3px}
+.para .lt.blank{background:transparent}
+.para p{margin:0}
+.sect{font-family:var(--f-ui);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--brand);margin:20px 0 8px;padding-left:36px;display:flex;align-items:center;gap:8px}
+.sect::after{content:"";flex:1;height:1px;background:var(--line)}
+.ev.on{background:var(--mark);color:var(--mark-ink);border-radius:3px;box-shadow:0 0 0 2px var(--mark);transition:background .3s}
+
+.divider{flex:none;height:24px;display:grid;place-items:center;background:var(--surface);border-top:1px solid var(--line);touch-action:none;cursor:row-resize}
+.divider i{width:44px;height:5px;border-radius:3px;background:var(--line)}
+
+.qpanel{flex:none;height:var(--qh);min-height:0;display:flex;flex-direction:column;background:var(--surface)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-block:4px 10px;flex:none;scrollbar-width:none}
+.chip{flex:none;min-width:34px;height:34px;padding:0 6px;border-radius:17px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.chip.done{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.chip.cur{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.chip.ok{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.chip.half{background:var(--part-soft);border-color:var(--part);color:var(--part)}
+.chip.no{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.chip.ok.cur,.chip.no.cur,.chip.half.cur{box-shadow:0 0 0 3px var(--brand)}
+.chip.res{padding:0 12px}
+.qbody{flex:1;min-height:0;overflow-y:auto;padding-block:2px 12px}
+.qinner{max-width:60ch;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.instr{font-size:12.5px;line-height:1.35;color:var(--muted);background:var(--bg);border-radius:8px;padding:6px 10px}
+.instr b{color:var(--ink)}
+.qtext{font-size:17px;font-weight:700;display:flex;gap:10px}
+.qtext .n{flex:none;color:var(--brand);font-variant-numeric:tabular-nums}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 14px;font-weight:700}
+.choice.tf{letter-spacing:.03em}
+.choice .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.choice .key{flex:none;min-width:26px;height:26px;border-radius:6px;background:var(--bg);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.choice .txt{font-weight:400;line-height:1.3}
+.choice[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.choice[aria-checked="true"] .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 45%,transparent 50%)}
+.choice[aria-checked="true"] .key{background:var(--brand);color:var(--brand-ink)}
+.choice.right{border-color:var(--good)} .choice.right .key{background:var(--good);color:var(--surface)}
+.picked{font-size:13px;color:var(--muted)}
+.notes-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.gap{font-size:17px;line-height:2}
+.gap .n{color:var(--brand);font-weight:700}
+.gap .other{color:var(--muted);font-weight:700;white-space:nowrap}
+.gap input{font:inherit;font-weight:700;width:10em;max-width:100%;border:0;border-bottom:2px solid var(--brand);background:var(--brand-soft);color:var(--ink);padding:2px 8px;border-radius:6px 6px 0 0}
+.gap input:disabled{opacity:1;-webkit-text-fill-color:var(--ink)}
+.qfoot{flex:none;display:flex;gap:8px;padding-block:10px;border-top:1px solid var(--line)}
+.qfoot .sbtn,.row .sbtn{flex:1;height:44px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-weight:700}
+.qfoot .sbtn.pri,.row .sbtn.pri{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.qfoot .sbtn:disabled{opacity:.45}
+
+/* review */
+.verdict{border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.verdict.ok{background:var(--good-soft)} .verdict.no{background:var(--bad-soft)} .verdict.half{background:var(--part-soft)}
+.verdict .h{font-weight:700} .verdict.ok .h{color:var(--good)} .verdict.no .h{color:var(--bad)} .verdict.half .h{color:var(--part)}
+.linkbtn{align-self:flex-start;border:1.5px solid var(--brand);color:var(--brand);background:transparent;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px}
+
+/* start + result */
+.overlay{position:absolute;inset:0;overflow-y:auto;background:var(--bg);padding-block:28px;z-index:5}
+.card{max-width:480px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.card h2{font-family:var(--f-read);font-weight:600;font-size:26px;line-height:1.15;margin:0;text-wrap:balance}
+.kick{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fact{background:var(--bg);border-radius:10px;padding:10px;text-align:center}
+.fact b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.fact span{font-size:12px;color:var(--muted)}
+.plist{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.plist div{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px}
+.plist b{color:var(--brand)}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.field input{width:100%;font:inherit;font-size:17px;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.big{height:50px;border:0;border-radius:12px;background:var(--brand);color:var(--brand-ink);font-weight:700;font-size:17px}
+.big:disabled{opacity:.45}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.score{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.score b{font-size:56px;line-height:1;font-variant-numeric:tabular-nums;color:var(--brand)}
+.score span{font-size:20px;color:var(--muted)}
+.band{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:4px 12px;font-weight:700;font-size:15px}
+.pscores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pscores div{background:var(--bg);border-radius:10px;padding:8px;text-align:center}
+.pscores b{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+.pscores span{font-size:12px;color:var(--muted)}
+.confirm{background:var(--bg);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .sbtn{min-width:120px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;font-size:14px;z-index:20}
+#copyArea{width:100%;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg);color:var(--ink);resize:none}
+
+@media (min-width:900px){
+  .main{flex-direction:row}
+  .divider{display:none}
+  .qpanel{height:auto;width:42%;border-left:1px solid var(--line)}
+  .chips{padding-top:14px}
+  .tab{flex:0 1 180px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="bar gut">
+  <div class="ttl"><span>IELTS Reading · 60 min</span><b id="barTitle">Reading Mock Test</b></div>
+  <div class="tools" id="tools" hidden>
+    <button class="ibtn" id="fsDown" aria-label="Smaller text">A−</button>
+    <button class="ibtn" id="fsUp" aria-label="Larger text">A+</button>
+  </div>
+  <button id="saveStatus" class="save-status" aria-live="polite" title="Tap to save your progress"></button>
+  <div class="timer" id="timer" hidden>60:00</div>
+</header>
+
+<nav class="tabs gut" id="tabs" role="tablist" aria-label="Test parts" hidden></nav>
+
+<main class="main" id="main">
+  <section class="passage gut" id="passage" aria-label="Reading passage">
+
+    <!-- ============ PART 1 ============ -->
+    <article class="ptext" data-part="1">
+      <h1>The life and work of Marie Curie</h1>
+      <p class="src">Part 1 · Questions 1–13 · Paragraphs are lettered A–K.</p>
+      <div class="para"><span class="lt">A</span><p>Marie Curie is probably the most famous woman scientist who has ever lived. Born Maria Sklodowska in Poland in 1867, she is famous for her work on radioactivity, and was twice a winner of the Nobel Prize. With her husband, Pierre Curie, and Henri Becquerel, she was awarded the 1903 Nobel Prize for Physics, and <span class="ev" data-q="1">was then sole winner of the 1911 Nobel Prize for Chemistry</span>. She was the first woman to win a Nobel Prize.</p></div>
+      <div class="para"><span class="lt">B</span><p><span class="ev" data-q="2">From childhood, Marie was remarkable for her prodigious memory</span>, and at the age of 16 won a gold medal on completion of her secondary education. Because her father lost his savings through bad investment, she then had to take work as a teacher. From her earnings she was able to finance <span class="ev" data-q="6">her sister Bronia's medical studies in Paris</span>, <span class="ev" data-q="3">on the understanding that Bronia would, in turn, later help her to get an education</span>.</p></div>
+      <div class="para"><span class="lt">C</span><p><span class="ev" data-q="3">In 1891 this promise was fulfilled and Marie went to Paris and began to study at the Sorbonne</span> (the University of Paris). She often worked far into the night and lived on little more than bread and butter and tea. She came first in the examination in the physical sciences in 1893, and in 1894 was placed second in the examination in mathematical sciences. It was not until the spring of that year that she was introduced to Pierre Curie.</p></div>
+      <div class="para"><span class="lt">D</span><p>Their marriage in 1895 marked the start of a partnership that was soon to achieve results of world significance. Following Henri Becquerel's discovery in 1896 of a new phenomenon, which Marie later called 'radioactivity', Marie Curie decided to find out if the radioactivity discovered in uranium was to be found in other elements. <span class="ev" data-q="7">She discovered that this was true for thorium.</span></p></div>
+      <div class="para"><span class="lt">E</span><p>Turning her attention to minerals, <span class="ev" data-q="8">she found her interest drawn to pitchblende</span>, a mineral whose radioactivity, superior to that of pure uranium, could be explained only by the presence in the ore of small quantities of an unknown substance of very high activity. Pierre Curie joined her in the work that she had undertaken to resolve this problem, and <span class="ev" data-q="8">that led to the discovery of the new elements, polonium and radium</span>. While Pierre Curie devoted himself chiefly to the physical study of the new radiations, Marie Curie struggled to obtain pure radium in the metallic state. This was achieved with the help of the chemist André-Louis Debierne, one of Pierre Curie's pupils. Based on the results of this research, Marie Curie received her Doctorate of Science, and in 1903 Marie and Pierre shared with Becquerel the Nobel Prize for Physics for the discovery of radioactivity.</p></div>
+      <div class="para"><span class="lt">F</span><p>The births of Marie's two daughters, Irène and Eve, in 1897 and 1904 <span class="ev" data-q="4">failed to interrupt her scientific work</span>. She was appointed lecturer in physics at the École Normale Supérieure for girls in Sèvres, France (1900), and introduced a method of teaching based on experimental demonstrations. In December 1904 she was appointed chief assistant in the laboratory directed by Pierre Curie.</p></div>
+      <div class="para"><span class="lt">G</span><p>The sudden death of her husband in 1906 was a bitter blow to Marie Curie, but was also a turning point in her career: henceforth she was to devote all her energy to completing alone the scientific work that they had undertaken. On May 13, 1906, <span class="ev" data-q="5">she was appointed to the professorship that had been left vacant on her husband's death</span>, becoming the first woman to teach at the Sorbonne. <span class="ev" data-q="9">In 1911 she was awarded the Nobel Prize for Chemistry for the isolation of a pure form of radium.</span></p></div>
+      <div class="para"><span class="lt">H</span><p>During World War I, Marie Curie, with the help of her daughter Irène, devoted herself to the development of the use of X-radiography, including the mobile units which came to be known as 'Little Curies', <span class="ev" data-q="10">used for the treatment of wounded soldiers</span>. In 1918 the Radium Institute, whose staff Irène had joined, began to operate in earnest, and became a centre for nuclear physics and chemistry. Marie Curie, now at the highest point of her fame and, from 1922, a member of the Academy of Medicine, researched the chemistry of radioactive substances and their medical applications.</p></div>
+      <div class="para"><span class="lt">I</span><p>In 1921, accompanied by her two daughters, Marie Curie made a triumphant journey to the United States to raise funds for research on radium. Women there presented her with a gram of radium for her campaign. Marie also gave lectures in Belgium, Brazil, Spain and Czechoslovakia and, in addition, had the satisfaction of seeing the development of the Curie Foundation in Paris, and the inauguration in 1932 in Warsaw of <span class="ev" data-q="6">the Radium Institute, where her sister Bronia became director</span>.</p></div>
+      <div class="para"><span class="lt">J</span><p>One of Marie Curie's outstanding achievements was to have understood the need to accumulate intense radioactive sources, <span class="ev" data-q="11">not only to treat illness but also to maintain an abundant supply for research</span>. The existence in Paris at the Radium Institute of a stock of 1.5 grams of radium made a decisive contribution to the success of the experiments undertaken in the years around 1930. This work prepared the way for <span class="ev" data-q="12">the discovery of the neutron by Sir James Chadwick</span> and, above all, for the discovery in 1934 by Irène and Frédéric Joliot-Curie of artificial radioactivity. A few months after this discovery, <span class="ev" data-q="13">Marie Curie died as a result of leukaemia caused by exposure to radiation</span>. She had often carried test tubes containing radioactive isotopes in her pocket, remarking on the pretty blue-green light they gave off.</p></div>
+      <div class="para"><span class="lt">K</span><p>Her contribution to physics had been immense, not only in her own work, the importance of which had been demonstrated by her two Nobel Prizes, but because of her influence on subsequent generations of nuclear physicists and chemists.</p></div>
+    </article>
+
+    <!-- ============ PART 2 ============ -->
+    <article class="ptext" data-part="2" hidden>
+      <h1>The Physics of Traffic Behavior</h1>
+      <p class="src">Part 2 · Questions 14–26 · The text has four sections.</p>
+
+      <div class="sect">Section 1 · Question 14</div>
+      <div class="para"><span class="lt blank"></span><p>Some years ago, when several theoretical physicists, principally Dirk Helbing and Boris Kerner of Stuttgart, Germany, began publishing papers on traffic flow in publications normally read by traffic engineers, <span class="ev" data-q="14">they were clearly working outside their usual sphere of investigation</span>. They had noticed that if they simulated the movement of vehicles on a highway, <span class="ev" data-q="14 24">using the equations that describe how the molecules of a gas move</span>, some very strange results emerged. Of course, vehicles do not behave exactly like gas molecules: for example, <span class="ev" data-q="25">drivers try to avoid collisions by slowing down when they get too near another vehicle</span>, whereas gas molecules have no such concern. However, the physicists modified the equations to take the differences into account and the overall description of traffic as a flowing gas has proved to be a very good one; <span class="ev" data-q="22">the moving-gas model of traffic reproduces many phenomena seen in real-world traffic</span>.</p></div>
+      <div class="para"><span class="lt blank"></span><p>The strangest thing that came out of these equations, however, was <span class="ev" data-q="18">the implication that congestion can arise completely spontaneously; no external causes are necessary</span>. Vehicles can be flowing freely along, <span class="ev" data-q="26">at a density still well below what the road can handle</span>, and then suddenly gel into a slow-moving ooze. Under the right conditions a brief and local fluctuation in the speed or the distance between vehicles is all it takes to trigger a system-wide breakdown that persists for hours. In fact, the physicists' analysis suggested such spontaneous breakdowns in traffic flow probably occur quite frequently on highways.</p></div>
+      <h3>Dramatic effects can result from small changes in traffic just as in nature</h3>
+      <div class="para"><span class="lt blank"></span><p>Though a decidedly unsettling discovery, this showed striking similarities to the phenomena popularized as 'chaos theory'. This theory has arisen from the understanding that in any complex interacting system which is made of many parts, each part affects the others. Consequently, tiny variations in one part of a complex system can grow in huge but unpredictable ways. This type of dramatic change from one state to another is similar to what happens when a chemical substance changes from a vapor to a liquid. <span class="ev" data-q="18">It often happens that water in a cloud remains as a gas even after its temperature and density have reached the point where it could condense into water droplets.</span> However if the vapor encounters a solid surface, even something as small as a speck of dust, condensation can take place and the transition from vapor to liquid finally occurs. Helbing and Kerner see traffic as a complex interacting system. They found that a small fluctuation in traffic density can act as the 'speck of dust' causing <span class="ev" data-q="22">a sudden change from freely moving traffic to synchronized traffic, when vehicles in all lanes abruptly slow down and start moving at the same speed, making passing impossible</span>.</p></div>
+
+      <div class="sect">Section 2 · Question 15</div>
+      <div class="para"><span class="lt blank"></span><p>The physicists have challenged proposals to set a maximum capacity for vehicles on highways. They argue that it may not be enough simply to limit the rate at which vehicles are allowed to enter a highway, rather, it may be necessary to time each vehicle's entry onto a highway precisely to coincide with a temporary drop in the density of vehicles along the road. The aim of doing this would be to smooth out any possible fluctuations in the road conditions that can trigger a change in traffic behavior and result in congestion. They further suggest that preventing breakdowns in the flow of traffic could ultimately require implementing the radical idea that has been suggested from time to time: <span class="ev" data-q="15">directly regulating the speed and spacing of individual cars along a highway with central computers and sensors that communicate with each car's engine and brake controls</span>.</p></div>
+
+      <div class="sect">Section 3 · Question 16</div>
+      <div class="para"><span class="lt blank"></span><p>However, research into traffic control is generally centered in civil engineering departments and here <span class="ev" data-q="16 22">the theories of the physicists have been greeted with some skepticism</span>. Civil engineers favor a practical approach to problems and believe traffic congestion is the result of poor road construction (two lanes becoming one lane or dangerous curves), which constricts the flow of traffic. <span class="ev" data-q="20">Engineers questioned how well the physicists' theoretical results relate to traffic in the real world.</span> Indeed, some engineering researchers questioned whether elaborate chaos-theory interpretations are needed at all, since at least some of the traffic phenomena the physicists' theories predicted <span class="ev" data-q="20">seemed to be similar to observations that had been appearing in traffic engineering literature under other names for years</span>; observations which had straightforward cause-and-effect explanations.</p></div>
+
+      <div class="sect">Section 4 · Question 17</div>
+      <div class="para"><span class="lt blank"></span><p>James Banks, a professor of civil and environmental engineering at San Diego State University in the US, suggested that <span class="ev" data-q="17">a sudden slowdown in traffic may have less to do with chaos theory than with driver psychology</span>. As traffic gets heavier and the passing lane gets more crowded, aggressive drivers move to other lanes to try to pass, which also tends to even out the speed between lanes. He also felt that another leveling force is that when a driver in a fast lane brakes a little to maintain a safe distance between vehicles, the shock wave travels back much more rapidly than it would in the other slower lanes, because each following driver has to react more quickly. Consequently as a road becomes congested, the faster moving traffic is the first to slow down.</p></div>
+    </article>
+
+    <!-- ============ PART 3 ============ -->
+    <article class="ptext" data-part="3" hidden>
+      <h1>Plain English</h1>
+      <p class="src">Part 3 · Questions 27–40 · Paragraphs are lettered A–I.</p>
+      <div class="para"><span class="lt">A</span><p>There is no theoretical limit to the number of special purposes to which language can be put. As society develops new facets, so language is devised to express them. However, the result is often that language becomes very specialised and complex, and complications arise as ordinary people struggle to make sense of it.</p></div>
+      <div class="para"><span class="lt">B</span><p>Popular anxiety over special uses of language is most markedly seen in the campaigns to promote 'plain' speaking and writing – notably, the Plain English movements of Britain and the USA. The main aim of these campaigns is <span class="ev" data-q="27">to attack the use of unnecessarily complicated language ('gobbledegook') by governments, businesses and other authorities whose role puts them in linguistic contact with the general public</span>. The campaigners argue that such language, whether spoken or written, should be replaced by clearer forms of expression.</p></div>
+      <div class="para"><span class="lt">C</span><p>The movements took shape only in the 1970s, so it is too soon to ascertain their long-term influence on the characteristics of language varieties. But they have certainly played a major part in promoting public awareness of the existence of communication problems, and <span class="ev" data-q="28">have influenced many organisations to do something about it</span>. In Britain, the campaign was launched in 1979, by a ritual shredding of government forms in Parliament Square, London. By 1982, the government had published a report telling departments to improve the design of forms, and to abolish those that were unnecessary. By 1985, around 15,700 forms had disappeared and 21,300 had been revised. In the USA, President Carter's Executive Order of March 1978 required regulations to be written in plain English, and <span class="ev" data-q="29">although this was revoked by President Reagan in 1981, it promoted a great deal of legislation throughout the country, and an increase in plain English usage amongst corporations and consumers</span>.</p></div>
+      <div class="para"><span class="lt">D</span><p>Today the Plain English campaigns continue to grow, focusing especially on such everyday consumer literature as forms, official letters, licences, leases, contracts, insurance policies and guarantees. In Britain, annual publicity is given to <span class="ev" data-q="30">the Plain English Awards competition, which gives trophies to organisations that have produced the clearest documents</span>, and booby prizes (the Golden Bull Awards) to those whose materials are least intelligible. In the USA, similar interest is shown in the annual Doublespeak Awards, awarded by the National Council of Teachers to 'American public figures who have perpetrated language that is grossly unfactual, deceptive, evasive, euphemistic, confusing or self-contradictory.'</p></div>
+      <div class="para"><span class="lt">E</span><p>In these cost-conscious days, it is stressed that <span class="ev" data-q="31">clear language not only avoids anxiety on the part of the recipient, it also saves time and money</span>. The campaigns have large dossiers of problem cases. In one case, an official government letter provoked so many complaints and questions that a second letter had to be sent to explain the first. In another, an application form was wrongly filled in by 50% of the applicants, which resulted in a considerable outlay of effort in returning and reprocessing the form. In contrast, there are cases of <span class="ev" data-q="34 35">businesses revising their literature to avoid legal jargon, and benefiting from increased sales</span>.</p></div>
+      <div class="para"><span class="lt">F</span><p>Particular concern is expressed about the ambiguities and omissions found in <span class="ev" data-q="32">medical labels</span>. For example, in one pharmaceutical survey, the instruction to 'use sparingly' was misunderstood by 33% of patients. The instruction 'take two tablets four hourly' received a number of interpretations (e.g. to take eight tablets an hour). Related areas of concern include the use of warning labels on household goods (such as disinfectants) and on toys for children.</p></div>
+      <div class="para"><span class="lt">G</span><p>The instructions accompanying do-it-yourself products are also regularly cited as <span class="ev" data-q="36">a source of unnecessary expense or frustration</span>. <span class="ev" data-q="37">Few companies seem to test their instructions by having them followed by a first-time user.</span> Often, <span class="ev" data-q="38">essential information is omitted</span>, steps in the construction process are taken for granted, and <span class="ev" data-q="39">some degree of special knowledge is assumed</span>. This is especially worrying in any fields where failure to follow correct procedures can be dangerous.</p></div>
+      <div class="para"><span class="lt">H</span><p>Objections to material in plain English have come mainly from the legal profession. Lawyers point to the risk of ambiguity inherent in the use of everyday language for legal or official documents, and <span class="ev" data-q="40">draw attention to the need for confidence in legal formulations</span>, <span class="ev" data-q="33">which can come only from using language that has been tested in courts over the course of centuries</span>. The campaigners point out that there has been no sudden increase in litigation as a consequence of the increase in plain English materials.</p></div>
+      <div class="para"><span class="lt">I</span><p>Similarly, professionals in several different fields have defended their use of technical and complex language as being the most precise means of expressing technical or complex ideas. This is undoubtedly true: <span class="ev" data-q="32">scientists, doctors, bankers and others need their jargon in order to communicate with each other succinctly and unambiguously</span>. But when it comes to addressing the non-specialist consumer, the campaigners argue, different criteria must apply.</p></div>
+    </article>
+  </section>
+
+  <div class="divider" id="divider" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the question panel" tabindex="0"><i></i></div>
+
+  <section class="qpanel" id="qpanel" aria-label="Questions">
+    <div class="chips gut" id="chips"></div>
+    <div class="qbody gut" id="qbody"></div>
+    <div class="qfoot gut" id="qfoot"></div>
+  </section>
+
+  <div class="overlay gut" id="overlay"><noscript><div class="card"><h2>Enable JavaScript to take the test</h2><p>This interactive reading test needs JavaScript for the timer, answers, and scoring.</p></div></noscript></div>
+</main>
+
+<script>
+(async function(){
+const LIMIT = 60 * 60; // seconds
+const TFNG = "Choose <b>TRUE</b> if the statement agrees with the text, <b>FALSE</b> if it contradicts the text, or <b>NOT GIVEN</b> if there is no information on this.";
+const PARTS = [
+  {p:1, title:"The life and work of Marie Curie", range:"1–13"},
+  {p:2, title:"The Physics of Traffic Behavior", range:"14–26"},
+  {p:3, title:"Plain English", range:"27–40"}
+];
+const HEADINGS = [
+  ["i","How a maths experiment actually reduced traffic congestion"],
+  ["ii","How a concept from one field of study was applied in another"],
+  ["iii","A lack of investment in driver training"],
+  ["iv","Areas of doubt and disagreement between experts"],
+  ["v","How different countries have dealt with traffic congestion"],
+  ["vi","The impact of driver behavior on traffic speed"],
+  ["vii","A proposal to take control away from the driver"]
+];
+const G = {
+  p1tf:{title:"Questions 1–6", text:TFNG},
+  p1gap:{title:"Questions 7–13", text:"Complete the notes. Write <b>ONE WORD ONLY</b> from the text for each answer.", notes:"Marie Curie's research on radioactivity"},
+  p2head:{title:"Questions 14–17", text:"The text has four sections. Choose the correct heading for each section from the list of headings."},
+  p2multi:{title:"Questions 18–23", text:"Choose <b>TWO</b> correct answers for each question. Each correct letter scores one mark."},
+  p2gap:{title:"Questions 24–26", text:"Complete the summary. Write <b>ONE WORD ONLY</b> from the text for each answer.", notes:"Physicists' theories on gas molecules and traffic flow"},
+  p3tf:{title:"Questions 27–33", text:TFNG},
+  p3gap:{title:"Questions 34–40", text:"Complete the summary. Write <b>NO MORE THAN TWO WORDS</b> from the text for each answer.", notes:"Summary"}
+};
+// t: tf | head | multi | gap.  id = key for answers; nums = question numbers it covers (marks).
+const Q = [
+  {id:"1",p:1,g:"p1tf",t:"tf",text:"Marie Curie's husband was a joint winner of both Marie's Nobel Prizes.",a:"FALSE",ev:"Paragraph A",why:"Pierre shared the 1903 Physics prize, but Marie was the sole winner of the 1911 Chemistry prize."},
+  {id:"2",p:1,g:"p1tf",t:"tf",text:"Marie became interested in science when she was a child.",a:"NOT GIVEN",ev:"Paragraph B",why:"The text says she had a remarkable memory as a child, but says nothing about when her interest in science began."},
+  {id:"3",p:1,g:"p1tf",t:"tf",text:"Marie was able to attend the Sorbonne because of her sister's financial contribution.",a:"TRUE",ev:"Paragraphs B–C",why:"Marie paid for Bronia's studies on the understanding that Bronia would later help her. In 1891 'this promise was fulfilled' and Marie went to the Sorbonne."},
+  {id:"4",p:1,g:"p1tf",t:"tf",text:"Marie stopped doing research for several years when her children were born.",a:"FALSE",ev:"Paragraph F",why:"The births of her daughters 'failed to interrupt her scientific work'."},
+  {id:"5",p:1,g:"p1tf",t:"tf",text:"Marie took over the teaching position her husband had held.",a:"TRUE",ev:"Paragraph G",why:"She was appointed to the professorship left vacant on her husband's death."},
+  {id:"6",p:1,g:"p1tf",t:"tf",text:"Marie's sister Bronia studied the medical uses of radioactivity.",a:"NOT GIVEN",ev:"Paragraphs B and I",why:"Bronia studied medicine and later directed the Radium Institute in Warsaw, but the text never says she studied medical uses of radioactivity."},
+  {id:"7",p:1,g:"p1gap",t:"gap",lim:1,pre:"When uranium was discovered to be radioactive, Marie Curie found that the element called",post:"had the same property.",a:["thorium"],ev:"Paragraph D",why:"'She discovered that this was true for thorium.'"},
+  {id:"8",p:1,g:"p1gap",t:"gap",lim:1,pre:"Marie and Pierre Curie's research into the radioactivity of the mineral known as",post:"led to the discovery of two new elements.",a:["pitchblende"],ev:"Paragraph E",why:"Her work on pitchblende led to the discovery of polonium and radium."},
+  {id:"9",p:1,g:"p1gap",t:"gap",lim:1,pre:"In 1911, Marie Curie received recognition for her work on the element",post:".",a:["radium"],ev:"Paragraph G",why:"The 1911 Nobel Prize was for isolating a pure form of radium."},
+  {id:"10",p:1,g:"p1gap",t:"gap",lim:1,pre:"Marie and Irène Curie developed X-radiography which was used as a medical technique for",post:".",a:["soldiers"],ev:"Paragraph H",why:"The mobile units were used to treat wounded soldiers. 'Wounded soldiers' is two words, so only 'soldiers' fits the ONE WORD rule."},
+  {id:"11",p:1,g:"p1gap",t:"gap",lim:1,pre:"Marie Curie saw the importance of collecting radioactive material both for research and for cases of",post:".",a:["illness"],ev:"Paragraph J",why:"Sources were needed 'not only to treat illness but also to maintain an abundant supply for research'."},
+  {id:"12",p:1,g:"p1gap",t:"gap",lim:1,pre:"The radioactive material stocked in Paris contributed to the discoveries in the 1930s of the",post:"and of what was known as artificial radioactivity.",a:["neutron"],ev:"Paragraph J",why:"The work prepared the way for the discovery of the neutron by James Chadwick."},
+  {id:"13",p:1,g:"p1gap",t:"gap",lim:1,pre:"During her research, Marie Curie was exposed to radiation and as a result she suffered from",post:".",a:["leukaemia","leukemia"],ev:"Paragraph J",why:"She died of leukaemia caused by exposure to radiation. Both British and US spellings are accepted."},
+
+  {id:"14",p:2,g:"p2head",t:"head",text:"Section 1",a:"ii",ev:"Section 1",why:"Physicists used equations from the study of gas molecules to model traffic, working outside their usual field."},
+  {id:"15",p:2,g:"p2head",t:"head",text:"Section 2",a:"vii",ev:"Section 2",why:"The radical idea is central computers controlling each car's speed, engine and brakes, so the driver loses control."},
+  {id:"16",p:2,g:"p2head",t:"head",text:"Section 3",a:"iv",ev:"Section 3",why:"Civil engineers greeted the physicists' theories with skepticism and questioned their results."},
+  {id:"17",p:2,g:"p2head",t:"head",text:"Section 4",a:"vi",ev:"Section 4",why:"Banks links sudden slowdowns to driver psychology: aggressive lane changes and braking in the fast lane."},
+  {id:"18-19",nums:["18","19"],p:2,g:"p2multi",t:"multi",text:"Which TWO options describe what the writer is doing in section two?",
+    opts:[["A","explaining Helbing and Kerner's attitude to chaos theory"],["B","clarifying Helbing and Kerner's conclusions about traffic behaviour"],["C","showing how weather and temperature can change traffic flow"],["D","drawing parallels between the behaviour of clouds and traffic"],["E","giving examples of different potential causes of congestion"]],
+    a:["B","D"],qn:"18",ev:"Section 1, paragraphs 2–3",why:"The writer explains their conclusion that congestion can arise spontaneously (B), then compares this to water vapour in a cloud condensing around a speck of dust (D). The cloud comparison is about a change of state, not weather affecting traffic (C)."},
+  {id:"20-21",nums:["20","21"],p:2,g:"p2multi",t:"multi",text:"Which TWO statements reflect civil engineers' opinions of the physicists' theories?",
+    opts:[["A","They fail to take into account road maintenance."],["B","They may have little to do with everyday traffic behaviour."],["C","They are inconsistent with chaos theory."],["D","They do not really describe anything new."],["E","They can easily be disproved."]],
+    a:["B","D"],qn:"20",ev:"Section 3",why:"Engineers questioned how well the results relate to real-world traffic (B), and said similar observations had appeared in engineering literature for years (D). Engineers blame poor road construction, not maintenance (A)."},
+  {id:"22-23",nums:["22","23"],p:2,g:"p2multi",t:"multi",text:"Which TWO of the following options express the purpose of the text?",
+    opts:[["A","to change the behaviour of vehicle drivers"],["B","to discuss contrasting approaches to understanding congestion"],["C","to recommend a practical rather than a theoretical approach to traffic control"],["D","to inform drivers of future changes to traffic control methods"],["E","to give details of some of the behaviours shown by traffic"]],
+    a:["B","E"],qn:"22",ev:"The whole text",why:"The text sets the physicists' theoretical view against the engineers' practical view (B), and describes how traffic behaves, such as synchronized traffic and slowdowns (E). It does not recommend one approach (C)."},
+  {id:"24",p:2,g:"p2gap",t:"gap",lim:1,pre:"Using simulations based on",post:"more commonly used to illustrate the movement of molecules in a gas, physicists showed that there are similarities between the ways gas molecules and traffic behave.",a:["equations"],ev:"Section 1",why:"They simulated traffic 'using the equations that describe how the molecules of a gas move'."},
+  {id:"25",p:2,g:"p2gap",t:"gap",lim:1,pre:"They are not similar in all aspects – gas molecules randomly crash into one another but drivers prevent",post:"from happening by altering their speed.",a:["collisions"],ev:"Section 1",why:"Drivers 'try to avoid collisions by slowing down'."},
+  {id:"26",p:2,g:"p2gap",t:"gap",lim:1,pre:"The physicists' investigations seemed to show that congestion can occur even when traffic is moving without problem and when its",post:"is within approved levels for the road.",a:["density"],ev:"Section 1",why:"Traffic can flow freely 'at a density still well below what the road can handle'."},
+
+  {id:"27",p:3,g:"p3tf",t:"tf",text:"The Plain English campaigns are concerned with the language officials use when communicating with ordinary people.",a:"TRUE",ev:"Paragraph B",why:"The campaigns attack complicated language from authorities 'in linguistic contact with the general public'."},
+  {id:"28",p:3,g:"p3tf",t:"tf",text:"Campaigners found it difficult to talk to government officials.",a:"NOT GIVEN",ev:"Paragraph C",why:"The text says the campaigns influenced many organisations, but nothing about how easy it was to talk to officials."},
+  {id:"29",p:3,g:"p3tf",t:"tf",text:"A change of president in the US meant that the effects of the campaign there were negligible.",a:"FALSE",ev:"Paragraph C",why:"Reagan revoked the order, but it still promoted a great deal of legislation and more plain English use."},
+  {id:"30",p:3,g:"p3tf",t:"tf",text:"In the UK, awards are given to people who have produced materials that are easy to understand.",a:"TRUE",ev:"Paragraph D",why:"The Plain English Awards give trophies to organisations that produce the clearest documents."},
+  {id:"31",p:3,g:"p3tf",t:"tf",text:"Use of clear language on documents can be economically beneficial.",a:"TRUE",ev:"Paragraph E",why:"Clear language 'saves time and money', and some businesses saw increased sales."},
+  {id:"32",p:3,g:"p3tf",t:"tf",text:"The tendency of doctors to use jargon when talking to patients often leads to confusion.",a:"NOT GIVEN",ev:"Paragraphs F and I",why:"Medical labels cause confusion, and doctors use jargon with each other, but nothing is said about doctors talking to patients."},
+  {id:"33",p:3,g:"p3tf",t:"tf",text:"Regular checks are made on language used in the courts.",a:"NOT GIVEN",ev:"Paragraph H",why:"Legal language has been 'tested in courts' over centuries, but the text says nothing about regular checks."},
+  {id:"34",p:3,g:"p3gap",t:"gap",lim:2,pre:"For businesses, the use of complex language can have financial implications. The benefits of plain language can be seen in the case of companies who remove",post:"from their forms and achieve [35] as a result.",a:["legal jargon"],ev:"Paragraph E",why:"Businesses revised their literature 'to avoid legal jargon'."},
+  {id:"35",p:3,g:"p3gap",t:"gap",lim:2,pre:"…companies who remove [34] from their forms and achieve",post:"as a result.",a:["increased sales"],ev:"Paragraph E",why:"They benefited 'from increased sales'."},
+  {id:"36",p:3,g:"p3gap",t:"gap",lim:2,pre:"Consumers often complain that they experience a feeling of",post:"when trying to put together do-it-yourself products which have not been tested by companies on a [37].",a:["frustration"],ev:"Paragraph G",why:"DIY instructions are 'a source of unnecessary expense or frustration'."},
+  {id:"37",p:3,g:"p3gap",t:"gap",lim:2,pre:"…do-it-yourself products which have not been tested by companies on a",post:".",a:["first-time user"],ev:"Paragraph G",why:"Few companies test instructions 'by having them followed by a first-time user'."},
+  {id:"38",p:3,g:"p3gap",t:"gap",lim:2,pre:"In situations where not keeping to the correct procedures could affect safety issues, it is especially important that",post:"information is not left out…",a:["essential"],ev:"Paragraph G",why:"'Often, essential information is omitted.'"},
+  {id:"39",p:3,g:"p3gap",t:"gap",lim:2,pre:"…and no assumptions are made about a stage being self-evident or the consumer having a certain amount of",post:".",a:["special knowledge"],ev:"Paragraph G",why:"'Some degree of special knowledge is assumed.'"},
+  {id:"40",p:3,g:"p3gap",t:"gap",lim:2,pre:"Lawyers, however, have raised objections to the use of plain English. They feel that it would result in ambiguity in documents and cause people to lose faith in",post:", as it would mean departing from language that has been used in the courts for a very long time.",a:["legal formulations"],ev:"Paragraph H",why:"Lawyers stress 'the need for confidence in legal formulations'."}
+];
+const TOTAL = 40;
+
+let S = {name:"",startedAt:0,answers:{},submitted:false,usedSec:0,cur:0,qh:52,fs:1,view:"q"};
+let confirming=false, tick=null, shownPart=0; const scrollPos={};
+const $ = id => document.getElementById(id);
+const overlay=$("overlay"), chips=$("chips"), qbody=$("qbody"), qfoot=$("qfoot"), timerEl=$("timer"), pane=$("passage");
+
+let progressReady=false;
+let saveTimer, saveQueue = Promise.resolve(), revision = Date.now();
+function save(){
+  clearTimeout(saveTimer);
+  $("saveStatus").textContent="Saving…";
+  saveTimer=setTimeout(persist,250);
+}
+const STORE_KEY="lm-reading-full";
+function persist(){
+  if(!progressReady) return;
+  clearTimeout(saveTimer);
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); $("saveStatus").textContent="Progress saved on this phone"; }
+  catch(e){ $("saveStatus").textContent="Progress can't be saved in this browser"; }
+}
+$("saveStatus").onclick=()=>persist();
+window.addEventListener("online",()=>persist());
+document.addEventListener("visibilitychange",()=>{ if(document.hidden && S.startedAt) persist(true); });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm = s => String(s||"").toLowerCase().replace(/[‐-―-]/g," ").replace(/[.,;:!?'"()‘’“”]/g," ").replace(/\s+/g," ").trim();
+
+/* marks for one item, and its maximum */
+function marks(q){
+  const v=S.answers[q.id];
+  if(q.t==="tf"||q.t==="head") return v===q.a?1:0;
+  if(q.t==="multi") return (Array.isArray(v)?v:[]).filter(x=>q.a.includes(x)).length;
+  return q.a.map(norm).includes(norm(v))?1:0;
+}
+const maxMarks = q => q.t==="multi"?2:1;
+const answered = q => { const v=S.answers[q.id]; return Array.isArray(v)? v.length>0 : norm(v)!==""; };
+const unanswered = () => Q.reduce((n,q)=>{ const v=S.answers[q.id]; if(q.t==="multi") return n+(2-(Array.isArray(v)?v.length:0)); return n+(answered(q)?0:1); },0);
+const partQ = p => Q.filter(q=>q.p===p);
+const partScore = p => partQ(p).reduce((s,q)=>s+marks(q),0);
+const partMax = p => partQ(p).reduce((s,q)=>s+maxMarks(q),0);
+const score = () => Q.reduce((s,q)=>s+marks(q),0);
+const label = q => q.nums ? q.nums.join("–") : q.id;
+function fmt(sec){ sec=Math.max(0,Math.round(sec)); return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0"); }
+function remaining(){ return LIMIT-(Date.now()-S.startedAt)/1000; }
+// IELTS Academic Reading conversion (approximate; official tables vary slightly by test).
+function band(raw){
+  const t=[[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5]];
+  for(const [m,b] of t) if(raw>=m) return b;
+  return "below 2.5";
+}
+function applyPrefs(){
+  document.documentElement.style.setProperty("--qh", S.qh+"%");
+  document.documentElement.style.setProperty("--fs", S.fs);
+}
+
+/* ---------- passages ---------- */
+function showPart(p){
+  if(shownPart===p) return;
+  if(shownPart) scrollPos[shownPart]=pane.scrollTop;
+  document.querySelectorAll("article[data-part]").forEach(a=>a.hidden = +a.dataset.part!==p);
+  shownPart=p; pane.scrollTop=scrollPos[p]||0;
+  $("barTitle").textContent = "Part "+p+" · "+PARTS[p-1].title;
+}
+
+/* ---------- start ---------- */
+function renderStart(){
+  $("tools").hidden=true; timerEl.hidden=true; $("tabs").hidden=true;
+  overlay.hidden=false;
+  overlay.innerHTML=`
+  <div class="card">
+    <div class="kick">Luke Murgatroyd · IELTS Reading mock test</div>
+    <h2>Academic Reading: full test</h2>
+    <div class="facts">
+      <div class="fact"><b>60</b><span>minutes</span></div>
+      <div class="fact"><b>40</b><span>questions</span></div>
+      <div class="fact"><b>3</b><span>parts</span></div>
+    </div>
+    <div class="plist">
+      <div><b>Part 1</b><span>The life and work of Marie Curie · Q1–13</span></div>
+      <div><b>Part 2</b><span>The Physics of Traffic Behavior · Q14–26</span></div>
+      <div><b>Part 3</b><span>Plain English · Q27–40</span></div>
+    </div>
+    <ul>
+      <li>Move between parts with the tabs at the top. You can go back to any part.</li>
+      <li>The text stays on screen above the questions. Drag the bar between them to resize.</li>
+      <li>Aim for about 20 minutes per part. The test submits itself after 60 minutes.</li>
+    </ul>
+    <p><a href="/birds">Try The origins of birds · 16-minute reading</a></p>
+    <p><a href="/driverless">Try Driverless cars · 16-minute reading</a></p>
+    <p><a href="/collecting">Try Collecting as a Hobby · 16-minute reading</a></p>
+    <div class="field"><label for="nameIn">Your name</label>
+      <input id="nameIn" maxlength="120" autocomplete="name" placeholder="e.g. Sara Al-Harbi" value="${esc(S.name)}"></div>
+    <button class="big" id="startBtn" ${S.name.trim()?"":"disabled"}>Start the test</button>
+    <p class="hint">Turn on Do Not Disturb and keep your phone upright. Your name and answers are saved securely for this browser so you can resume after a reload. Clearing cookies removes access to your saved test.</p>
+  </div>`;
+  const ni=$("nameIn"), sb=$("startBtn");
+  ni.addEventListener("input",()=>{ S.name=ni.value; sb.disabled=!ni.value.trim(); });
+  ni.addEventListener("keydown",e=>{ if(e.key==="Enter"&&ni.value.trim()) start(); });
+  sb.addEventListener("click", start);
+}
+function start(){
+  S.name=S.name.trim(); S.startedAt=Date.now(); S.answers={}; S.submitted=false; S.cur=0; S.view="q";
+  save(); overlay.hidden=true; renderTest();
+}
+
+/* ---------- test ---------- */
+function startTimer(){
+  clearInterval(tick);
+  const upd=()=>{
+    if(S.submitted){ clearInterval(tick); return; }
+    const r=remaining();
+    timerEl.textContent=fmt(r);
+    timerEl.classList.toggle("warn", r<=600 && r>120);
+    timerEl.classList.toggle("crit", r<=120);
+    if(r<=0) submit(true);
+  };
+  upd(); tick=setInterval(upd,1000);
+}
+function renderTest(){
+  $("tools").hidden=false; timerEl.hidden=false; $("tabs").hidden=false;
+  if(!S.submitted) startTimer();
+  else { timerEl.textContent=score()+"/"+TOTAL; timerEl.classList.remove("warn","crit"); }
+  renderAll();
+}
+function renderAll(){ renderTabs(); renderChips(); renderQ(); }
+function curPart(){ return Q[S.cur].p; }
+function renderTabs(){
+  const cp = (S.submitted && S.view==="res") ? 0 : curPart();
+  $("tabs").innerHTML = PARTS.map(P=>{
+    const info = S.submitted ? `${partScore(P.p)}/${partMax(P.p)} correct` : `${partQ(P.p).reduce((n,q)=>n+(q.t==="multi"?(S.answers[q.id]||[]).length:(answered(q)?1:0)),0)}/${partMax(P.p)} done`;
+    return `<button class="tab" role="tab" aria-selected="${cp===P.p}" data-p="${P.p}"><b>Part ${P.p}</b><span>${info}</span></button>`;
+  }).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+    const p=+b.dataset.p; S.view="q"; confirming=false;
+    if(curPart()!==p) S.cur=Q.findIndex(q=>q.p===p);
+    save(); renderAll();
+  });
+}
+function renderChips(){
+  const p = curPart(); let h="";
+  if(S.submitted) h+=`<button class="chip res ${S.view==="res"?"cur":""}" data-res="1">Score</button>`;
+  Q.forEach((q,i)=>{
+    if(q.p!==p) return;
+    let c="chip";
+    if(S.submitted){ const m=marks(q); c+= m===maxMarks(q)?" ok":(m>0?" half":" no"); }
+    else if(answered(q)) c+=" done";
+    if(S.view==="q" && i===S.cur) c+=" cur";
+    h+=`<button class="${c}" data-i="${i}" aria-label="Question ${label(q)}">${label(q)}</button>`;
+  });
+  chips.innerHTML=h;
+  chips.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{ S.view="q"; S.cur=+b.dataset.i; confirming=false; save(); renderAll(); });
+  const r=chips.querySelector("[data-res]"); if(r) r.onclick=()=>{ S.view="res"; save(); renderAll(); };
+  const cur=chips.querySelector(".cur"); if(cur) cur.scrollIntoView({block:"nearest",inline:"center"});
+}
+function clearMarks(){ document.querySelectorAll(".ev.on").forEach(e=>e.classList.remove("on")); }
+
+function renderQ(){
+  clearMarks();
+  if(S.submitted && S.view==="res") return renderResult();
+  const q=Q[S.cur]; showPart(q.p);
+  const v=S.answers[q.id]; const done=S.submitted; const g=G[q.g];
+  let h=`<div class="qinner"><div class="instr"><b>${g.title}.</b> ${g.text}</div>`;
+
+  if(q.t==="tf"){
+    h+=`<div class="qtext"><span class="n">${q.id}</span><span>${esc(q.text)}</span></div><div class="choices" role="radiogroup" aria-label="Answer for question ${q.id}">`;
+    ["TRUE","FALSE","NOT GIVEN"].forEach(o=>{
+      h+=`<button class="choice tf" role="radio" aria-checked="${v===o}" data-o="${o}" ${done?"disabled":""}><span class="dot"></span>${o}</button>`;
+    });
+    h+=`</div>`;
+  } else if(q.t==="head"){
+    h+=`<div class="qtext"><span class="n">${q.id}</span><span>${q.text}: choose the best heading</span></div><div class="choices" role="radiogroup" aria-label="Heading for question ${q.id}">`;
+    HEADINGS.forEach(([k,t])=>{
+      const right = done && k===q.a ? " right":"";
+      h+=`<button class="choice${right}" role="radio" aria-checked="${v===k}" data-o="${k}" ${done?"disabled":""}><span class="key">${k}</span><span class="txt">${esc(t)}</span></button>`;
+    });
+    h+=`</div>`;
+  } else if(q.t==="multi"){
+    const sel=Array.isArray(v)?v:[];
+    h+=`<div class="qtext"><span class="n">${label(q)}</span><span>${esc(q.text)}</span></div><div class="choices" role="group" aria-label="Choose two answers for questions ${label(q)}">`;
+    q.opts.forEach(([k,t])=>{
+      const on=sel.includes(k); const right = done && q.a.includes(k) ? " right":"";
+      h+=`<button class="choice${right}" role="checkbox" aria-checked="${on}" data-o="${k}" ${done||(!on&&sel.length>=2)?"disabled":""}><span class="key">${k}</span><span class="txt">${esc(t)}</span></button>`;
+    });
+    h+=`</div>`;
+    if(!done) h+=`<div class="picked">${sel.length}/2 chosen${sel.length>=2?" · tap a chosen answer to change it":""}</div>`;
+  } else {
+    const fill = s => esc(s).replace(/\[(\d+)\]/g,'<span class="other">($1) ______</span>');
+    h+=`<div class="notes-title">${esc(g.notes)}</div>
+    <div class="gap"><span class="n">${q.id}</span>&nbsp; ${fill(q.pre)} <input id="gap${q.id}" maxlength="200" aria-label="Answer for question ${q.id}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(v||"")}" ${done?"disabled":""}> ${fill(q.post)}</div>`;
+  }
+
+  if(done){
+    const m=marks(q), mx=maxMarks(q);
+    const cls = m===mx?"ok":(m>0?"half":"no");
+    let yours, correct;
+    if(q.t==="multi"){ const sel=Array.isArray(v)?v:[]; yours = sel.length? esc(sel.slice().sort().join(", ")) : "<i>no answer</i>"; correct=q.a.join(", "); }
+    else if(q.t==="gap"){ yours = norm(v)? esc(v):"<i>no answer</i>"; correct=q.a[0]; }
+    else { yours = v? esc(v):"<i>no answer</i>"; correct=q.a; }
+    let extra="";
+    if(q.t==="gap" && m===0 && norm(v) && norm(v).split(" ").length>q.lim) extra=` Your answer is over the word limit (${q.lim===1?"one word only":"no more than two words"}).`;
+    const head = q.t==="multi" ? `${m} of 2 marks` : (m?"Correct":"Not quite");
+    h+=`<div class="verdict ${cls}">
+      <span class="h">${head}</span>
+      <span>Your answer: <b>${yours}</b>${m===mx?"":` · Correct: <b>${esc(correct)}</b>`}</span>
+      <span>${esc(q.ev)}. ${esc(q.why)}${extra}</span>
+    </div>`;
+    const evKey = q.qn || q.id;
+    if(document.querySelector(`.ev[data-q~="${evKey}"]`)) h+=`<button class="linkbtn" id="showEv" data-k="${evKey}">Show in the text</button>`;
+  }
+  h+=`</div>`;
+  qbody.innerHTML=h; qbody.scrollTop=0;
+
+  if(!done){
+    if(q.t==="tf"||q.t==="head"){
+      qbody.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{ S.answers[q.id]=b.dataset.o; save(); renderQ(); renderChips(); renderTabs(); });
+    } else if(q.t==="multi"){
+      qbody.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{
+        let sel=Array.isArray(S.answers[q.id])?S.answers[q.id].slice():[];
+        const k=b.dataset.o;
+        if(sel.includes(k)) sel=sel.filter(x=>x!==k); else if(sel.length<2) sel.push(k);
+        S.answers[q.id]=sel; save(); renderQ(); renderChips(); renderTabs();
+      });
+    } else {
+      const inp=$("gap"+q.id);
+      inp.addEventListener("input",()=>{ S.answers[q.id]=inp.value; save(); renderChips(); renderTabs(); });
+      inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ inp.blur(); go(1); } });
+    }
+  } else {
+    const se=$("showEv"); if(se) se.onclick=()=>showEvidence(se.dataset.k);
+  }
+  renderFoot();
+}
+function showEvidence(k){
+  clearMarks();
+  const els=document.querySelectorAll(`article:not([hidden]) .ev[data-q~="${k}"]`);
+  els.forEach(e=>e.classList.add("on"));
+  if(els[0]){
+    const top=els[0].getBoundingClientRect().top - pane.getBoundingClientRect().top + pane.scrollTop - 40;
+    pane.scrollTo({top, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  }
+}
+function go(d){
+  const n=S.cur+d; if(n<0||n>=Q.length) return;
+  S.cur=n; confirming=false; save(); renderAll();
+}
+function renderFoot(){
+  const last=S.cur===Q.length-1;
+  const nextLabel = (!last && Q[S.cur+1].p!==Q[S.cur].p) ? `Part ${Q[S.cur+1].p}` : "Next";
+  if(S.submitted){
+    qfoot.innerHTML=`<button class="sbtn" id="prev" ${S.cur===0?"disabled":""}>Back</button><button class="sbtn pri" id="next">${last?"Score":nextLabel}</button>`;
+    $("prev").onclick=()=>go(-1);
+    $("next").onclick=()=>{ if(last){ S.view="res"; save(); renderAll(); } else go(1); };
+    return;
+  }
+  if(confirming){
+    const left=unanswered();
+    qfoot.innerHTML=`<div class="confirm" style="flex:1"><span>${left?`You have <b>${left}</b> unanswered question${left>1?"s":""}. `:""}Submit the whole test now? You can't change your answers afterwards.</span>
+      <div class="row"><button class="sbtn" id="keep">Keep working</button><button class="sbtn pri" id="doSub">Submit</button></div></div>`;
+    $("keep").onclick=()=>{ confirming=false; renderFoot(); };
+    $("doSub").onclick=()=>submit(false);
+    return;
+  }
+  qfoot.innerHTML=`<button class="sbtn" id="prev" ${S.cur===0?"disabled":""}>Back</button>
+    <button class="sbtn ${last?"":"pri"}" id="next" ${last?"disabled":""}>${nextLabel}</button>
+    <button class="sbtn ${last?"pri":""}" id="sub">Submit</button>`;
+  $("prev").onclick=()=>go(-1);
+  $("next").onclick=()=>go(1);
+  $("sub").onclick=()=>{ confirming=true; renderFoot(); };
+}
+function submit(auto){
+  if(S.submitted) return;
+  S.submitted=true; S.usedSec=Math.min(LIMIT,(Date.now()-S.startedAt)/1000); S.view="res"; S.auto=!!auto; confirming=false;
+  clearInterval(tick); save();
+  if(document.activeElement) document.activeElement.blur();
+  renderTest();
+}
+
+/* ---------- result ---------- */
+function resultText(){
+  return `IELTS Reading Mock | ${S.name} | ${score()}/40 | P1 ${partScore(1)}/13 · P2 ${partScore(2)}/13 · P3 ${partScore(3)}/14 | band ~${band(score())} | time ${fmt(S.usedSec)}`;
+}
+function renderResult(){
+  const sc=score();
+  qbody.innerHTML=`<div class="qinner">
+    <div class="kick">${S.auto?"Time's up · ":""}Your result</div>
+    <div class="score"><b>${sc}</b><span>/ 40 correct</span></div>
+    <div><span class="band">Band about ${band(sc)}</span></div>
+    <div class="pscores">
+      ${PARTS.map(P=>`<div><b>${partScore(P.p)}/${partMax(P.p)}</b><span>Part ${P.p}</span></div>`).join("")}
+    </div>
+    <p class="hint">Band is an estimate from the usual Academic Reading table. Time used: ${fmt(S.usedSec)}.</p>
+    <p class="hint">Send your result to your teacher: copy it, then paste it into the class chat.</p>
+    <textarea id="copyArea" rows="3" readonly>${esc(resultText())}</textarea>
+    <div class="row"><button class="sbtn pri" id="copyBtn">Copy my result</button><button class="sbtn" id="rev">Review answers</button></div>
+    <div class="row" id="retakeRow"><button class="linkbtn" id="retake">Take the test again</button></div>
+  </div>`;
+  qfoot.innerHTML="";
+  $("copyBtn").onclick=()=>{
+    const ta=$("copyArea"), txt=resultText();
+    const fallback=()=>{ ta.focus(); ta.select(); toast("Text selected. Tap Copy to copy it."); };
+    try{ navigator.clipboard.writeText(txt).then(()=>toast("Copied. Paste it in the chat."),fallback); }catch(e){ fallback(); }
+  };
+  $("rev").onclick=()=>{ S.view="q"; S.cur=0; save(); renderAll(); };
+  $("retake").onclick=()=>{
+    $("retakeRow").innerHTML=`<div class="confirm" style="flex:1"><span>This clears all your answers and restarts the 60-minute timer.</span><div class="row"><button class="sbtn" id="rtNo">Cancel</button><button class="sbtn pri" id="rtYes">Start again</button></div></div>`;
+    $("rtNo").onclick=renderResult;
+    $("rtYes").onclick=()=>{ S.submitted=false; S.startedAt=0; S.answers={}; S.cur=0; save(); chips.innerHTML=""; qbody.innerHTML=""; qfoot.innerHTML=""; renderStart(); };
+  };
+}
+function toast(msg){
+  const t=document.createElement("div"); t.className="toast"; t.textContent=msg; t.setAttribute("role","status");
+  document.body.appendChild(t); setTimeout(()=>t.remove(),2400);
+}
+
+/* ---------- resizing + text size ---------- */
+(function(){
+  const d=$("divider"), m=$("main"); let drag=false;
+  const setH=y=>{ const r=m.getBoundingClientRect(); let p=(r.bottom-y)/r.height*100; p=Math.max(22,Math.min(78,p)); S.qh=Math.round(p); applyPrefs(); };
+  d.addEventListener("pointerdown",e=>{ drag=true; d.setPointerCapture(e.pointerId); });
+  d.addEventListener("pointermove",e=>{ if(drag) setH(e.clientY); });
+  d.addEventListener("pointerup",()=>{ drag=false; save(); });
+  d.addEventListener("keydown",e=>{ if(e.key==="ArrowUp") S.qh=Math.min(78,S.qh+4); else if(e.key==="ArrowDown") S.qh=Math.max(22,S.qh-4); else return; e.preventDefault(); applyPrefs(); save(); });
+  $("fsUp").onclick=()=>{ S.fs=Math.min(1.4,+(S.fs+0.1).toFixed(2)); applyPrefs(); save(); };
+  $("fsDown").onclick=()=>{ S.fs=Math.max(0.8,+(S.fs-0.1).toFixed(2)); applyPrefs(); save(); };
+})();
+
+/* ---------- boot ---------- */
+overlay.innerHTML='<div class="card" role="status"><h2>Opening your reading test…</h2><p class="hint">Checking for saved progress.</p></div>';
+async function restore(){
+  try{ const v=localStorage.getItem(STORE_KEY); if(v) S=JSON.parse(v); }catch(e){}
+}
+for(;;){
+  try { await restore(); break; }
+  catch {
+    overlay.innerHTML='<div class="card"><h2>Unable to load your test</h2><p class="hint">Check your connection, then try again. Your saved progress has not been changed.</p><button class="big" id="retryLoad">Try again</button></div>';
+    await new Promise(resolve=>$("retryLoad").onclick=()=>{ $("retryLoad").disabled=true; $("retryLoad").textContent="Loading…"; resolve(); });
+  }
+}
+progressReady=true;
+applyPrefs(); showPart(1);
+if(!S.startedAt) renderStart();
+else {
+  overlay.hidden=true;
+  if(!S.submitted && remaining()<=0) submit(true); else renderTest();
+}
+})();
+</script>
+
+</body>
+</html>
