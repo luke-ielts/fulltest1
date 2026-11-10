@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Misinformation · Luke Murgatroyd</title>
+<meta name="description" content="Practice IELTS Reading with Luke Murgatroyd: The persistence and peril of misinformation, a six-question summary completion test with a 16-minute timer and answer explanations.">
+<meta property="og:title" content="Misinformation · Luke Murgatroyd">
+<meta property="og:description" content="An eight-question IELTS reading practice with a 16-minute timer and instant scoring.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: one-screen exam app — part tabs on top, passage scrolls above a pinned question panel (side by side on wide screens), drag the divider to resize. */
+:root{
+  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6;
+  --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5; --part:#9A5B00; --part-soft:#FFF1D6;
+  --warn:#A45500; --mark:#FFE27A; --mark-ink:#152033;
+  --f-read:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs:1; --qh:52%;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A; --part:#F0B35A; --part-soft:#3A2A10;
+  --warn:#F0B35A; --mark:#E8C84A; --mark-ink:#111;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A; --part:#F0B35A; --part-soft:#3A2A10;
+  --warn:#F0B35A; --mark:#E8C84A; --mark-ink:#111;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.45}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{display:flex;align-items:center;gap:10px;padding-block:10px;background:var(--surface);border-bottom:1px solid var(--line);flex:none}
+.bar .ttl{flex:1;min-width:0}
+.bar .ttl b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .ttl span{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px;padding:6px 10px;border-radius:8px;background:var(--brand-soft);color:var(--brand);min-width:72px;text-align:center}
+.timer.warn{color:var(--warn)} .timer.crit{background:var(--bad-soft);color:var(--bad)}
+.tools{display:flex;gap:4px}
+.ibtn{border:1px solid var(--line);background:var(--surface);border-radius:8px;height:36px;min-width:36px;padding:0 8px;font-weight:700;font-size:14px}
+
+/* part tabs */
+.tabs{flex:none;display:flex;gap:6px;padding-block:8px;background:var(--surface);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tab{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 8px;display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.tab b{font-size:14px}
+.tab span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tab[aria-selected="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.tab[aria-selected="true"] span{color:var(--brand-ink);opacity:.85}
+
+/* main split */
+.main{flex:1;min-height:0;display:flex;flex-direction:column;position:relative}
+.passage{flex:1;min-height:0;overflow-y:auto;padding-block:18px 28px;-webkit-overflow-scrolling:touch}
+.ptext{max-width:66ch;margin:0 auto;font-family:var(--f-read);font-size:calc(17px * var(--fs));line-height:1.62}
+.ptext h1{font-family:var(--f-read);font-weight:600;font-size:1.35em;line-height:1.2;margin:0 0 4px;text-wrap:balance}
+.ptext h3{font-family:var(--f-read);font-weight:600;font-size:1em;font-style:italic;margin:0 0 6px;padding-left:36px}
+.ptext .src{font-family:var(--f-ui);font-size:13px;color:var(--muted);margin:0 0 18px}
+.para{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;margin:0 0 14px}
+.para .lt{font-family:var(--f-ui);font-weight:700;font-size:13px;color:var(--brand);background:var(--brand-soft);border-radius:6px;height:24px;width:24px;display:grid;place-items:center;margin-top:3px}
+.para .lt.blank{background:transparent}
+.para p{margin:0}
+.sect{font-family:var(--f-ui);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--brand);margin:20px 0 8px;padding-left:36px;display:flex;align-items:center;gap:8px}
+.sect::after{content:"";flex:1;height:1px;background:var(--line)}
+.ev.on{background:var(--mark);color:var(--mark-ink);border-radius:3px;box-shadow:0 0 0 2px var(--mark);transition:background .3s}
+
+.divider{flex:none;height:24px;display:grid;place-items:center;background:var(--surface);border-top:1px solid var(--line);touch-action:none;cursor:row-resize}
+.divider i{width:44px;height:5px;border-radius:3px;background:var(--line)}
+
+.qpanel{flex:none;height:var(--qh);min-height:0;display:flex;flex-direction:column;background:var(--surface)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-block:4px 10px;flex:none;scrollbar-width:none}
+.chip{flex:none;min-width:34px;height:34px;padding:0 6px;border-radius:17px;border:1.5px solid var(--line);background:var(--surface);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.chip.done{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.chip.cur{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.chip.ok{background:var(--good-soft);border-color:var(--good);color:var(--good)}
+.chip.half{background:var(--part-soft);border-color:var(--part);color:var(--part)}
+.chip.no{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.chip.ok.cur,.chip.no.cur,.chip.half.cur{box-shadow:0 0 0 3px var(--brand)}
+.chip.res{padding:0 12px}
+.qbody{flex:1;min-height:0;overflow-y:auto;padding-block:2px 12px}
+.qinner{max-width:60ch;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.instr{font-size:12.5px;line-height:1.35;color:var(--muted);background:var(--bg);border-radius:8px;padding:6px 10px}
+.instr b{color:var(--ink)}
+.qtext{font-size:17px;font-weight:700;display:flex;gap:10px}
+.sgap{display:inline-block;min-width:3.2em;padding:0 8px;margin:0 2px;border-bottom:2px solid var(--brand);background:var(--brand-soft);color:var(--brand);border-radius:6px 6px 0 0;font-weight:700;text-align:center}
+.qtext .n{flex:none;color:var(--brand);font-variant-numeric:tabular-nums}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 14px;font-weight:700}
+.choice.tf{letter-spacing:.03em}
+.choice .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.choice .key{flex:none;min-width:26px;height:26px;border-radius:6px;background:var(--bg);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.choice .txt{font-weight:400;line-height:1.3}
+.choice[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
+.choice[aria-checked="true"] .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 45%,transparent 50%)}
+.choice[aria-checked="true"] .key{background:var(--brand);color:var(--brand-ink)}
+.choice.right{border-color:var(--good)} .choice.right .key{background:var(--good);color:var(--surface)}
+.picked{font-size:13px;color:var(--muted)}
+.notes-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.gap{font-size:17px;line-height:2}
+.gap .n{color:var(--brand);font-weight:700}
+.gap .other{color:var(--muted);font-weight:700;white-space:nowrap}
+.gap input{font:inherit;font-weight:700;width:10em;max-width:100%;border:0;border-bottom:2px solid var(--brand);background:var(--brand-soft);color:var(--ink);padding:2px 8px;border-radius:6px 6px 0 0}
+.gap input:disabled{opacity:1;-webkit-text-fill-color:var(--ink)}
+.qfoot{flex:none;display:flex;gap:8px;padding-block:10px;border-top:1px solid var(--line)}
+.qfoot .sbtn,.row .sbtn{flex:1;height:44px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);font-weight:700}
+.qfoot .sbtn.pri,.row .sbtn.pri{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.qfoot .sbtn:disabled{opacity:.45}
+
+/* review */
+.verdict{border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.verdict.ok{background:var(--good-soft)} .verdict.no{background:var(--bad-soft)} .verdict.half{background:var(--part-soft)}
+.verdict .h{font-weight:700} .verdict.ok .h{color:var(--good)} .verdict.no .h{color:var(--bad)} .verdict.half .h{color:var(--part)}
+.linkbtn{align-self:flex-start;border:1.5px solid var(--brand);color:var(--brand);background:transparent;border-radius:8px;padding:7px 12px;font-weight:700;font-size:14px}
+
+/* start + result */
+.overlay{position:absolute;inset:0;overflow-y:auto;background:var(--bg);padding-block:28px;z-index:5}
+.card{max-width:480px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.card h2{font-family:var(--f-read);font-weight:600;font-size:26px;line-height:1.15;margin:0;text-wrap:balance}
+.kick{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fact{background:var(--bg);border-radius:10px;padding:10px;text-align:center}
+.fact b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.fact span{font-size:12px;color:var(--muted)}
+.plist{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.plist div{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px}
+.plist b{color:var(--brand)}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.field input{width:100%;font:inherit;font-size:17px;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.big{height:50px;border:0;border-radius:12px;background:var(--brand);color:var(--brand-ink);font-weight:700;font-size:17px}
+.big:disabled{opacity:.45}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.score{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.score b{font-size:56px;line-height:1;font-variant-numeric:tabular-nums;color:var(--brand)}
+.score span{font-size:20px;color:var(--muted)}
+.band{display:inline-flex;align-items:center;gap:6px;background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:4px 12px;font-weight:700;font-size:15px}
+.pscores{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pscores div{background:var(--bg);border-radius:10px;padding:8px;text-align:center}
+.pscores b{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+.pscores span{font-size:12px;color:var(--muted)}
+.confirm{background:var(--bg);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row .sbtn{min-width:120px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;font-size:14px;z-index:20}
+#copyArea{width:100%;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg);color:var(--ink);resize:none}
+
+@media (min-width:900px){
+  .main{flex-direction:row}
+  .divider{display:none}
+  .qpanel{height:auto;width:42%;border-left:1px solid var(--line)}
+  .chips{padding-top:14px}
+  .tab{flex:0 1 180px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="bar gut">
+  <div class="ttl"><span>IELTS Reading · 16 min</span><b id="barTitle">The persistence and peril of misinformation</b></div>
+  <div class="tools" id="tools" hidden>
+    <button class="ibtn" id="fsDown" aria-label="Smaller text">A−</button>
+    <button class="ibtn" id="fsUp" aria-label="Larger text">A+</button>
+  </div>
+  <button class="linkbtn" id="saveStatus" aria-live="polite">Loading progress…</button>
+  <div class="timer" id="timer" hidden>16:00</div>
+</header>
+
+<nav class="tabs gut" id="tabs" role="tablist" aria-label="Test parts" hidden></nav>
+
+<main class="main" id="main">
+  <section class="passage gut" id="passage" aria-label="Reading passage">
+    <article class="ptext" data-part="1">
+      <h1>The persistence and peril of misinformation</h1>
+      <p class="src"><i>Brian Southwell looks at how human brains verify information and discusses some of the challenges of battling widespread falsehoods</i></p>
+      <p class="src">Questions 1–6 · Paragraphs are lettered A–H to help you find information.</p>
+      <div class="para"><span class="lt">A</span><p>Misinformation – both deliberately promoted and accidentally shared – is perhaps an inevitable part of the world in which we live, but it is not a new problem. People likely have lied to one another for roughly as long as verbal communication has existed. Deceiving others can offer an apparent opportunity to gain strategic advantage, to motivate others to action, or even to protect interpersonal bonds. Moreover, people inadvertently have been sharing inaccurate information with one another for thousands of years.</p></div>
+      <div class="para"><span class="lt">B</span><p>However, we currently live in an era in which technology enables information to reach large audiences distributed across the globe, and thus the potential for immediate and widespread effects from misinformation now looms larger than in the past. Yet the means to correct misinformation might, over time, be found in those same patterns of mass communication and of the facilitated spread of information.</p></div>
+      <div class="para"><span class="lt">C</span><p>The main worry regarding misinformation is its potential to unduly influence attitudes and behavior, leading people to think and act differently than they would if they were correctly informed, as suggested by the research teams of Stephan Lewandowsky of the University of Bristol and Elizabeth Marsh of Duke University, among others. In other words, we worry that misinformation might lead people to hold misperceptions (or false beliefs) and that these misperceptions, especially when they occur among large groups of people, may have detrimental, downstream consequences for health, social harmony, and the political climate.</p></div>
+      <div class="para"><span class="lt">D</span><p>At least three observations related to misinformation in the contemporary mass-media environment warrant the attention of researchers, policy makers, and really everyone who watches television, listens to the radio, or reads information online. First of all, people who encounter misinformation tend to believe it, at least initially. Secondly, electronic and print media often do not block many types of misinformation before it appears in content available to large audiences. Thirdly, countering misinformation once it has enjoyed wide exposure can be a resource-intensive effort.</p></div>
+      <div class="para"><span class="lt">E</span><p>Knowing what happens when people initially encounter misinformation holds tremendous importance for estimating the potential for subsequent problems. Although <span class="ev" data-q="1">it is fairly routine for individuals to come across information that is false</span>, the question of exactly how – and when – we mentally label information as true or false has garnered philosophical debate. The dilemma is neatly summarized by <span class="ev" data-q="2">a contrast between how the 17th-century philosophers René Descartes and Baruch Spinoza described human information engagement, with conflicting predictions</span> that only recently have been empirically tested in robust ways. Descartes argued that a person only accepts or rejects information after considering its truth or falsehood; Spinoza argued that people accept all encountered information (or misinformation) by default and <span class="ev" data-q="3">then subsequently verify or reject it through a separate cognitive process</span>. In recent decades, <span class="ev" data-q="4">empirical evidence from the research teams of Erik Asp of the University of Chicago and Daniel Gilbert at Harvard University, among others, has supported Spinoza’s account</span>: <span class="ev" data-q="5">people appear to encode all new information as if it were true, even if only momentarily</span>, and later tag the information as being either true or false, a pattern that seems consistent with the observation that <span class="ev" data-q="6">mental resources for skepticism physically reside in a different part of the brain than the resources used in perceiving and encoding</span>.</p></div>
+      <div class="para"><span class="lt">F</span><p>What about our second observation that misinformation often can appear in electronic or print media without being preemptively blocked? In support of this, one might consider the nature of regulatory structures in the United States: regulatory agencies here tend to focus on post hoc detection of broadcast information. Organizations such as the Food and Drug Administration (FDA) offer considerable monitoring and notification functions, but these roles typically do not involve preemptive censoring. The FDA oversees direct-to-consumer prescription drug advertising, for example, and has developed mechanisms such as the ‘Bad Ad’ program, through which people can report advertising in apparent violation of FDA guidelines on drug risks. Such programs, although laudable and useful, do not keep false advertising off the airwaves. In addition, even misinformation that is successfully corrected can continue to affect attitudes.</p></div>
+      <div class="para"><span class="lt">G</span><p>This leads us to our third observation: a campaign to correct misinformation, even if rhetorically compelling, requires resources and planning to accomplish necessary reach and frequency. For corrective campaigns to be persuasive, audiences need to be able to comprehend them, which requires either effort to frame messages in ways that are accessible or effort to educate and sensitize audiences to the possibility of misinformation. That some audiences might be unaware of the potential for misinformation also suggests the utility of media literacy efforts as early as elementary school. Even with journalists and scholars pointing to the phenomenon of ‘fake news’, people do not distinguish between demonstrably false stories and those based in fact when scanning and processing written information.</p></div>
+      <div class="para"><span class="lt">H</span><p>We live at a time when widespread misinformation is common. Yet at this time many people also are passionately developing potential solutions and remedies. The journey forward undoubtedly will be a long and arduous one. Future remedies will require not only continued theoretical consideration but also the development and maintenance of consistent monitoring tools – and a recognition among fellow members of society that claims which find prominence in the media that are insufficiently based in scientific consensus and social reality should be countered. Misinformation arises as a result of human fallibility and human information needs. To overcome the worst effects of the phenomenon, we will need coordinated efforts over time, rather than any singular one-time panacea we could hope to offer.</p></div>
+    </article>
+  </section>
+
+  <div class="divider" id="divider" role="separator" aria-orientation="horizontal" aria-label="Drag to resize the question panel" tabindex="0"><i></i></div>
+
+  <section class="qpanel" id="qpanel" aria-label="Questions">
+    <div class="chips gut" id="chips"></div>
+    <div class="qbody gut" id="qbody"></div>
+    <div class="qfoot gut" id="qfoot"></div>
+  </section>
+
+  <div class="overlay gut" id="overlay"></div>
+</main>
+
+<script>
+(async function(){
+const LIMIT = 16 * 60; // seconds
+const PARTS = [{p:1, title:"The persistence and peril of misinformation", range:"1–6"}];
+const HEADINGS = [
+  ["A","constant conflict"],["B","additional evidence"],["C","different locations"],["D","experimental subjects"],["E","short period"],
+  ["F","extreme distrust"],["G","frequent exposure"],["H","mental operation"],["I","dubious reason"],["J","different ideas"]
+];
+const G = {
+  sum:{title:"Questions 1–6", text:"Complete the summary using the list of phrases, <b>A–J</b>. Choose the correct letter for each gap. You will not need all the phrases.", notes:"What happens when people encounter misinformation?"}
+};
+const Q = [
+  {id:"1",p:1,g:"sum",t:"head",text:"Although people have ___ to information that is false, it is not clear exactly how and when they decide whether it is true or false.",a:"G",ev:"Paragraph E",why:"'It is fairly routine for individuals to come across information that is false.' Coming across it routinely means frequent exposure."},
+  {id:"2",p:1,g:"sum",t:"head",text:"In the 17th century, Descartes and Spinoza had ___ about how people engage with new information.",a:"J",ev:"Paragraph E",why:"The two philosophers are contrasted, 'with conflicting predictions'. Not A: their views differed, but the text does not describe a constant conflict."},
+  {id:"3",p:1,g:"sum",t:"head",text:"Spinoza believed that people accept everything they encounter at first, and later check or reject it through a separate ___.",a:"H",ev:"Paragraph E",why:"People 'verify or reject it through a separate cognitive process'. A cognitive process is a mental operation."},
+  {id:"4",p:1,g:"sum",t:"head",text:"In recent decades, research has provided ___ in support of Spinoza’s view.",a:"B",ev:"Paragraph E",why:"'Empirical evidence from the research teams of Erik Asp … and Daniel Gilbert … has supported Spinoza’s account.' Not D: the text mentions research teams, not experimental subjects."},
+  {id:"5",p:1,g:"sum",t:"head",text:"It seems that people treat all new information as true, at least for a ___.",a:"E",ev:"Paragraph E",why:"People encode new information as true, 'even if only momentarily'. Momentarily means for a short period."},
+  {id:"6",p:1,g:"sum",t:"head",text:"This fits with the finding that doubting information and taking it in happen in ___ in the brain.",a:"C",ev:"Paragraph E",why:"Resources for skepticism 'physically reside in a different part of the brain' from those used for perceiving and encoding."}
+];
+const TOTAL = 6;
+
+let S = {name:"",startedAt:0,answers:{},submitted:false,usedSec:0,cur:0,qh:52,fs:1,view:"q"};
+let confirming=false, tick=null, shownPart=0; const scrollPos={};
+const $ = id => document.getElementById(id);
+const overlay=$("overlay"), chips=$("chips"), qbody=$("qbody"), qfoot=$("qfoot"), timerEl=$("timer"), pane=$("passage");
+
+let progressReady=false;
+let saveTimer, saveQueue = Promise.resolve(), revision = Date.now();
+function save(){
+  clearTimeout(saveTimer);
+  $("saveStatus").textContent="Saving…";
+  saveTimer=setTimeout(persist,250);
+}
+const STORE_KEY="lm-reading-misinformation";
+function persist(){
+  if(!progressReady) return;
+  clearTimeout(saveTimer);
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); $("saveStatus").textContent="Progress saved on this phone"; }
+  catch(e){ $("saveStatus").textContent="Progress can't be saved in this browser"; }
+}
+$("saveStatus").onclick=()=>persist();
+window.addEventListener("online",()=>persist());
+document.addEventListener("visibilitychange",()=>{ if(document.hidden && S.startedAt) persist(true); });
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm = s => String(s||"").toLowerCase().replace(/[‐-―-]/g," ").replace(/[.,;:!?'"()‘’“”]/g," ").replace(/\s+/g," ").trim();
+
+/* marks for one item, and its maximum */
+function marks(q){
+  const v=S.answers[q.id];
+  if(q.t==="tf"||q.t==="head") return v===q.a?1:0;
+  if(q.t==="multi") return (Array.isArray(v)?v:[]).filter(x=>q.a.includes(x)).length;
+  return q.a.map(norm).includes(norm(v))?1:0;
+}
+const maxMarks = q => q.t==="multi"?2:1;
+const answered = q => { const v=S.answers[q.id]; return Array.isArray(v)? v.length>0 : norm(v)!==""; };
+const unanswered = () => Q.reduce((n,q)=>{ const v=S.answers[q.id]; if(q.t==="multi") return n+(2-(Array.isArray(v)?v.length:0)); return n+(answered(q)?0:1); },0);
+const partQ = p => Q.filter(q=>q.p===p);
+const partScore = p => partQ(p).reduce((s,q)=>s+marks(q),0);
+const partMax = p => partQ(p).reduce((s,q)=>s+maxMarks(q),0);
+const score = () => Q.reduce((s,q)=>s+marks(q),0);
+const label = q => q.nums ? q.nums.join("–") : q.id;
+function fmt(sec){ sec=Math.max(0,Math.round(sec)); return String(Math.floor(sec/60)).padStart(2,"0")+":"+String(sec%60).padStart(2,"0"); }
+function remaining(){ return LIMIT-(Date.now()-S.startedAt)/1000; }
+// IELTS Academic Reading conversion (approximate; official tables vary slightly by test).
+function band(raw){
+  const t=[[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4],[8,3.5],[6,3],[4,2.5]];
+  for(const [m,b] of t) if(raw>=m) return b;
+  return "below 2.5";
+}
+function applyPrefs(){
+  document.documentElement.style.setProperty("--qh", S.qh+"%");
+  document.documentElement.style.setProperty("--fs", S.fs);
+}
+
+/* ---------- passages ---------- */
+function showPart(p){
+  if(shownPart===p) return;
+  if(shownPart) scrollPos[shownPart]=pane.scrollTop;
+  document.querySelectorAll("article[data-part]").forEach(a=>a.hidden = +a.dataset.part!==p);
+  shownPart=p; pane.scrollTop=scrollPos[p]||0;
+  $("barTitle").textContent = PARTS[p-1].title;
+}
+
+/* ---------- start ---------- */
+function renderStart(){
+  $("tools").hidden=true; timerEl.hidden=true; $("tabs").hidden=true;
+  overlay.hidden=false;
+  overlay.innerHTML=`
+  <div class="card">
+    <div class="kick">Luke Murgatroyd · IELTS Reading mock test</div>
+    <h2>The persistence and peril of misinformation</h2>
+    <div class="facts">
+      <div class="fact"><b>16</b><span>minutes</span></div>
+      <div class="fact"><b>6</b><span>questions</span></div>
+      <div class="fact"><b>A–J</b><span>phrases</span></div>
+    </div>
+    <ul>
+      <li>Summary completion: choose the correct phrase, A–J, for each gap. You will not need all the phrases.</li>
+      <li>The answers follow the order of the text.</li>
+      <li>The text stays on screen above the questions. Drag the bar between them to resize.</li>
+      <li>The test submits itself after 16 minutes.</li>
+    </ul>
+    <div class="field"><label for="nameIn">Your name</label>
+      <input id="nameIn" maxlength="120" autocomplete="name" placeholder="e.g. Sara Al-Harbi" value="${esc(S.name)}"></div>
+    <button class="big" id="startBtn" ${S.name.trim()?"":"disabled"}>Start the test</button>
+    <p><a href="birds">Try The origins of birds · 16-minute reading</a></p>
+    <p><a href="driverless">Try Driverless cars · 16-minute reading</a></p>
+    <p><a href="collecting">Try Collecting as a Hobby · 16-minute reading</a></p>
+    <p><a href="./">Full reading mock test</a></p>
+    <p class="hint">Turn on Do Not Disturb and keep your phone upright. Your progress is saved for this browser if the page reloads.</p>
+  </div>`;
+  const ni=$("nameIn"), sb=$("startBtn");
+  ni.addEventListener("input",()=>{ S.name=ni.value; sb.disabled=!ni.value.trim(); });
+  ni.addEventListener("keydown",e=>{ if(e.key==="Enter"&&ni.value.trim()) start(); });
+  sb.addEventListener("click", start);
+}
+function start(){
+  S.name=S.name.trim(); S.startedAt=Date.now(); S.answers={}; S.submitted=false; S.cur=0; S.view="q";
+  save(); overlay.hidden=true; renderTest();
+}
+
+/* ---------- test ---------- */
+function startTimer(){
+  clearInterval(tick);
+  const upd=()=>{
+    if(S.submitted){ clearInterval(tick); return; }
+    const r=remaining();
+    timerEl.textContent=fmt(r);
+    timerEl.classList.toggle("warn", r<=120 && r>60);
+    timerEl.classList.toggle("crit", r<=60);
+    if(r<=0) submit(true);
+  };
+  upd(); tick=setInterval(upd,1000);
+}
+function renderTest(){
+  $("tools").hidden=false; timerEl.hidden=false; $("tabs").hidden=PARTS.length<2;
+  if(!S.submitted) startTimer();
+  else { timerEl.textContent=score()+"/"+TOTAL; timerEl.classList.remove("warn","crit"); }
+  renderAll();
+}
+function renderAll(){ renderTabs(); renderChips(); renderQ(); }
+function curPart(){ return Q[S.cur].p; }
+function renderTabs(){
+  const cp = (S.submitted && S.view==="res") ? 0 : curPart();
+  $("tabs").innerHTML = PARTS.map(P=>{
+    const info = S.submitted ? `${partScore(P.p)}/${partMax(P.p)} correct` : `${partQ(P.p).reduce((n,q)=>n+(q.t==="multi"?(S.answers[q.id]||[]).length:(answered(q)?1:0)),0)}/${partMax(P.p)} done`;
+    return `<button class="tab" role="tab" aria-selected="${cp===P.p}" data-p="${P.p}"><b>Part ${P.p}</b><span>${info}</span></button>`;
+  }).join("");
+  $("tabs").querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+    const p=+b.dataset.p; S.view="q"; confirming=false;
+    if(curPart()!==p) S.cur=Q.findIndex(q=>q.p===p);
+    save(); renderAll();
+  });
+}
+function renderChips(){
+  const p = curPart(); let h="";
+  if(S.submitted) h+=`<button class="chip res ${S.view==="res"?"cur":""}" data-res="1">Score</button>`;
+  Q.forEach((q,i)=>{
+    if(q.p!==p) return;
+    let c="chip";
+    if(S.submitted){ const m=marks(q); c+= m===maxMarks(q)?" ok":(m>0?" half":" no"); }
+    else if(answered(q)) c+=" done";
+    if(S.view==="q" && i===S.cur) c+=" cur";
+    h+=`<button class="${c}" data-i="${i}" aria-label="Question ${label(q)}">${label(q)}</button>`;
+  });
+  chips.innerHTML=h;
+  chips.querySelectorAll("[data-i]").forEach(b=>b.onclick=()=>{ S.view="q"; S.cur=+b.dataset.i; confirming=false; save(); renderAll(); });
+  const r=chips.querySelector("[data-res]"); if(r) r.onclick=()=>{ S.view="res"; save(); renderAll(); };
+  const cur=chips.querySelector(".cur"); if(cur) cur.scrollIntoView({block:"nearest",inline:"center"});
+}
+function clearMarks(){ document.querySelectorAll(".ev.on").forEach(e=>e.classList.remove("on")); }
+
+function renderQ(){
+  clearMarks();
+  if(S.submitted && S.view==="res") return renderResult();
+  const q=Q[S.cur]; showPart(q.p);
+  const v=S.answers[q.id]; const done=S.submitted; const g=G[q.g];
+  let h=`<div class="qinner"><div class="instr"><b>${g.title}.</b> ${g.text}</div>`;
+
+  if(q.t==="tf"){
+    h+=`<div class="qtext"><span class="n">${q.id}</span><span>${esc(q.text)}</span></div><div class="choices" role="radiogroup" aria-label="Answer for question ${q.id}">`;
+    ["TRUE","FALSE","NOT GIVEN"].forEach(o=>{
+      h+=`<button class="choice tf" role="radio" aria-checked="${v===o}" data-o="${o}" ${done?"disabled":""}><span class="dot"></span>${o}</button>`;
+    });
+    h+=`</div>`;
+  } else if(q.t==="head"){
+    h+=`<div class="notes-title">${esc(g.notes||"")}</div><div class="qtext"><span class="n">${q.id}</span><span>${esc(q.text).replace("___",`<span class="sgap">${v?esc(v)+" · "+esc((HEADINGS.find(x=>x[0]===v)||["",""])[1]):"&nbsp;"+q.id+"&nbsp;"}</span>`)}</span></div><div class="choices" role="radiogroup" aria-label="Phrase for gap ${q.id}">`;
+    HEADINGS.forEach(([k,t])=>{
+      const right = done && k===q.a ? " right":"";
+      h+=`<button class="choice${right}" role="radio" aria-checked="${v===k}" data-o="${k}" ${done?"disabled":""}><span class="key">${k}</span><span class="txt">${esc(t)}</span></button>`;
+    });
+    h+=`</div>`;
+  } else if(q.t==="multi"){
+    const sel=Array.isArray(v)?v:[];
+    h+=`<div class="qtext"><span class="n">${label(q)}</span><span>${esc(q.text)}</span></div><div class="choices" role="group" aria-label="Choose two answers for questions ${label(q)}">`;
+    q.opts.forEach(([k,t])=>{
+      const on=sel.includes(k); const right = done && q.a.includes(k) ? " right":"";
+      h+=`<button class="choice${right}" role="checkbox" aria-checked="${on}" data-o="${k}" ${done||(!on&&sel.length>=2)?"disabled":""}><span class="key">${k}</span><span class="txt">${esc(t)}</span></button>`;
+    });
+    h+=`</div>`;
+    if(!done) h+=`<div class="picked">${sel.length}/2 chosen${sel.length>=2?" · tap a chosen answer to change it":""}</div>`;
+  } else {
+    const fill = s => esc(s).replace(/\[(\d+)\]/g,'<span class="other">($1) ______</span>');
+    h+=`<div class="notes-title">${esc(g.notes)}</div>
+    <div class="gap"><span class="n">${q.id}</span>&nbsp; ${fill(q.pre)} <input id="gap${q.id}" aria-label="Answer for question ${q.id}" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(v||"")}" ${done?"disabled":""}> ${fill(q.post)}</div>`;
+  }
+
+  if(done){
+    const m=marks(q), mx=maxMarks(q);
+    const cls = m===mx?"ok":(m>0?"half":"no");
+    let yours, correct;
+    if(q.t==="multi"){ const sel=Array.isArray(v)?v:[]; yours = sel.length? sel.slice().sort().join(", ") : "<i>no answer</i>"; correct=q.a.join(", "); }
+    else if(q.t==="gap"){ yours = norm(v)? esc(v):"<i>no answer</i>"; correct=q.a[0]; }
+    else { yours = v? esc(v):"<i>no answer</i>"; correct=q.a; }
+    let extra="";
+    if(q.t==="gap" && m===0 && norm(v) && norm(v).split(" ").length>q.lim) extra=` Your answer is over the word limit (${q.lim===1?"one word only":"no more than two words"}).`;
+    const head = q.t==="multi" ? `${m} of 2 marks` : (m?"Correct":"Not quite");
+    h+=`<div class="verdict ${cls}">
+      <span class="h">${head}</span>
+      <span>Your answer: <b>${yours}</b>${m===mx?"":` · Correct: <b>${esc(correct)}</b>`}</span>
+      <span>${esc(q.ev)}. ${esc(q.why)}${extra}</span>
+    </div>`;
+    const evKey = q.qn || q.id;
+    if(document.querySelector(`.ev[data-q~="${evKey}"]`)) h+=`<button class="linkbtn" id="showEv" data-k="${evKey}">Show in the text</button>`;
+  }
+  h+=`</div>`;
+  qbody.innerHTML=h; qbody.scrollTop=0;
+
+  if(!done){
+    if(q.t==="tf"||q.t==="head"){
+      qbody.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{ S.answers[q.id]=b.dataset.o; save(); renderQ(); renderChips(); renderTabs(); });
+    } else if(q.t==="multi"){
+      qbody.querySelectorAll(".choice").forEach(b=>b.onclick=()=>{
+        let sel=Array.isArray(S.answers[q.id])?S.answers[q.id].slice():[];
+        const k=b.dataset.o;
+        if(sel.includes(k)) sel=sel.filter(x=>x!==k); else if(sel.length<2) sel.push(k);
+        S.answers[q.id]=sel; save(); renderQ(); renderChips(); renderTabs();
+      });
+    } else {
+      const inp=$("gap"+q.id);
+      inp.addEventListener("input",()=>{ S.answers[q.id]=inp.value; save(); renderChips(); renderTabs(); });
+      inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ inp.blur(); go(1); } });
+    }
+  } else {
+    const se=$("showEv"); if(se) se.onclick=()=>showEvidence(se.dataset.k);
+  }
+  renderFoot();
+}
+function showEvidence(k){
+  clearMarks();
+  const els=document.querySelectorAll(`article:not([hidden]) .ev[data-q~="${k}"]`);
+  els.forEach(e=>e.classList.add("on"));
+  if(els[0]){
+    const top=els[0].getBoundingClientRect().top - pane.getBoundingClientRect().top + pane.scrollTop - 40;
+    pane.scrollTo({top, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+  }
+}
+function go(d){
+  const n=S.cur+d; if(n<0||n>=Q.length) return;
+  S.cur=n; confirming=false; save(); renderAll();
+}
+function renderFoot(){
+  const last=S.cur===Q.length-1;
+  const nextLabel = (!last && Q[S.cur+1].p!==Q[S.cur].p) ? `Part ${Q[S.cur+1].p}` : "Next";
+  if(S.submitted){
+    qfoot.innerHTML=`<button class="sbtn" id="prev" ${S.cur===0?"disabled":""}>Back</button><button class="sbtn pri" id="next">${last?"Score":nextLabel}</button>`;
+    $("prev").onclick=()=>go(-1);
+    $("next").onclick=()=>{ if(last){ S.view="res"; save(); renderAll(); } else go(1); };
+    return;
+  }
+  if(confirming){
+    const left=unanswered();
+    qfoot.innerHTML=`<div class="confirm" style="flex:1"><span>${left?`You have <b>${left}</b> unanswered question${left>1?"s":""}. `:""}Submit the whole test now? You can't change your answers afterwards.</span>
+      <div class="row"><button class="sbtn" id="keep">Keep working</button><button class="sbtn pri" id="doSub">Submit</button></div></div>`;
+    $("keep").onclick=()=>{ confirming=false; renderFoot(); };
+    $("doSub").onclick=()=>submit(false);
+    return;
+  }
+  qfoot.innerHTML=`<button class="sbtn" id="prev" ${S.cur===0?"disabled":""}>Back</button>
+    <button class="sbtn ${last?"":"pri"}" id="next" ${last?"disabled":""}>${nextLabel}</button>
+    <button class="sbtn ${last?"pri":""}" id="sub">Submit</button>`;
+  $("prev").onclick=()=>go(-1);
+  $("next").onclick=()=>go(1);
+  $("sub").onclick=()=>{ confirming=true; renderFoot(); };
+}
+function submit(auto){
+  if(S.submitted) return;
+  S.submitted=true; S.usedSec=Math.min(LIMIT,(Date.now()-S.startedAt)/1000); S.view="res"; S.auto=!!auto; confirming=false;
+  clearInterval(tick); save();
+  if(document.activeElement) document.activeElement.blur();
+  renderTest();
+}
+
+/* ---------- result ---------- */
+function resultText(){
+  return `Reading: Misinformation | ${S.name} | ${score()}/6 | time ${fmt(S.usedSec)}`;
+}
+function renderResult(){
+  const sc=score();
+  qbody.innerHTML=`<div class="qinner">
+    <div class="kick">${S.auto?"Time's up · ":""}Your result</div>
+    <div class="score"><b>${sc}</b><span>/ 6 correct</span></div>
+    <p class="hint">Time used: ${fmt(S.usedSec)} of 16:00.</p>
+    <p class="hint">Send your result to your teacher: copy it, then paste it into the class chat.</p>
+    <textarea id="copyArea" rows="3" readonly>${esc(resultText())}</textarea>
+    <div class="row"><button class="sbtn pri" id="copyBtn">Copy my result</button><button class="sbtn" id="rev">Review answers</button></div>
+    <div class="row" id="retakeRow"><button class="linkbtn" id="retake">Take the test again</button></div>
+  </div>`;
+  qfoot.innerHTML="";
+  $("copyBtn").onclick=()=>{
+    const ta=$("copyArea"), txt=resultText();
+    const fallback=()=>{ ta.focus(); ta.select(); toast("Text selected. Tap Copy to copy it."); };
+    try{ navigator.clipboard.writeText(txt).then(()=>toast("Copied. Paste it in the chat."),fallback); }catch(e){ fallback(); }
+  };
+  $("rev").onclick=()=>{ S.view="q"; S.cur=0; save(); renderAll(); };
+  $("retake").onclick=()=>{
+    $("retakeRow").innerHTML=`<div class="confirm" style="flex:1"><span>This clears all your answers and restarts the 16-minute timer.</span><div class="row"><button class="sbtn" id="rtNo">Cancel</button><button class="sbtn pri" id="rtYes">Start again</button></div></div>`;
+    $("rtNo").onclick=renderResult;
+    $("rtYes").onclick=()=>{ S.submitted=false; S.startedAt=0; S.answers={}; S.cur=0; save(); chips.innerHTML=""; qbody.innerHTML=""; qfoot.innerHTML=""; renderStart(); };
+  };
+}
+function toast(msg){
+  const t=document.createElement("div"); t.className="toast"; t.textContent=msg; t.setAttribute("role","status");
+  document.body.appendChild(t); setTimeout(()=>t.remove(),2400);
+}
+
+/* ---------- resizing + text size ---------- */
+(function(){
+  const d=$("divider"), m=$("main"); let drag=false;
+  const setH=y=>{ const r=m.getBoundingClientRect(); let p=(r.bottom-y)/r.height*100; p=Math.max(22,Math.min(78,p)); S.qh=Math.round(p); applyPrefs(); };
+  d.addEventListener("pointerdown",e=>{ drag=true; d.setPointerCapture(e.pointerId); });
+  d.addEventListener("pointermove",e=>{ if(drag) setH(e.clientY); });
+  d.addEventListener("pointerup",()=>{ drag=false; save(); });
+  d.addEventListener("keydown",e=>{ if(e.key==="ArrowUp") S.qh=Math.min(78,S.qh+4); else if(e.key==="ArrowDown") S.qh=Math.max(22,S.qh-4); else return; e.preventDefault(); applyPrefs(); save(); });
+  $("fsUp").onclick=()=>{ S.fs=Math.min(1.4,+(S.fs+0.1).toFixed(2)); applyPrefs(); save(); };
+  $("fsDown").onclick=()=>{ S.fs=Math.max(0.8,+(S.fs-0.1).toFixed(2)); applyPrefs(); save(); };
+})();
+
+/* ---------- boot ---------- */
+overlay.innerHTML='<div class="card" role="status"><h2>Opening your reading test…</h2><p class="hint">Checking for saved progress.</p></div>';
+async function restore(){
+  try{ const v=localStorage.getItem(STORE_KEY); if(v) S=JSON.parse(v); }catch(e){}
+}
+for(;;){
+  try { await restore(); break; }
+  catch {
+    overlay.innerHTML='<div class="card"><h2>Unable to load your test</h2><p class="hint">Check your connection, then try again. Your saved progress has not been changed.</p><button class="big" id="retryLoad">Try again</button></div>';
+    await new Promise(resolve=>$("retryLoad").onclick=()=>{ $("retryLoad").disabled=true; $("retryLoad").textContent="Loading…"; resolve(); });
+  }
+}
+progressReady=true;
+
+applyPrefs(); showPart(1);
+if(!S.startedAt) renderStart();
+else {
+  overlay.hidden=true;
+  if(!S.submitted && remaining()<=0) submit(true); else renderTest();
+}
+})();
+</script>
+
+</body>
+</html>
