@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Paraphrasing and Citing · Luke Murgatroyd</title>
+<meta name="description" content="Paraphrasing and Citing Sources: Essential Skills for Academic Writing. A short course on quoting, paraphrasing and summarising, changing words and sentence structure, and citing sources correctly, with practice activities and a quiz. By Luke Murgatroyd.">
+<meta property="og:title" content="Paraphrasing and Citing · Luke Murgatroyd">
+<meta property="og:description" content="Quoting, paraphrasing and summarising, changing words and sentence structure, and citing sources correctly, with practice activities and a quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: single-column course reader — sticky top bar with lesson menu and progress; home, lesson and quiz views swap in place. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6; --accent:#E8742F; --accent-soft:#FDEBDF;
+  --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5;
+  --ill-bg:#E6EEF7; --ill-desk:#D9C3A3; --ill-desk2:#C8AE8A; --ill-paper:#FFFFFF; --ill-line:#B9C6D6; --ill-1:#02437E; --ill-2:#6FA3D6; --ill-3:#E8742F; --ill-4:#9DB7CF;
+  --f-read:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding-block:10px}
+.menu-btn{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:10px;height:40px;padding:0 12px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.menu-btn i{display:block;width:16px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
+.bar-title{flex:1;min-width:0}
+.bar-title span{display:block;font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.bar-title b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{flex:none;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:64px}
+.prog b{display:block;font-size:15px;color:var(--brand)}
+.progline{height:4px;background:var(--brand-soft)}
+.progline i{display:block;height:100%;width:0;background:var(--brand);transition:width .4s}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(5,12,24,.45);z-index:40}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(340px,88vw);background:var(--surface);z-index:41;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto;display:flex;flex-direction:column;gap:6px;box-shadow:4px 0 24px rgba(0,0,0,.18)}
+.drawer h2{font-family:var(--f-read);font-weight:600;font-size:19px;line-height:1.25;margin:0 0 10px}
+.navitem{display:flex;gap:12px;align-items:center;text-align:left;border:0;background:transparent;border-radius:10px;padding:10px;width:100%}
+.navitem:hover{background:var(--bg)}
+.navitem[aria-current="page"]{background:var(--brand-soft)}
+.navitem small{display:block;font-size:12px;color:var(--muted)}
+.navitem b{display:block;font-size:15px;line-height:1.3}
+.tick{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.tick.done{background:var(--good);border-color:var(--good);color:var(--surface)}
+.drawer .closebtn{align-self:flex-start;margin-top:12px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-weight:700}
+
+/* page */
+main{max-width:880px;margin:0 auto;padding-block:20px 56px}
+.col{max-width:68ch;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-read);font-weight:600;font-size:clamp(28px,6vw,40px);line-height:1.12;margin:0;text-wrap:balance}
+h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;margin:0 0 8px;text-wrap:balance}
+.prose{font-family:var(--f-read);font-size:18px;line-height:1.65}
+.prose p{margin:0 0 .8em}.prose p:last-child{margin-bottom:0}
+.lede{font-family:var(--f-read);font-size:19px;line-height:1.6;color:var(--muted);margin:0}
+
+/* figures */
+.fig{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--ill-bg)}
+.lcard,.next,.col > .act{background:var(--brand-soft);border-color:transparent}
+.fig svg{display:block;width:100%;height:auto}
+.fig .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fig.banner{border-radius:0 0 14px 14px}
+.fig .cap{position:relative;padding:10px 18px;background:var(--ill-1);color:var(--ill-bg);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.fig .cap p{margin:0}
+.wide{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+@media (min-width:760px){.wide{margin-inline:-48px}.fig.banner{border-radius:14px}}
+
+/* section rhythm */
+.col.lesson{gap:32px}
+.sec{border-top:1px solid var(--line);padding-top:30px}
+.band{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:22px max(16px,env(safe-area-inset-left,0px)) 26px;background:var(--brand-soft);display:flex;flex-direction:column;gap:14px}
+@media (min-width:760px){.band{margin-inline:-48px;padding:28px 48px 32px;border-radius:18px}}
+.band-head{display:flex;align-items:center;gap:12px}
+.band-icon{flex:none;width:42px;height:42px;border-radius:12px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center}
+.band-icon svg{width:22px;height:22px}
+.band-head small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.band-head b{display:block;font-size:19px;line-height:1.25}
+.band-head span.sub{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.band .act{border-color:transparent;box-shadow:0 1px 3px rgba(2,30,60,.08)}
+.band .cards .flash{min-height:132px}
+.flash .front{font-size:19px}
+.band + .band{margin-top:-8px}
+
+/* continue sections */
+.chunk{display:flex;flex-direction:column;gap:32px;scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
+.cont{display:flex;align-items:center;gap:14px}
+.cont::before,.cont::after{content:"";flex:1;height:1px;background:var(--line)}
+.cont .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:30px}
+.cont .done{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* callout */
+.note{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;background:var(--accent-soft);border-radius:14px;padding:18px}
+.note-ic{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:22px;font-family:var(--f-read)}
+.note .prose{font-size:18px;font-weight:600}
+/* tabs */
+.tabs{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tablist{display:flex;background:var(--brand-soft)}
+.tablist button{flex:1;border:0;background:transparent;padding:14px 10px;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent}
+.tablist button[aria-selected="true"]{color:var(--brand);background:var(--surface);border-bottom-color:var(--brand)}
+.tabpanel{padding:18px}
+.tabpanel .prose{font-size:17px}
+.tabpanel ul{margin:.4em 0 0;padding-left:1.2em}
+/* tick boxes */
+.choice .box{width:20px;height:20px;border-radius:5px;border:2px solid var(--muted);flex:none;display:grid;place-items:center;font-size:13px;line-height:1;color:var(--brand-ink)}
+.choice[aria-checked="true"] .box{border-color:var(--brand);background:var(--brand)}
+.choice.right .box{border-color:var(--good);background:var(--good);color:var(--surface)}
+.choice.wrong .box{border-color:var(--bad);background:var(--bad);color:var(--surface)}
+/* text diagrams */
+.dgm{margin:0;border-radius:14px;background:var(--ill-bg);padding:18px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.45}
+.fitb{font:inherit;font-size:17px;font-weight:700;width:9em;max-width:100%;border:0;border-bottom:2px solid var(--brand);background:var(--brand-soft);color:var(--ink);padding:3px 8px;margin:0 4px;border-radius:6px 6px 0 0}
+.dg-cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.dg-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.dg-win,.dg-card,.dg-note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.dg-card small,.dg-note small{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dg-card p{margin:0}
+.dg-winbar{display:flex;align-items:center;gap:5px;margin:-14px -14px 4px;padding:9px 12px;background:var(--brand-soft);border-radius:12px 12px 0 0}
+.dg-winbar i{width:9px;height:9px;border-radius:50%;background:var(--ill-4)}
+.dg-winbar b{margin-left:8px;font-size:14px;color:var(--brand)}
+.dg-search{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:22px;padding:6px 6px 6px 14px}
+.dg-search span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dg-search em{font-style:normal;font-weight:700;font-size:13px;background:var(--brand);color:var(--brand-ink);border-radius:16px;padding:5px 12px}
+.dg-sub{color:var(--muted);font-size:13px}
+.dg-res{display:flex;flex-direction:column;gap:5px;padding-top:8px;border-top:1px solid var(--line)}
+.dg-line{height:8px;border-radius:4px;background:var(--brand);opacity:.55;width:85%}.dg-line.short{width:60%;background:var(--ill-line);opacity:1}
+.dg-chips{display:flex;flex-wrap:wrap;gap:6px}
+.dg-chips span{font-size:12px;font-weight:700;background:var(--brand-soft);color:var(--brand);border-radius:12px;padding:3px 10px}
+.dg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.dg-tile{border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line)}
+.dg-tile b{font-family:var(--f-read);font-size:34px;line-height:1;color:var(--accent)}
+.dg-tile.t0 b,.dg-tile.t2 b,.dg-tile.t4 b{color:var(--brand)}
+.dg-tile strong{font-size:16px}
+.dg-tile span{color:var(--muted);font-size:14px}
+.dg-three{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.dg-src{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.dg-ic{width:44px;height:44px;color:var(--brand)}.dg-ic svg{width:100%;height:100%}
+.dg-src strong{font-size:15.5px;line-height:1.3}
+.dg-src span{color:var(--muted);font-size:14px}
+.dg-src em{font-style:normal;font-weight:700;align-self:flex-start;border-radius:12px;padding:3px 12px;font-size:13.5px}
+.dg-src em.ok{background:var(--good-soft);color:var(--good)} .dg-src em.no{background:var(--bad-soft);color:var(--bad)}
+.dg-notehead{font-family:var(--f-read);font-weight:600;font-size:17px;color:var(--brand)}
+.dg-entry{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px 12px;padding-top:10px;border-top:1px dashed var(--line)}
+.dg-entry div{display:flex;flex-direction:column}
+.dg-entry span{font-size:14px}
+.dg-entry.empty span{height:18px;border-bottom:1.5px solid var(--line)}
+.dg-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+@media (max-width:560px){.dg-flow{grid-template-columns:minmax(0,1fr)}.dg-flow .dg-arrow{transform:rotate(90deg)}}
+.dg-arrow{font-size:26px;font-weight:700;color:var(--brand);text-align:center;line-height:1}
+.dg-arrow.down{transform:none}
+.dg-stack{display:flex;flex-direction:column;gap:8px}
+.dg-card.main{border-color:var(--brand)}
+.dgm mark{border-radius:4px;padding:0 3px;color:var(--ink)}
+.dgm mark.m0{background:#FFD8B8}.dgm mark.m1{background:#FBE7A6}.dgm mark.m2{background:#BFE6D5}.dgm mark.m3{background:#E3CCF0}
+.hang{padding-left:1.6em;text-indent:-1.6em;margin:0}
+.dg-refs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.dg-refs li{display:flex;flex-direction:column;gap:3px}
+.dg-type{align-self:flex-start;font-size:11.5px;font-weight:700;background:var(--brand-soft);color:var(--brand);border-radius:10px;padding:2px 9px}
+.dg-az{align-self:flex-start;font-size:12.5px;font-weight:700;color:var(--accent)}
+.dg-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.dg-checks li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;padding:8px;border-radius:8px}
+.dg-checks li.no{background:var(--bad-soft)} .dg-checks li.warn{background:var(--accent-soft)}
+.dg-checks p{margin:0}
+.dg-checks small{font-weight:700;font-size:12.5px;text-transform:none;letter-spacing:0}
+.dg-checks li.ok small{color:var(--good)} .dg-checks li.no small{color:var(--bad)} .dg-checks li.warn small{color:var(--accent)}
+.dg-mark{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--surface)}
+.dg-checks li.ok .dg-mark{background:var(--good)} .dg-checks li.no .dg-mark{background:var(--bad)} .dg-checks li.warn .dg-mark{background:var(--accent)}
+
+/* numbered list */
+.nlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.nlist li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;font-family:var(--f-read);font-size:18px;line-height:1.55}
+.nlist li > span{width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-family:var(--f-ui);font-weight:700;font-size:14px;margin-top:1px}
+.nlist p{margin:0}
+
+/* accordion */
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 4px;font-weight:700;font-size:17px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-size:20px;line-height:1}
+.acc details[open] summary::after{content:"–"}
+.acc .prose{padding:0 4px 18px;font-size:17px}
+
+/* activity card */
+.act{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.act .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.act .q{font-size:18px;font-weight:700;line-height:1.4}
+.act .q p{margin:0}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px;font-size:16px}
+.choice p{margin:0}
+.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.choice[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.choice[aria-checked="true"] .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 45%,transparent 50%)}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.right .dot{border-color:var(--good);background:radial-gradient(circle,var(--good) 45%,transparent 50%)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.wrong .dot{border-color:var(--bad);background:radial-gradient(circle,var(--bad) 45%,transparent 50%)}
+.fb{border-radius:10px;padding:12px 14px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.fb.ok{background:var(--good-soft)} .fb.no{background:var(--bad-soft)}
+.fb b{font-size:15px} .fb.ok b{color:var(--good)} .fb.no b{color:var(--bad)}
+.fb p{margin:0}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:700;padding:12px 18px;font-size:16px}
+.btn:disabled{opacity:.45}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.big{width:100%;padding:15px 18px;font-size:17px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.flash{perspective:900px;border:0;padding:0;background:transparent;min-height:170px;text-align:center}
+.flash .in{position:relative;display:grid;width:100%;height:100%;min-height:132px;transition:transform .5s;transform-style:preserve-3d}
+.flash[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.flash .face{grid-area:1/1;position:relative;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.flash .front{background:var(--brand);color:var(--brand-ink);font-family:var(--f-read);font-size:22px}
+.flash .back{background:var(--surface);border:1.5px solid var(--brand);transform:rotateY(180deg);font-size:14px;line-height:1.4;padding:12px}
+.flash small{font-family:var(--f-ui);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+@media (prefers-reduced-motion:reduce){.flash .in{transition:none}}
+
+/* process */
+.proc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.proc-dots{display:flex;gap:6px}
+.proc-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.proc-dots i.on{background:var(--brand);width:22px;border-radius:4px}
+.proc-step{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.proc-body h3{font-family:var(--f-read);font-weight:600;font-size:21px;margin:0 0 8px;line-height:1.3}
+.proc-body .prose{font-size:17px}
+
+/* sorting */
+.sort-card{border-radius:12px;background:var(--accent-soft);border:1.5px solid var(--accent);padding:16px;font-family:var(--f-read);font-size:17px;line-height:1.5}
+.sort-card.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.sort-card.shake{animation:none}}
+.piles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.pile{border:1.5px dashed var(--brand);background:var(--brand-soft);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:64px}
+.pile b{color:var(--brand);font-size:15px}
+.pile .placed{font-size:13px;line-height:1.35;background:var(--surface);border-radius:8px;padding:6px 8px;color:var(--ink)}
+.sort-msg{font-size:15px;min-height:1.5em;color:var(--muted)}
+.sort-msg.no{color:var(--bad)} .sort-msg.ok{color:var(--good)}
+
+/* matching */
+.match{display:flex;flex-direction:column;gap:12px}
+.mrow{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:10px;border:1.5px solid var(--line)}
+.mrow.right{border-color:var(--good);background:var(--good-soft)} .mrow.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.mrow p{margin:0;font-size:15.5px}
+.mrow select{font:inherit;font-size:16px;padding:10px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.mrow .ans{font-size:13px;color:var(--good);font-weight:700}
+
+/* home */
+.cover{display:flex;flex-direction:column;gap:20px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.badge i{width:34px;height:34px;border-radius:8px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-style:normal;font-size:13px;letter-spacing:.04em}
+.lessons{display:flex;flex-direction:column;gap:10px}
+.lcard{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:100%}
+.lcard .num{width:40px;height:40px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:16px}
+.lcard .num.done{background:var(--good);color:var(--surface)}
+.lcard b{display:block;font-size:16px;line-height:1.3}
+.lcard small{display:block;font-size:13px;color:var(--muted)}
+.lcard .go{color:var(--brand);font-weight:700;font-size:14px;white-space:nowrap}
+.foot{border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.foot a{color:var(--brand)}
+
+/* lesson end */
+.next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.next small{color:var(--muted);font-size:14px}
+
+/* quiz */
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.score b{font-size:60px;line-height:1;font-variant-numeric:tabular-nums;color:var(--brand)}
+.score span{font-size:20px;color:var(--muted)}
+.pill{display:inline-flex;align-self:flex-start;align-items:center;border-radius:20px;padding:5px 14px;font-weight:700;font-size:15px}
+.pill.ok{background:var(--good-soft);color:var(--good)} .pill.no{background:var(--bad-soft);color:var(--bad)}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted);font-weight:700}
+.qbar{height:6px;border-radius:3px;background:var(--brand-soft);overflow:hidden}
+.qbar i{display:block;height:100%;background:var(--brand)}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:15px}
+.rv .tick{width:24px;height:24px;font-size:12px}
+.rv .tick.no{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.rv p{margin:0}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in gut">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer"><i></i>Lessons</button>
+    <div class="bar-title"><span id="barKick">Course</span><b id="barTitle">Paraphrasing and Citing</b></div>
+    <div class="prog" aria-live="polite"><b id="progPct">0%</b>complete</div>
+  </div>
+  <div class="progline"><i id="progLine"></i></div>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<nav class="drawer" id="drawer" aria-label="Course contents" hidden></nav>
+<main class="gut" id="main"></main>
+
+<script>
+(function(){
+const C = {"title": "Paraphrasing and Citing Sources: Essential Skills for Academic Writing", "description": "Are you ready to write confidently and avoid plagiarism in your university studies? This course will help you master the essentials of paraphrasing and citing academic sources, so you can express ideas in your own words and build strong, original writing skills. You'll discover how to recognize the difference between quoting, paraphrasing, and summarizing, learn practical strategies to restructure sentences, and apply citation rules correctly. With clear steps, familiar examples, and focused activities, you'll be prepared to succeed in academic writing at university.", "lessons": [{"title": "Understanding Paraphrasing and Academic Integrity", "blocks": [{"t": "banner", "img": "l1-banner", "cap": ""}, {"t": "text", "h": "Why Paraphrasing and Integrity Matter in University Writing", "p": "<p>In university, your teachers want to see your own thinking and understanding. Using your own words shows that you truly understand the material and helps build trust between you and your instructors. Learning how to paraphrase and cite sources correctly will help you succeed in your studies, both in Saudi Arabia and anywhere else in the world.<\/p>"}, {"t": "text", "h": "", "p": "<p>This lesson will guide you through essential concepts related to paraphrasing and academic writing. You will gain an understanding of key terms and practices that support academic integrity.<\/p>"}, {"t": "list", "items": ["<p>What paraphrasing means and why it is important<\/p>", "<p>What academic integrity and plagiarism are<\/p>", "<p>The difference between quoting, paraphrasing, and summarizing<\/p>", "<p>When to paraphrase in your writing<\/p>", "<p>The basics of citing your sources<\/p>"]}, {"t": "image", "img": "group-work", "cap": ""}, {"t": "text", "h": "Real-Life Example: Why Paraphrasing Matters", "p": "<p>Imagine you are a Saudi student writing an assignment about tourism in your country. You find useful ideas in several articles, but you cannot just copy the sentences. Instead, you need to explain those ideas in your own words. This is where paraphrasing becomes important - it helps you use information from sources without copying, so your work is original and honest.<\/p>"}, {"t": "text", "h": "Important Words for This Lesson", "p": "<p>Let’s learn some important words for this lesson. Click each card to see what the word means.<\/p>"}, {"t": "flash", "cards": [{"f": "<strong>Paraphrasing<\/strong>", "b": "Restating someone else’s idea in your own words, keeping the meaning but changing the language."}, {"f": "<strong>Academic integrity<\/strong>", "b": "Being honest and responsible in your studies by giving credit to others for their ideas."}, {"f": "<strong>Plagiarism<\/strong>", "b": "Using someone else’s words or ideas as if they are your own, without giving credit."}, {"f": "<strong>Citation<\/strong>", "b": "A way to show where you found information, giving credit to the original author."}]}, {"t": "cont"}, {"t": "text", "h": "What is Paraphrasing?", "p": "<p>Saying someone else's point accurately in your own words. In university, you often need to share ideas from books and articles, but you must use new sentences to show your understanding.<\/p>"}, {"t": "text", "h": "Why is Paraphrasing Important in Academic Writing?", "p": "<p>Paraphrasing is a key skill for university students. It helps you use information from sources while making your work original and honest. Click each reason below to learn more.<\/p>"}, {"t": "acc", "items": [{"h": "Helps you show your understanding", "p": "<p>When you paraphrase, you explain ideas in your own way. This shows your teachers that you really understand the material, not just copying it.<\/p><p>For example, if you read about Saudi tourism and explain it in your own words, your teacher can see your true understanding.<\/p>"}, {"h": "Avoids plagiarism", "p": "<p>Paraphrasing helps you avoid plagiarism, which is taking someone else’s words or ideas without giving credit. By using your own words and citing the source, you show honesty in your work.<\/p><p>This is very important in all Saudi universities and around the world.<\/p>"}, {"h": "Builds your own academic voice", "p": "<p>When you paraphrase, you develop your own style and voice in writing. This makes your assignments unique and personal.<\/p><p>Over time, you will become more confident in expressing your ideas.<\/p>"}, {"h": "Shows respect for original authors", "p": "<p>Paraphrasing with a citation shows you respect the work of others. You are not stealing their ideas, but building on them in your own way.<\/p><p>This is a key part of academic honesty in any field.<\/p>"}]}, {"t": "mc", "q": "Which of the following best describes paraphrasing?", "multi": false, "fb": "", "answers": [{"h": "Copying a sentence and changing a few words", "c": false, "f": "Changing a few words is not paraphrasing; it is too close to the original text."}, {"h": "Writing someone else’s idea in your own words", "c": true, "f": "Paraphrasing means restating someone else’s idea in your own words, showing you understand the concept."}, {"h": "Using a quote with quotation marks", "c": false, "f": "Using a quote with quotation marks is quoting, not paraphrasing."}, {"h": "Giving your own opinion without evidence", "c": false, "f": "Paraphrasing involves using someone else’s idea, not just your own opinion."}]}, {"t": "cont"}, {"t": "text", "h": "Academic Integrity and Plagiarism", "p": "<p>Academic integrity means being honest in your studies and always giving credit to others for their ideas. Plagiarism is when you use someone else’s words or ideas as your own, which is a serious problem at university. Understanding these concepts is important for your success and reputation as a student.<\/p>"}, {"t": "text", "h": "Academic Integrity and Plagiarism", "p": "<p>Click each tab to learn about academic integrity and plagiarism.<\/p>"}, {"t": "tabs", "items": [{"h": "What is academic integrity?", "p": "<p>Academic integrity is the practice of being honest and responsible in your academic work. It means always giving credit to the original authors when you use their ideas or words.<\/p><p>In Saudi universities, students are expected to follow strict rules about academic honesty. This helps create a fair and trustworthy learning environment for everyone.<\/p>"}, {"h": "What is plagiarism?", "p": "<p>Plagiarism is when you use someone else’s words or ideas without giving them credit. This can happen if you copy text directly or even if you use their ideas without mentioning the source.<\/p><p>Plagiarism is taken very seriously at universities. It can lead to penalties, failing grades, or even suspension from your studies.<\/p>"}, {"h": "Why does it matter?", "p": "<p>Academic integrity and avoiding plagiarism are important because they show respect for others’ work. They also help you build your own reputation as an honest and reliable student.<\/p><p>By following these rules, you help maintain the quality and trust of your university and your own academic record.<\/p>"}]}, {"t": "mc", "q": "Which action is an example of plagiarism?", "multi": false, "fb": "", "answers": [{"h": "Paraphrasing a source with a citation", "c": false, "f": "Paraphrasing with a citation is not plagiarism because you are giving proper credit to the original source."}, {"h": "Copying a paragraph and not giving credit", "c": true, "f": "Using someone’s words without giving credit is plagiarism because you are presenting someone else's work as your own."}, {"h": "Summarizing a study in your own words and citing it", "c": false, "f": "Summarizing with a citation is not plagiarism because you are both using your own words and giving credit to the original source."}, {"h": "Writing your own opinion", "c": false, "f": "Your own opinion is not plagiarism because it is your original work."}]}, {"t": "cont"}, {"t": "text", "h": "Quoting, Paraphrasing, and Summarizing: What’s the Difference?", "p": "<p>There are different ways to use information from sources in your writing. You can quote, paraphrase, or summarize. Each method has a different purpose and is used in different situations. Understanding the differences will help you choose the best way to include information in your assignments.<\/p>"}, {"t": "text", "h": "Sort Examples: Quote, Paraphrase, or Summarize", "p": "<p>Read each example below and decide if it is a quote, a paraphrase, or a summary. This will help you practice telling the difference between these three important skills.<\/p>"}, {"t": "sort", "piles": ["Quote", "Paraphrase", "Summarize"], "cards": [{"h": "“Tourism grew quickly after 2021.” (copied with quotation marks)", "p": 0}, {"h": "Tourism grew rapidly after 2021. (own words, same detail)", "p": 1}, {"h": "Tourism increased after 2021, according to the report. (main point only)", "p": 2}]}, {"t": "note", "p": "<p>Keep in mind that paraphrasing is more than just swapping out a few words. You need to rewrite the information using your own sentence structure, and always acknowledge the original source.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "When and How Should You Paraphrase?", "p": "<p>Paraphrasing is most useful when you want to explain a reading in your own words or report research in your essays. For example, if you are writing about Vision 2030 in Saudi Arabia, you might paraphrase what a government report says to show you understand it, instead of copying the exact words. Paraphrasing is also helpful when you want to connect ideas from different sources in a clear, original way.<\/p>"}, {"t": "text", "h": "When to Use Quoting, Paraphrasing, or Summarizing", "p": "<p>Each method has its own best use. Expand each section below to learn when to use a quote, a paraphrase, or a summary in your writing.<\/p>"}, {"t": "acc", "items": [{"h": "When to quote", "p": "<p>Use a quote when the exact words are important, such as a famous saying or a definition you cannot improve. For example, if a Saudi leader says something memorable, you might quote it directly.<\/p><p>Quoting is best when the original wording is unique or powerful.<\/p>"}, {"h": "When to paraphrase", "p": "<p>Paraphrase when you want to show you understand an idea and can explain it in your own words. This is the most common method in academic writing.<\/p><p>For example, when writing about a research study, you can paraphrase the findings to fit your essay’s style and flow.<\/p>"}, {"h": "When to summarize", "p": "<p>Summarize when you need to give the main point or overall result of a study or argument. Summaries are shorter and focus on the big picture.<\/p><p>For example, you might summarize a long article about Saudi tourism by stating its main conclusion in one or two sentences.<\/p>"}]}, {"t": "mc", "q": "When should you paraphrase instead of quoting?", "multi": false, "fb": "", "answers": [{"h": "When the exact words are important", "c": false, "f": "Use a quote when the exact words matter, not paraphrasing."}, {"h": "When you want to show you understand the idea", "c": true, "f": "Paraphrasing shows you understand the idea by putting it in your own words."}, {"h": "When you cannot think of anything to write", "c": false, "f": "Paraphrasing is not meant for filling space or when you lack ideas."}, {"h": "When you want to copy and paste quickly", "c": false, "f": "Copy-pasting is not paraphrasing and does not demonstrate understanding."}]}, {"t": "cont"}, {"t": "image", "img": "three-ways", "cap": ""}, {"t": "text", "h": "Why Citing Sources Is Essential", "p": "<p>Citation means giving credit to the authors of the information you use. Whether you quote, paraphrase, or summarize, you must always cite your sources. This builds trust with your teachers and helps you avoid plagiarism by showing exactly where your ideas come from.<\/p>"}, {"t": "text", "h": "Types of Citation Flashcards", "p": "<p>Click each card to learn about different types of citation.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>In-text citation<\/p>", "b": "<p>A short note in your writing that shows where an idea or quote comes from, usually in parentheses.<\/p>"}, {"f": "<p>Reference list<\/p>", "b": "<p>A list at the end of your assignment that gives full details of all sources you used.<\/p>"}, {"f": "<p>When to cite<\/p>", "b": "<p>You must cite whenever you use someone else’s words, ideas, or research in your work.<\/p>"}, {"f": "<p>Common citation mistakes<\/p>", "b": "<p>Forgetting to cite, using the wrong format, or missing important details about the source.<\/p>"}]}, {"t": "mc", "q": "Why do you need to cite sources when paraphrasing?", "multi": false, "fb": "", "answers": [{"h": "To show you have read a lot", "c": false, "f": "Citing is not about showing how much you have read; it is about giving credit to original sources."}, {"h": "To give credit and avoid plagiarism", "c": true, "f": "Citation gives credit to the original author and helps you avoid plagiarism."}, {"h": "To make your work look longer", "c": false, "f": "Citation is not intended to make your work appear longer."}, {"h": "To confuse the reader", "c": false, "f": "Citation should make your work clearer, not more confusing."}]}, {"t": "note", "p": "<p>Remember: Every time you use someone else’s idea—whether you quote, paraphrase, or summarize—you must include a citation.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned what paraphrasing is, why it is important for academic honesty, and how to tell the difference between quoting, paraphrasing, and summarizing. You also saw why you must always cite your sources. In the next lesson, you’ll discover step-by-step strategies to paraphrase sentences and short passages in your own words.<\/p>"}]}, {"title": "How to Paraphrase: Step-by-Step Strategies", "blocks": [{"t": "banner", "img": "l2-banner", "cap": ""}, {"t": "text", "h": "How Paraphrasing Helps You Write Better", "p": "<p>Paraphrasing is a key academic skill that allows you to truly understand information and express it in your own words. By learning to paraphrase, you become a stronger, more independent writer - an essential ability for success in university assignments and research.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will discover essential techniques to effectively paraphrase sentences and passages. Mastering these skills will help you express ideas in your own words while maintaining the original meaning.<\/p>"}, {"t": "list", "items": ["<p>Simple steps to paraphrase any sentence or short passage<\/p>", "<p>How to use synonyms and change word forms<\/p>", "<p>Ways to change sentence structure<\/p>", "<p>How to use active and passive voice in paraphrasing<\/p>", "<p>How to spot and fix paraphrases that are too close to the original<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "The Simple Paraphrasing Process", "p": "<p>To paraphrase well, start with a clear process. First, read the sentence until you fully understand it. Next, cover or hide the original so you are not tempted to copy. Finally, write the idea in your own words, then check your version for accuracy and add the citation.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Paraphrasing Steps", "p": "<p>Paraphrasing is an important skill that involves expressing ideas from a source in your own words. To do this effectively, follow a structured process each time you paraphrase.<\/p>"}, {"k": "step", "h": "Read and Understand", "p": "<p>Carefully read the sentence or passage until you fully grasp its meaning. If you encounter unfamiliar words, look them up to ensure complete understanding.<\/p>"}, {"k": "step", "h": "Cover the Original Text", "p": "<p>Hide the original text so you cannot see it. This prevents you from unintentionally copying the same words or sentence structure.<\/p>"}, {"k": "step", "h": "Write in Your Own Words", "p": "<p>From memory, write the idea using your own words. Afterwards, compare your version with the original to confirm you have preserved the meaning, and remember to include the correct citation.<\/p>"}, {"k": "summary", "h": "Summary of Paraphrasing Process", "p": "<p>By reading and understanding the original, covering it to avoid direct copying, and then writing the idea in your own words, you can paraphrase accurately and ethically. Always check your work to ensure the meaning is retained and cite the source properly.<\/p>"}]}, {"t": "mc", "q": "Which is the correct first step in paraphrasing?", "multi": false, "fb": "", "answers": [{"h": "Change a few words in the original", "c": false, "f": "Paraphrasing is not just changing words; it requires a deeper understanding and restatement of the idea."}, {"h": "Read and understand the original sentence", "c": true, "f": "Always start by understanding the original sentence. This ensures your paraphrase accurately reflects the original meaning."}, {"h": "Cover the citation", "c": false, "f": "You should focus on understanding and restating the full sentence, not just the citation."}, {"h": "Write your own opinion", "c": false, "f": "Paraphrasing is about restating someone else's idea, not expressing your own opinion."}]}, {"t": "cont"}, {"t": "text", "h": "Using Synonyms and Changing Word Forms", "p": "A strong paraphrase uses different words and sometimes different word forms. This means replacing key words with synonyms and, when possible, changing verbs to nouns or vice versa. These changes help make your writing original and clear."}, {"t": "text", "h": "Paraphrasing: Changing Words", "p": "<p>Click each card to see how you can change words when paraphrasing.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>Synonym for “capacity”<\/p>", "b": "<p>You can use “ability” or “facility” instead of “capacity.”<\/p>"}, {"f": "<p>Synonym for “retrieving”<\/p>", "b": "<p>Try “recovering” or “accessing” as synonyms for “retrieving.”<\/p>"}, {"f": "<p>Change “grew” to “growth”<\/p>", "b": "<p>Change the verb “grew” to the noun “growth” for a new sentence structure.<\/p>"}, {"f": "<p>Synonym for “information”<\/p>", "b": "<p>Use “data” or “details” instead of “information.”<\/p>"}]}, {"t": "mc", "q": "Which sentence uses a synonym and changes the word form?", "multi": false, "fb": "", "answers": [{"h": "Tourism grew quickly after 2021.", "c": false, "f": "This sentence does not change the word form; 'grew' is still a verb."}, {"h": "Rapid growth in tourism followed 2021.", "c": true, "f": "This sentence changes 'grew' (verb) to 'growth' (noun), and uses 'rapid' as a synonym for 'quickly.'"}, {"h": "Tourism increased fast after 2021.", "c": false, "f": "This sentence uses a synonym ('increased' for 'grew'), but does not change the word form."}, {"h": "Tourism grew after 2021, according to the report.", "c": false, "f": "This sentence does not use a synonym or change the word form."}]}, {"t": "cont"}, {"t": "image", "img": "puzzle", "cap": ""}, {"t": "text", "h": "Changing the Structure of a Sentence", "p": "<p>Paraphrasing is not just about swapping words -it often means changing how a sentence is built. You can put the result first, split a long sentence into two, or combine ideas in a new way. These changes make your writing unique and help you avoid plagiarism.<\/p>"}, {"t": "text", "h": "Five Ways to Change a Sentence When Paraphrasing", "p": "<p>Paraphrasing is more than just swapping words for synonyms. Here are five effective techniques to help you rewrite sentences in your own words while keeping the original meaning.<\/p>"}, {"t": "acc", "items": [{"h": "Put the result first", "p": "<p>Start your sentence with the outcome instead of the original subject. For example, instead of “Researchers surveyed 400 students and found that most used AI tools,” write “Most students used AI tools, a survey of 400 found.”<\/p><p>This change highlights the result and makes the sentence your own.<\/p>"}, {"h": "Turn a verb into a noun", "p": "<p>Change action words into nouns to create a new structure. For example, “Tourism grew quickly after 2021” becomes “Rapid growth in tourism followed 2021.”<\/p><p>This makes your sentence shorter and more original.<\/p>"}, {"h": "Split one sentence into two", "p": "<p>Break a long sentence into two shorter ones. For example, “Arrivals reached 1.4 billion in 2024, driven mainly by small island destinations” becomes “Arrivals reached 1.4 billion in 2024. Small island destinations drove most of that rise.”<\/p><p>This helps make complex ideas clearer.<\/p>"}, {"h": "Switch between active and passive voice", "p": "<p>Change who does the action in the sentence. “Tourists damage shallow reefs” (active) can become “Shallow reefs are damaged by tourists” (passive).<\/p><p>This lets you shift focus as needed.<\/p>"}, {"h": "Start from the condition or time", "p": "<p>Begin your sentence with a time or condition. For example, “Coral recovers if water temperatures fall” becomes “When water temperatures fall, coral recovers.”<\/p><p>This gives your writing variety and clarity.<\/p>"}]}, {"t": "mc", "q": "Which sentence shows a change in structure, not just words?", "multi": false, "fb": "", "answers": [{"h": "The 2023 heatwave caused coral bleaching to rise.", "c": false, "f": ""}, {"h": "Coral bleaching rose after the 2023 heatwave.", "c": false, "f": ""}, {"h": "Coral bleaching increased sharply after the 2023 heatwave.", "c": false, "f": ""}, {"h": "After the 2023 heatwave, coral bleaching rose sharply.", "c": true, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "Active and Passive Voice in Paraphrasing", "p": "Active and passive voice are two ways to show who does an action in a sentence. In the active voice, the subject does the action. In the passive voice, the subject receives the action. Knowing how to use both helps you paraphrase more flexibly and focus on what matters most in your writing."}, {"t": "text", "h": "Compare Active and Passive Voice", "p": "<p>Click each tab to compare active and passive voice.<\/p>"}, {"t": "tabs", "items": [{"h": "Active Voice", "p": "<p>In active voice, the subject of the sentence does the action. For example, “Researchers collected the data in 2023.” This structure is clear and direct, making it easy for readers to see who is responsible.<\/p><p>Active voice is often used in academic writing when you want to highlight the person or group who performed the action, such as in research reports or analysis.<\/p>"}, {"h": "Passive Voice", "p": "<p>In passive voice, the subject receives the action, and the doer may not be mentioned. For example, “The data were collected in 2023.” This structure focuses on the action or result, not the person who did it.<\/p><p>Passive voice is useful in scientific writing or when the process is more important than the actor. It can also be used to avoid assigning blame or responsibility.<\/p>"}, {"h": "When to Use", "p": "<p>Choose active voice when you want to be clear about who did what, especially in your own analysis or claims. Use passive voice when the action or result is more important than the person doing it, or when the doer is unknown or unimportant.<\/p><p>For example, in a Saudi university research project, you might write “The experiment was conducted in Riyadh” (passive) or “The students conducted the experiment in Riyadh” (active), depending on what you want to emphasize.<\/p>"}]}, {"t": "mc", "q": "Which sentence is in the passive voice?", "multi": false, "fb": "", "answers": [{"h": "Tourists visit Saudi Arabia every year.", "c": false, "f": ""}, {"h": "Saudi Arabia is visited by many tourists every year.", "c": true, "f": ""}, {"h": "Many tourists like visiting Saudi Arabia.", "c": false, "f": ""}, {"h": "Tourists enjoy Saudi Arabian food.", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "image", "img": "compare-docs", "cap": ""}, {"t": "text", "h": "How Close Is Too Close? Avoiding Near-Copying", "p": "<p>Paraphrasing is not just about changing a few words or swapping their order. If your version is too similar to the original, it can still count as plagiarism. You must change both the words and the structure to make the idea truly your own.<\/p>"}, {"t": "text", "h": "Sort Paraphrase Examples", "p": "<p>Decide whether each example is a real paraphrase or too close to the original. Consider both the wording and the sentence structure.<\/p>"}, {"t": "sort", "piles": ["Real Paraphrase", "Too Close"], "cards": [{"h": "Small island destinations accounted for much of the growth that took global arrivals to 1.4 billion in 2024.", "p": 0}, {"h": "International tourist numbers hit 1.4 billion in 2024, a rise driven mostly by small island locations.", "p": 1}, {"h": "Most of 400 students surveyed had used AI tools.", "p": 0}, {"h": "Researchers questioned 400 students and found most had used AI tools.", "p": 1}]}, {"t": "note", "p": "<p>Remember: A true paraphrase involves altering both the vocabulary and the sentence structure. If you need to refer to the original text while writing your version, your paraphrase is likely not different enough.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned step-by-step strategies to paraphrase sentences and short passages, how to use synonyms and change sentence structure, and how to avoid paraphrases that are too close to the original. Next, you’ll practice paraphrasing with real examples and learn how to add proper citations to your writing.<\/p>"}]}, {"title": "Citing Sources and Practicing Paraphrasing", "blocks": [{"t": "banner", "img": "l3-banner", "cap": ""}, {"t": "text", "h": "Why Citation and Practice Make You a Strong Academic Writer", "p": "<p>Citing your sources correctly and practicing paraphrasing are essential skills for every university student. When you give credit to the original authors and use your own words, you build trust with your teachers and show that you truly understand the material. These habits help you avoid plagiarism and demonstrate your honesty and effort in academic writing.<\/p>"}, {"t": "text", "h": "", "p": "<p>This lesson will guide you through essential skills for properly citing sources when paraphrasing. You will learn the basics of citation, how to add citations to your writing, avoid common mistakes, paraphrase effectively, and check your work for accuracy.<\/p>"}, {"t": "list", "items": ["<p>Basics of Citing When Paraphrasing<\/p>", "<p>How to Add Citations to Sentences<\/p>", "<p>Avoiding Common Citation Mistakes<\/p>", "<p>Paraphrasing from Notes and Memory<\/p>", "<p>Checking Your Work for Accuracy<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "Citation Basics: Giving Credit When You Paraphrase", "p": "<p>Every time you paraphrase or summarize, you must include a citation. This is because the idea or information belongs to someone else, even if you use your own words. Giving credit is a basic rule in academic writing and shows respect for the original author’s work.<\/p>"}, {"t": "text", "h": "Citing Sources When Paraphrasing", "p": "<p>Click each row to learn about citing sources when paraphrasing.<\/p>"}, {"t": "acc", "items": [{"h": "Why you must cite", "p": "<p>Citing sources is required because it shows honesty and respect for the original author. It also lets your teachers see where your information comes from and helps you avoid plagiarism.<\/p>"}, {"h": "What information goes in a citation", "p": "<p>A citation usually includes the author’s last name and the year of publication. If you use a direct quote, add the page number too.<\/p>"}, {"h": "Where to put the citation", "p": "<p>Place the citation at the end of your paraphrased or summarized sentence, inside parentheses. This makes it clear which idea comes from which source.<\/p>"}, {"h": "What happens if you forget", "p": "<p>If you forget to cite, you risk plagiarism, which can lead to lost marks or even more serious consequences at university.<\/p>"}]}, {"t": "mc", "q": "Which sentence correctly uses a citation after a paraphrase?", "multi": false, "fb": "", "answers": [{"h": "Tourism grew quickly after 2021.", "c": false, "f": "This sentence does not include any citation, so it does not properly credit the source."}, {"h": "Tourism grew quickly after 2021 (Ahmed, 2024).", "c": true, "f": "This sentence correctly uses a parenthetical citation with the author's name and year, which is the standard format."}, {"h": "Tourism grew quickly after 2021 (see reference).", "c": false, "f": "'See reference' is not a proper citation format and does not specify the source."}, {"h": "Tourism grew quickly after 2021, said by Ahmed.", "c": false, "f": "This is not the standard citation format; it does not include the year or use parentheses."}]}, {"t": "cont"}, {"t": "image", "img": "cited-paraphrase", "cap": ""}, {"t": "text", "h": "Common Citation Mistakes (And How to Avoid Them)", "p": "<p>Many students make simple mistakes with citations, such as forgetting to add them after paraphrasing, using the wrong format, or citing the wrong source. You can avoid these errors by double-checking your work, following your university’s citation style, and always adding a citation when you use someone else’s ideas.<\/p>"}, {"t": "text", "h": "Common Citation Errors", "p": "<p>Click each tab to learn about common citation errors.<\/p>"}, {"t": "tabs", "items": [{"h": "Missing citation", "p": "<p>One of the most common mistakes is leaving out a citation after paraphrasing or summarizing. This can happen if you forget where your information came from or think it is common knowledge.<\/p><p>To avoid this, always keep track of your sources as you take notes. If you are unsure, add a citation to be safe.<\/p>"}, {"h": "Wrong citation format", "p": "<p>Using the wrong format, such as missing the year or putting the citation in the wrong place, can confuse your reader and lower your marks.<\/p><p>Check your university’s guidelines for how to write citations. Practice using the correct format until it becomes a habit.<\/p>"}, {"h": "Citing the wrong source", "p": "<p>Sometimes students accidentally give credit to the wrong author or mix up sources. This can make your work look careless or dishonest.<\/p><p>Always double-check your notes and match each idea to the correct source before you write your final draft.<\/p>"}, {"h": "Forgetting to cite summaries", "p": "<p>Even when you summarize a whole article or study, you must still include a citation. Some students forget this because they think summarizing is different from paraphrasing.<\/p><p>Remember: any time you use someone else’s ideas, whether you paraphrase or summarize, you must give credit.<\/p>"}]}, {"t": "mc", "q": "Which of the following is a common citation mistake?", "multi": false, "fb": "", "answers": [{"h": "Including the author and year after a paraphrase", "c": false, "f": "This is correct citation practice and not a mistake."}, {"h": "Using your own words and adding a citation", "c": false, "f": "This is good paraphrasing and citation, not a mistake."}, {"h": "Forgetting to cite the source after paraphrasing", "c": true, "f": "Missing the citation after paraphrasing is a common error and is considered a citation mistake."}, {"h": "Summarizing and giving credit to the author", "c": false, "f": "This is proper summarizing and citing, not a mistake."}]}, {"t": "cont"}, {"t": "text", "h": "Practice: Paraphrasing from Notes and Memory", "p": "<p>Paraphrasing from notes or memory encourages you to express ideas in your own words, rather than duplicating the source material. This approach enhances the originality of your writing and minimizes the chances of accidental plagiarism. Additionally, it deepens your understanding of the subject and strengthens your academic abilities.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Paraphrasing from Notes or Memory", "p": "<p>Paraphrasing is an essential skill for academic writing and studying. It involves expressing information from a source in your own words while retaining the original meaning. Follow these steps to effectively paraphrase from notes or memory.<\/p>"}, {"k": "step", "h": "Read and Understand the Main Idea", "p": "<p>Start by reading the original text or your notes carefully. Make sure you fully understand the main idea and any important details.<\/p>"}, {"k": "step", "h": "Cover or Close the Source", "p": "<p>Once you understand the information, close the book, tab, or notes so you cannot see the original words.<\/p>"}, {"k": "step", "h": "Write in Your Own Words", "p": "<p>Write the idea using your own sentence structure and vocabulary. Keep key facts and specialist terms the same if needed.<\/p>"}, {"k": "step", "h": "Add the Citation", "p": "<p>At the end of your paraphrased sentence, include the correct citation to give credit to the original source.<\/p>"}, {"k": "step", "h": "Check for Accuracy and Structure", "p": "<p>Review your paraphrase to make sure it is accurate, uses your own words and structure, and includes the citation.<\/p>"}, {"k": "summary", "h": "Summary of Paraphrasing Steps", "p": "<p>By following these steps - understanding the main idea, covering the source, writing in your own words, adding a citation, and checking your work - you can paraphrase effectively and ethically from notes or memory.<\/p>"}]}, {"t": "mc", "q": "What should you do after writing your paraphrase from notes?", "multi": false, "fb": "", "answers": [{"h": "Add your own opinion", "c": false, "f": "Your opinion should be included later during analysis, not immediately after paraphrasing."}, {"h": "Check your paraphrase for accuracy and add the citation", "c": true, "f": "You should always check your paraphrase for accuracy and include the citation to give proper credit."}, {"h": "Copy the original text again", "c": false, "f": "You should not copy the original text again; paraphrasing requires you to use your own words."}, {"h": "Leave out specialist terms", "c": false, "f": "Specialist terms should be kept unchanged when necessary to maintain accuracy."}]}, {"t": "cont"}, {"t": "image", "img": "from-memory", "cap": ""}, {"t": "text", "h": "Self-Check: Is Your Paraphrase Original and Accurate?", "p": "<p>Before you finish, ask yourself: Did I use my own sentence structure? Did I keep the meaning of the original? Did I include a citation? These questions help you make sure your paraphrase is honest, accurate, and ready for university assignments.<\/p>"}, {"t": "text", "h": "Sort the Self-Check Statements for Paraphrasing", "p": "<p>Review the following statements and sort them into the correct categories: Good Self-Check or Not a Self-Check. Consider whether each statement helps you evaluate the quality and originality of your paraphrase.<\/p>"}, {"t": "sort", "piles": ["Good Self-Check", "Not a Self-Check"], "cards": [{"h": "Did I change the sentence structure?", "p": 0}, {"h": "Did I use my own words?", "p": 0}, {"h": "Did I add a citation?", "p": 0}, {"h": "Did I copy most of the original?", "p": 1}]}, {"t": "note", "p": "<p>Remember: Whenever you paraphrase or summarize information, make sure to use your own wording and sentence structure, and always include a citation.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned how to cite sources when paraphrasing and summarizing, how to avoid common citation mistakes, and how to practice paraphrasing from notes and memory. Next, you’ll review all the key skills from this course and get ready for the final quiz.<\/p>"}]}, {"title": "Review and Practice: Paraphrasing and Citation", "blocks": [{"t": "banner", "img": "l4-banner", "cap": ""}, {"t": "text", "h": "Bringing It All Together: Why Review Matters", "p": "<p>Reviewing and practicing your academic writing skills is the best way to feel confident and prepared for university assignments. In this lesson, you will bring together everything you have learned about paraphrasing, summarizing, quoting, and citing sources. This review will help you check your understanding and get ready for the final quiz.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will review and practice several important skills related to paraphrasing and academic integrity.<\/p>"}, {"t": "list", "items": ["<p>What paraphrasing is and why it matters<\/p>", "<p>How to tell quoting, paraphrasing, and summarizing apart<\/p>", "<p>Ways to change sentence structure and word forms<\/p>", "<p>How to cite sources correctly<\/p>", "<p>How to check your own work for originality and honesty<\/p>"]}, {"t": "cont"}, {"t": "image", "img": "review-notes", "cap": ""}, {"t": "text", "h": "Reviewing Paraphrasing: The Key Ideas", "p": "<p>Paraphrasing means saying someone else’s point accurately in your own words. You use paraphrasing to show you understand a source and to avoid copying. The most important rule: change both the words and the structure of the sentence, and always include a citation to give credit.<\/p>"}, {"t": "text", "h": "Essentials of Paraphrasing", "p": "<p>Click each card to review the essentials of paraphrasing.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>What is paraphrasing?<\/p>", "b": "<p>Restating someone else’s idea in your own words and sentence structure.<\/p>"}, {"f": "<p>Why paraphrase?<\/p>", "b": "<p>To show understanding, avoid plagiarism, and build your own academic voice.<\/p>"}, {"f": "<p>What must change?<\/p>", "b": "<p>Both the words and the sentence structure must be different from the original.<\/p>"}, {"f": "<p>What must stay the same?<\/p>", "b": "<p>The meaning of the idea and any key facts or specialist terms.<\/p>"}, {"f": "<p>When do you need to cite?<\/p>", "b": "<p>Every time you use someone else’s idea, whether you paraphrase, quote, or summarize.<\/p>"}]}, {"t": "mc", "q": "Which is required for a good paraphrase?", "multi": false, "fb": "", "answers": [{"h": "Change a few words only", "c": false, "f": "Incorrect. You must also change the structure, not just a few words."}, {"h": "Change words and structure, and add a citation", "c": true, "f": "Correct! Both the words and sentence structure must change, and you must cite."}, {"h": "Copy the sentence and add a citation", "c": false, "f": "Incorrect. Copying is not paraphrasing."}, {"h": "Use your own opinion only", "c": false, "f": "Incorrect. Paraphrasing is about restating someone else’s idea, not just giving your own opinion."}]}, {"t": "cont"}, {"t": "text", "h": "Quote, Paraphrase, or Summarize? Know the Difference", "p": "<p>It’s important to know the difference between quoting, paraphrasing, and summarizing. Quoting uses the exact words from a source with quotation marks. Paraphrasing restates one point in your own words and structure. Summarizing condenses the main idea into a shorter form. Remember, all three require a citation to give credit to the original author.<\/p>"}, {"t": "text", "h": "Sort Quotes, Paraphrases, and Summaries", "p": "<p>Sort each example below as a quote, paraphrase, or summary. Consider how each example uses the original information: does it use the exact words, restate the idea in new words, or just give the main point?<\/p>"}, {"t": "sort", "piles": ["Quote", "Paraphrase", "Summary"], "cards": [{"h": "“Tourism grew quickly after 2021.” (with quotation marks)", "p": 0}, {"h": "Tourism increased rapidly after 2021. (own words, same detail)", "p": 1}, {"h": "Tourism rose after 2021, according to Ahmed (2024). (main point only)", "p": 2}]}, {"t": "mc", "q": "Which statement is a summary?", "multi": false, "fb": "", "answers": [{"h": "“Tourism increased rapidly after 2021.”", "c": false, "f": "This is a paraphrase, not a summary. It restates information in different words but does not condense the main point from a source."}, {"h": "“Tourism rose after 2021, according to Ahmed (2024).”", "c": true, "f": "This is a summary because it condenses the main point from a source and attributes it, capturing the essential idea."}, {"h": "“Tourism grew quickly after 2021.” (with quotation marks)", "c": false, "f": "This is a direct quote, not a summary. It uses the exact words from the source."}, {"h": "“Tourism in Saudi Arabia is important for the economy.”", "c": false, "f": "This is a general opinion and does not summarize a specific source or main point."}]}, {"t": "cont"}, {"t": "text", "h": "Practice: Changing Sentence Structure and Word Forms", "p": "<p>A strong paraphrase often means changing how a sentence is built. You can move information to a different place, switch word forms (like turning a verb into a noun), or split or combine sentences. Always keep the meaning and remember to add a citation.<\/p>"}, {"t": "text", "h": "Ways to Change a Sentence When Paraphrasing", "p": "<p>There are many ways to change a sentence when paraphrasing. Explore each method below and see a simple example for each. These strategies help you create original sentences while keeping the meaning the same.<\/p>"}, {"t": "acc", "items": [{"h": "Put the result first", "p": "<p>Move the outcome to the start of the sentence. Example: Most students used AI tools, a survey of 400 found.<\/p>"}, {"h": "Change a verb into a noun", "p": "<p>Switch the action word to a noun. Example: Rapid growth in tourism followed 2021.<\/p>"}, {"h": "Split one sentence into two", "p": "<p>Break a long sentence into two shorter ones. Example: Arrivals reached 1.4 billion in 2024. Small island destinations drove most of that rise.<\/p>"}, {"h": "Switch between active and passive voice", "p": "<p>Change who does the action. Example: Tourists damage shallow reefs. Shallow reefs are damaged by tourists.<\/p>"}, {"h": "Start from the condition or time", "p": "<p>Begin the sentence with when or if something happens. Example: When water temperatures fall, coral recovers.<\/p>"}]}, {"t": "mc", "q": "Which option shows a change in sentence structure?", "multi": false, "fb": "", "answers": [{"h": "A. Coral bleaching rose sharply after the 2023 heatwave.", "c": false, "f": "This sentence maintains the same structure as the original; only the wording is slightly different."}, {"h": "B. After the 2023 heatwave, coral bleaching rose sharply.", "c": true, "f": "This sentence changes the structure by starting with the time phrase, altering the sentence order."}, {"h": "C. Coral bleaching increased after the 2023 heatwave.", "c": false, "f": "This sentence only uses a synonym ('increased' instead of 'rose'), but the structure remains the same."}, {"h": "D. Coral bleaching rose after the 2023 heatwave.", "c": false, "f": "This sentence is structurally the same as the original, with only a minor change in wording."}]}, {"t": "cont"}, {"t": "image", "img": "highlight-citation", "cap": ""}, {"t": "text", "h": "Citing Sources and Checking Your Work", "p": "<p>Every time you paraphrase, quote, or summarize, you must include a citation to give credit to the original author. Before submitting your assignments, check that you have cited all sources and that your work uses your own words and structure. This helps you avoid plagiarism and shows your honesty as a student.<\/p>"}, {"t": "text", "h": "Sort the Self-Check Statements for Academic Writing", "p": "<p>Review each statement and decide if it is a good self-check for your academic writing. Good self-checks help ensure your work is original and properly cited, while not a self-check includes practices to avoid.<\/p>"}, {"t": "sort", "piles": ["Good Self-Check", "Not a Self-Check"], "cards": [{"h": "Did I use my own sentence structure?", "p": 0}, {"h": "Did I add a citation?", "p": 0}, {"h": "Did I copy most of the original?", "p": 1}, {"h": "Did I keep the meaning accurate?", "p": 0}]}, {"t": "mc", "q": "Why should you always add a citation when paraphrasing or summarizing?", "multi": false, "fb": "", "answers": [{"h": "To make your work look longer", "c": false, "f": "Citation is not intended to increase the length of your work."}, {"h": "To give credit and avoid plagiarism", "c": true, "f": "Citing sources gives credit to the original author and helps you avoid plagiarism."}, {"h": "To confuse the reader", "c": false, "f": "Citations are meant to clarify your sources, not confuse the reader."}, {"h": "To repeat the original words", "c": false, "f": "Paraphrasing means using your own words, not repeating the original text."}]}, {"t": "note", "p": "<p>Remember: The best academic writing uses your own words and structure, always gives credit, and checks for honesty before submitting.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "", "p": "<p>In this lesson, you reviewed all the key skills for paraphrasing, summarizing, quoting, changing sentences, and citing sources. You practiced checking your work for originality and honesty. Now you’re ready to take the final quiz and show you can use these skills in your university studies.<\/p>"}]}, {"title": "Quiz: Paraphrasing and Citation Skills", "blocks": [{"t": "banner", "img": "l5-banner", "cap": ""}, {"t": "text", "h": "Test Your Skills: Are You Ready for Academic Writing?", "p": "<p>Congratulations on reaching the final lesson of this course! This quiz will help you check your understanding of paraphrasing, citation, and related academic writing skills. Completing this quiz will show you how ready you are for university assignments and help you feel confident in your ability to write honestly and effectively.<\/p>"}, {"t": "text", "h": "", "p": "<p>This quiz will help you check your understanding of key concepts related to using sources in your writing.<\/p>"}, {"t": "list", "items": ["<p>Tell the difference between quoting, paraphrasing, and summarizing.<\/p>", "<p>Recognize and create strong paraphrases.<\/p>", "<p>Apply rules for citing sources.<\/p>", "<p>Avoid plagiarism and common mistakes.<\/p>"]}, {"t": "cont"}, {"t": "mc", "q": "Which sentence is a real paraphrase and NOT too close to the original?", "multi": false, "fb": "", "answers": [{"h": "A. International tourist arrivals reached 1.4 billion in 2024, an increase driven largely by small island destinations (UN Tourism, 2025).", "c": false, "f": "This is a direct copy of the original sentence, so it is not a true paraphrase."}, {"h": "B. International tourist numbers hit 1.4 billion in 2024, a rise driven mostly by small island locations (UN Tourism, 2025).", "c": false, "f": "This option only swaps a few words and keeps the same structure as the original, making it too close to be a real paraphrase."}, {"h": "C. Small island destinations accounted for much of the growth that took global arrivals to 1.4 billion in 2024 (UN Tourism, 2025).", "c": true, "f": "This sentence changes both the structure and wording of the original, making it a genuine paraphrase."}, {"h": "D. The number of international tourists was 1.4 billion in 2024, mainly due to small island destinations (UN Tourism, 2025).", "c": false, "f": "This option is still too close in structure and detail to the original sentence."}]}, {"t": "mc", "q": "Which of the following is an example of plagiarism?", "multi": false, "fb": "", "answers": [{"h": "Paraphrasing a source with a citation", "c": false, "f": "Paraphrasing a source and providing a citation is not plagiarism because you are giving proper credit to the original author."}, {"h": "Copying a paragraph and not giving credit", "c": true, "f": "Copying someone else's work without giving credit is plagiarism because you are presenting someone else's ideas or words as your own."}, {"h": "Summarizing a study in your own words and citing it", "c": false, "f": "Summarizing in your own words and providing a citation is not plagiarism, as you are acknowledging the original source."}, {"h": "Writing your own opinion on a topic", "c": false, "f": "Writing your own opinion is not plagiarism because the ideas are your own and not taken from another source."}]}, {"t": "mc", "q": "What must you always include when you paraphrase or summarize a source?", "multi": false, "fb": "", "answers": [{"h": "Your own opinion about the idea", "c": false, "f": "Your opinion is not required in a paraphrase or summary. You should focus on accurately representing the source's ideas."}, {"h": "The page number only", "c": false, "f": "You need more than just the page number. Proper citation requires more information."}, {"h": "A citation with the author and year", "c": true, "f": "Always include a citation with the author and year when paraphrasing or summarizing to give proper credit to the source."}, {"h": "The exact words from the source", "c": false, "f": "Paraphrasing and summarizing use your own words, not the exact words from the source."}]}, {"t": "mc", "q": "Which option shows a change in sentence structure (not just words)?", "multi": false, "fb": "", "answers": [{"h": "A. Arrivals reached 1.4 billion in 2024. Small island destinations drove most of that rise (Ahmed, 2024).", "c": true, "f": "This option splits the original sentence into two separate sentences, changing the structure."}, {"h": "B. Arrivals reached 1.4 billion in 2024, a rise driven mainly by small island destinations (Ahmed, 2024).", "c": false, "f": "This option keeps the original sentence structure, only rephrasing slightly."}, {"h": "C. Arrivals hit 1.4 billion in 2024, a rise driven mainly by small islands (Ahmed, 2024).", "c": false, "f": "This option only changes some words, not the sentence structure."}, {"h": "D. Arrivals reached 1.4 billion in 2024, driven mainly by small island destinations (Ahmed, 2024).", "c": false, "f": "This option maintains the original sentence structure, with minor wording changes."}]}, {"t": "mc", "q": "Which statement is a summary?", "multi": false, "fb": "", "answers": [{"h": "“Tourism grew quickly after 2021.” (with quotation marks)", "c": false, "f": ""}, {"h": "Tourism increased rapidly after 2021.", "c": false, "f": ""}, {"h": "Tourism rose after 2021, according to Ahmed (2024).", "c": true, "f": ""}, {"h": "Tourism is important for Saudi Arabia’s economy.", "c": false, "f": ""}]}, {"t": "mc", "q": "Why should you always add a citation when paraphrasing or summarizing?", "multi": false, "fb": "", "answers": [{"h": "To make your work look longer", "c": false, "f": "Citation is not intended to increase the length of your work."}, {"h": "To give credit and avoid plagiarism", "c": true, "f": "Citing sources gives credit to the original author and helps you avoid plagiarism."}, {"h": "To confuse the reader", "c": false, "f": "Citations are meant to clarify your sources, not confuse the reader."}, {"h": "To repeat the original words", "c": false, "f": "Paraphrasing means using your own words, not repeating the original text."}]}, {"t": "cont"}, {"t": "text", "h": "", "p": "<p>Well done! You have completed the course and the final quiz. You now know how to paraphrase, summarize, quote, restructure sentences, and cite sources correctly—skills that will help you succeed in your university writing. If you want to review any lesson, you can go back at any time. Good luck with your future studies and keep practicing your academic writing skills!<\/p>"}]}], "quiz": {"title": "Quiz", "pass": 80, "questions": [{"t": "mc", "q": "Citing sources when you use someone else’s ideas gives credit to the original author and helps you avoid plagiarism.", "multi": false, "fb": "", "answers": [{"h": "False", "c": false, "f": "Incorrect. Citing sources is important because it acknowledges the original author’s ideas and helps you avoid plagiarism, which supports academic integrity."}, {"h": "True", "c": true, "f": "Correct. Citation shows where ideas come from, gives proper credit to the original author, and helps prevent plagiarism."}]}, {"t": "mc", "q": "Which option best demonstrates effective paraphrasing of a source sentence?", "multi": false, "fb": "", "answers": [{"h": "A version that keeps the sentence structure but replaces a few key words with synonyms.", "c": false, "f": "Using only a few synonyms without changing the structure can leave the paraphrase too close to the source."}, {"h": "A version that copies the main wording from the source and changes the citation style at the end.", "c": false, "f": "Citation is important, but changing citation style does not make copied wording into a paraphrase."}, {"h": "A version that adds your personal opinion to the source idea and keeps the original wording for accuracy.", "c": false, "f": "Paraphrasing restates the source idea; adding personal opinion changes the task, and keeping the original wording undermines originality."}, {"h": "A version that uses synonyms, changes word forms when helpful, and reorganizes the sentence while keeping the original meaning.", "c": true, "f": "This choice includes the key features of effective paraphrasing: changed wording, possible word-form changes, and a new sentence structure that preserves meaning."}]}, {"t": "match", "q": "Match each writing method to the description of how it uses source material in academic writing. Focus on whether the writer keeps the exact wording, restates the idea in new language, or reduces the source to its main point.", "pairs": [{"a": "Quoting", "b": "Uses the author's exact words and normally places them inside quotation marks."}, {"a": "Paraphrasing", "b": "Restates a source's idea in new sentence structure and wording while keeping the original meaning."}, {"a": "Summarizing", "b": "Presents the main point of a longer source in a shorter form without including every detail."}], "ok": "Correct. Quoting uses the source's exact words with quotation marks, paraphrasing restates the idea in new words and structure, and summarizing gives only the main point in a shorter form.", "no": "Incorrect. The key differences are how closely each method follows the original source: quoting keeps the exact wording, paraphrasing rewrites the idea in new words, and summarizing condenses the source to its main points."}, {"t": "mc", "q": "A student reads a source and then writes the idea again for an assignment. Which option best shows correct paraphrasing in academic writing?", "multi": false, "fb": "", "answers": [{"h": "Use your own opinion about the source idea and leave out the original point.", "c": false, "f": "Paraphrasing restates the source accurately; it does not replace the source idea with personal opinion."}, {"h": "Copy the source wording exactly and add a citation at the end.", "c": false, "f": "Using the exact wording is quoting, not paraphrasing, even when a citation is included."}, {"h": "Replace a few key words, keep the sentence pattern, and include a citation.", "c": false, "f": "A citation is necessary, but keeping the original sentence pattern does not make the writing a proper paraphrase."}, {"h": "Restate the source idea in new words and a new sentence structure, keep the original meaning, and include a citation.", "c": true, "f": "This option includes all essential parts of correct paraphrasing: new wording, changed structure, accurate meaning, and citation."}]}, {"t": "mc", "q": "A student rewrites a source sentence by replacing a few key words with synonyms but keeps the original sentence structure and meaning. Which evaluation best describes this paraphrase?", "multi": false, "fb": "", "answers": [{"h": "It is acceptable because synonyms show the student understood the source.", "c": false, "f": "Using synonyms may show some understanding, but understanding alone does not make a paraphrase sufficiently original."}, {"h": "It is acceptable if the student plans to add a citation afterward.", "c": false, "f": "A citation is necessary, but it does not fix a paraphrase that remains too close to the original wording or structure."}, {"h": "It is too close to the source because it changes words but not structure.", "c": true, "f": "A paraphrase must use new wording and a new structure while keeping the original meaning."}, {"h": "It is acceptable because keeping the meaning is the main goal of paraphrasing.", "c": false, "f": "Keeping the meaning is essential, but ethical paraphrasing also requires enough change in wording and structure to make the expression genuinely new."}]}, {"t": "fitb", "q": "__________ is the act of restating someone else’s ideas in your own words while maintaining the original meaning.", "a": ["paraphrasing"], "ok": "Correct. Paraphrasing means expressing someone else’s ideas in your own words while keeping the original meaning, which shows understanding and supports honest academic writing.", "no": "Incorrect. The missing term is paraphrasing, which means restating someone else’s ideas in your own words while keeping the original meaning. It is not copying or quoting directly."}, {"t": "mc", "q": "A student rewrites an author’s idea in their own words for a university assignment. Why should the student include a citation after the paraphrase?", "multi": false, "fb": "", "answers": [{"h": "To make the sentence sound more formal in academic writing", "c": false, "f": "This choice is plausible because citations do appear often in formal writing, but formality is not the main reason for citing a paraphrase. The real purpose is to acknowledge the original source of the idea."}, {"h": "To give credit for the original idea and show academic honesty", "c": true, "f": "This is correct because citing a paraphrase acknowledges the original source and helps prevent plagiarism."}, {"h": "To show that the student remembers the source without using notes", "c": false, "f": "This choice relates to source use, but remembering a source from memory is not the reason for citing. A citation is still required because the idea belongs to the original author."}, {"h": "To replace the need to use original wording in the paraphrase", "c": false, "f": "This option includes a related concept because paraphrasing requires both original wording and citation. However, a citation does not substitute for writing in your own words."}]}]}};
+const CFG = {"short": "Paraphrasing and Citing", "key": "lm-paraphrasing-course-v1", "series": "Luke Murgatroyd · Academic Skills Series · Unit 3", "links": [["essay-course", "Unit 1: Essay structure"], ["integrity-course", "Unit 2: Academic integrity"], ["./", "IELTS reading practice tests"]]};
+const KEY = CFG.key;
+const $ = id => document.getElementById(id);
+let main = $("main");
+
+/* ---------- saved progress (this browser only) ---------- */
+let P = {done:{}, open:{}, quiz:null};
+try{ const v = localStorage.getItem(KEY); if(v) P = Object.assign(P, JSON.parse(v)); }catch(e){}
+P.open = P.open || {};
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+const units = () => [...C.lessons.map((l,i)=>({id:"lesson-"+(i+1), title:l.title, kind:"Lesson "+(i+1)})), {id:"quiz", title:"Quiz", kind:"Final check"}];
+const isDone = id => id==="quiz" ? !!(P.quiz && P.quiz.passed) : !!P.done[id];
+function updateProgress(){
+  const u = units(), n = u.filter(x=>isDone(x.id)).length, pct = Math.round(n/u.length*100);
+  $("progPct").textContent = pct+"%"; $("progLine").style.width = pct+"%";
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; };
+
+/* ---------- illustrations (original artwork; drop a photo named essay-images/<slot>.jpg next to this page to replace one) ---------- */
+const S = (() => {
+  const W = (w,h,body) => `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><rect width="${w}" height="${h}" fill="var(--ill-bg)"/>${body}</svg>`;
+  const desk = (w,y) => `<rect y="${y}" width="${w}" height="400" fill="var(--ill-desk)"/><rect y="${y}" width="${w}" height="10" fill="var(--ill-desk2)"/>`;
+  const lines = (x,y,n,w,gap,hl) => Array.from({length:n},(_,i)=>`<rect x="${x}" y="${y+i*gap}" width="${w-(i%3)*w*.14}" height="7" rx="3.5" fill="${hl&&hl.includes(i)?"var(--ill-3)":"var(--ill-line)"}"/>`).join("");
+  const paper = (x,y,w,h,rot,n,hl) => `<g transform="translate(${x} ${y}) rotate(${rot||0})"><rect width="${w}" height="${h}" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>${lines(w*.12,h*.16,n||5,w*.74,h*.7/(n||5),hl)}</g>`;
+  const books = (x,y,cols,closed) => `<g transform="translate(${x} ${y})">${cols.map((c,i)=>`<rect x="${(i%2)*10}" y="${-i*30}" width="190" height="28" rx="4" fill="${c}"/>`).join("")}</g>`;
+  const laptop = (x,y,s,hl) => `<g transform="translate(${x} ${y}) scale(${s})"><rect width="300" height="190" rx="12" fill="var(--ill-1)"/><rect x="12" y="12" width="276" height="166" rx="5" fill="var(--ill-paper)"/>${lines(34,40,4,200,30,hl)}<path d="M-30 190 L330 190 L352 212 L-52 212Z" fill="var(--ill-4)"/></g>`;
+  const pen = (x,y,rot,c) => `<g transform="translate(${x} ${y}) rotate(${rot})"><rect width="170" height="13" rx="6.5" fill="${c||"var(--ill-1)"}"/><path d="M170 0l22 6.5-22 6.5z" fill="${c||"var(--ill-1)"}"/></g>`;
+  const quote = (x,y,s,c) => `<g fill="${c}" transform="translate(${x} ${y}) scale(${s})"><path d="M0 60 Q0 0 50 0 L50 22 Q26 24 26 46 L50 46 L50 100 L0 100Z"/><path d="M70 60 Q70 0 120 0 L120 22 Q96 24 96 46 L120 46 L120 100 L70 100Z"/></g>`;
+  const bubble = (x,y,w,c,flip,lc) => `<g transform="translate(${x} ${y})"><rect width="${w}" height="${w*.46}" rx="${w*.12}" fill="${c}"/><path d="${flip?`M${w*.72} ${w*.46} l6 ${w*.14} -${w*.2} -${w*.14}z`:`M${w*.26} ${w*.46} l-6 ${w*.14} ${w*.2} -${w*.14}z`}" fill="${c}"/><rect x="${w*.16}" y="${w*.14}" width="${w*.66}" height="${w*.05}" rx="${w*.025}" fill="${lc}"/><rect x="${w*.16}" y="${w*.26}" width="${w*.44}" height="${w*.05}" rx="${w*.025}" fill="${lc}"/></g>`;
+  const tick = (x,y,r) => `<circle cx="${x}" cy="${y}" r="${r}" fill="var(--good, #1B7443)"/><path d="M${x-r*.45} ${y} l${r*.32} ${r*.32} l${r*.62} -${r*.62}" fill="none" stroke="var(--ill-paper)" stroke-width="${r*.26}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  return {
+    "cover": W(1280,720, desk(1280,540)+paper(230,150,330,360,-3,7)+quote(270,90,.7,"var(--ill-3)")+
+      `<g transform="translate(600 300)"><path d="M0 10 H90" stroke="var(--ill-1)" stroke-width="16" stroke-linecap="round"/><path d="M70 -18 L104 10 L70 38" fill="none" stroke="var(--ill-1)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></g>`+
+      paper(740,130,340,380,3,7,[1,2,4])+`<g transform="translate(740 130) rotate(3)">${tick(300,340,34)}</g>`+pen(160,600,-14)),
+    "l1-banner": W(1360,390, desk(1360,280)+paper(420,120,260,170,-4,4)+paper(700,110,260,170,3,4)+bubble(300,40,190,"var(--ill-1)",0,"var(--ill-bg)")+bubble(880,30,190,"var(--ill-3)",1,"var(--ill-paper)")+pen(1080,320,-10)),
+    "group-work": W(1280,720, `<ellipse cx="640" cy="420" rx="470" ry="230" fill="var(--ill-desk)"/><ellipse cx="640" cy="410" rx="470" ry="230" fill="var(--ill-desk2)" opacity=".35"/>`+
+      paper(360,300,200,150,-12,4)+paper(720,300,200,150,10,4,[2])+laptop(530,420,.75,[1])+
+      [[640,120],[230,400],[1050,400]].map(([x,y],i)=>`<g transform="translate(${x} ${y})"><circle r="56" fill="${["var(--ill-1)","var(--ill-3)","var(--ill-2)"][i]}"/><circle cy="-6" r="26" fill="var(--ill-paper)" opacity=".9"/><path d="M-34 34 Q0 6 34 34" fill="var(--ill-paper)" opacity=".9"/></g>`).join("")+
+      bubble(780,70,150,"var(--ill-paper)",1,"var(--ill-line)")),
+    "l2-banner": W(1360,390, desk(1360,280)+[[300,-8],[470,6],[640,-3],[810,9]].map(([x,r],i)=>`<g transform="translate(${x} ${i%2?150:120}) rotate(${r})"><rect width="140" height="100" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="18" y="22" width="${[90,70,100,60][i]}" height="8" rx="4" fill="${i===2?"var(--ill-3)":"var(--ill-1)"}"/><rect x="18" y="44" width="96" height="6" rx="3" fill="var(--ill-line)"/><rect x="18" y="60" width="74" height="6" rx="3" fill="var(--ill-line)"/></g>`).join("")+
+      `<path d="M440 100 C500 40 600 40 650 92" fill="none" stroke="var(--ill-3)" stroke-width="7" stroke-linecap="round" stroke-dasharray="2 14"/><path d="M640 70 l14 24 l-27 4" fill="none" stroke="var(--ill-3)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`+books(1040,270,["var(--ill-1)","var(--ill-4)","var(--ill-3)"])),
+    "puzzle": W(1280,720, (()=>{ const pc=(x,y,c,r)=>`<g transform="translate(${x} ${y}) rotate(${r})"><path d="M0 0 H70 a30 30 0 1 1 60 0 H200 V70 a30 30 0 1 1 0 60 V200 H130 a30 30 0 1 0 -60 0 H0 V130 a30 30 0 1 0 0 -60Z" fill="${c}"/></g>`;
+      return pc(300,170,"var(--ill-1)",0)+pc(500,170,"var(--ill-2)",0)+pc(300,370,"var(--ill-4)",0)+pc(860,330,"var(--ill-3)",-14)+
+      `<path d="M820 300 C760 250 700 330 640 400" fill="none" stroke="var(--ill-3)" stroke-width="8" stroke-linecap="round" stroke-dasharray="4 16"/><path d="M630 372 l6 34 l30 -14" fill="none" stroke="var(--ill-3)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`+
+      `<rect x="500" y="370" width="200" height="200" rx="10" fill="none" stroke="var(--ill-1)" stroke-width="5" stroke-dasharray="14 12" opacity=".6"/>`; })()),
+    "compare-docs": W(1280,720, desk(1280,474)+laptop(250,200,1.3,[])+
+      `<g transform="translate(276 222)"><rect x="18" y="16" width="160" height="200" rx="6" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="200" y="16" width="160" height="200" rx="6" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>${[0,1,2,3,4,5].map(i=>`<rect x="34" y="${40+i*28}" width="${120-(i%3)*18}" height="8" rx="4" fill="${i===1||i===3?"#F6C9A6":"var(--ill-line)"}"/><rect x="216" y="${40+i*28}" width="${120-(i%2)*24}" height="8" rx="4" fill="${i===1||i===3?"#F6C9A6":"var(--ill-line)"}"/>`).join("")}</g>`+
+      `<g transform="translate(960 260)"><circle cx="80" cy="80" r="66" fill="var(--ill-paper)" fill-opacity=".6" stroke="var(--ill-1)" stroke-width="14"/><path d="M128 128 L196 196" stroke="var(--ill-1)" stroke-width="24" stroke-linecap="round"/><rect x="44" y="64" width="72" height="12" rx="6" fill="var(--ill-3)"/><rect x="44" y="88" width="50" height="12" rx="6" fill="var(--ill-3)"/></g>`),
+    "l3-banner": W(1360,390, desk(1360,280)+`<g transform="translate(330 170)"><rect width="230" height="120" rx="8" fill="var(--ill-1)"/><rect x="10" y="8" width="210" height="104" rx="5" fill="var(--ill-2)"/><rect x="104" y="0" width="22" height="120" fill="var(--ill-1)"/></g>`+
+      paper(650,90,260,200,2,5)+pen(860,300,-30,"var(--ill-3)")+`<g transform="translate(1060 90)" opacity=".9"><circle cx="40" cy="40" r="40" fill="var(--ill-4)"/><path d="M22 40 q18 -26 36 0 q-18 26 -36 0z" fill="var(--ill-paper)"/><circle cx="40" cy="40" r="7" fill="var(--ill-1)"/></g>`),
+    "from-memory": W(1280,720, desk(1280,480)+`<g transform="translate(200 320)"><rect width="300" height="160" rx="10" fill="var(--ill-1)"/><rect x="12" y="10" width="276" height="140" rx="6" fill="var(--ill-2)"/><rect x="138" y="0" width="24" height="160" fill="var(--ill-1)"/></g>`+books(220,300,["var(--ill-4)","var(--ill-3)"])+
+      paper(620,170,380,420,3,8)+pen(900,560,-36)+`<g transform="translate(560 90)"><circle cx="60" cy="60" r="56" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="3"/><path d="M38 60 q22 -30 44 0 q-22 30 -44 0z" fill="var(--ill-1)"/><path d="M28 30 L92 92" stroke="var(--ill-3)" stroke-width="9" stroke-linecap="round"/></g>`),
+    "l4-banner": W(1360,390, desk(1360,280)+laptop(420,110,.8,[1])+paper(760,110,220,170,4,4,[0])+`<g transform="translate(760 110) rotate(4)">${tick(190,40,22)}${tick(190,90,22)}</g>`+books(1060,270,["var(--ill-1)","var(--ill-3)","var(--ill-4)"])+pen(180,320,-8)),
+    "review-notes": W(1280,720, desk(1280,492)+laptop(220,250,1.15,[2])+`<g transform="translate(780 200) rotate(4)"><rect width="300" height="370" rx="10" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>${[0,1,2,3,4].map(i=>`<g transform="translate(30 ${44+i*64})">${tick(14,10,14)}<rect x="40" y="4" width="${190-(i%2)*40}" height="10" rx="5" fill="var(--ill-line)"/></g>`).join("")}</g>`),
+    "highlight-citation": W(1280,720, desk(1280,560)+`<g transform="translate(300 120)"><path d="M0 420 L340 390 L680 420 L680 440 L340 412 L0 440Z" fill="var(--ill-line)"/><path d="M0 420 C100 380 240 376 340 390 L340 0 C240 -14 100 -10 0 30Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M680 420 C580 380 440 376 340 390 L340 0 C440 -14 580 -10 680 30Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>
+      ${lines(40,80,8,250,38)}${lines(380,80,8,250,38)}<rect x="470" y="186" width="170" height="22" rx="5" fill="#FFD27A" opacity=".85"/><rect x="380" y="186" width="80" height="7" rx="3.5" fill="var(--ill-line)" transform="translate(0 7)"/></g>
+      <g transform="translate(860 360) rotate(-38)"><rect width="200" height="34" rx="8" fill="var(--ill-3)"/><rect x="-34" y="4" width="40" height="26" rx="4" fill="#FFD27A"/><rect x="150" y="0" width="50" height="34" rx="8" fill="var(--ill-1)"/></g>`),
+    "l5-banner": W(1360,390, desk(1360,290)+`<g transform="translate(560 40)"><rect width="280" height="250" rx="16" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="100" y="-14" width="80" height="30" rx="8" fill="var(--ill-1)"/>${[0,1,2].map(i=>`<g transform="translate(34 ${52+i*62})">${[0,1,2,3].map(k=>`<circle cx="${k*40+14}" cy="14" r="13" fill="${k===(i+1)%4?"var(--ill-1)":"none"}" stroke="var(--ill-1)" stroke-width="3"/>`).join("")}<rect x="170" y="9" width="40" height="10" rx="5" fill="var(--ill-line)"/></g>`).join("")}</g>`+
+      `<g transform="translate(980 110)"><circle cx="70" cy="70" r="62" fill="var(--ill-3)"/><circle cx="70" cy="70" r="44" fill="none" stroke="var(--ill-paper)" stroke-width="6"/><path d="M70 42 l9 18 l20 3 l-15 14 l4 20 l-18 -10 l-18 10 l4 -20 l-15 -14 l20 -3z" fill="var(--ill-paper)"/></g>`+pen(230,320,-10))
+  };
+})();
+const D = {
+ "three-ways": `<div class="dg-cap">Three ways to use a source</div><div class="dg-three">${[["“ ”","Quote","The author’s exact words, inside quotation marks."],["⇄","Paraphrase","The same idea and detail, in your own words and structure."],["≡","Summary","Only the main point, in your own words, usually shorter."]].map(([i,t,d])=>`<div class="dg-src"><span class="dg-ic" style="font-family:var(--f-read);font-size:30px;font-weight:600;line-height:44px">${i}</span><strong>${t}</strong><span>${d}</span><em class="ok">+ citation</em></div>`).join("")}</div><div class="dg-card main" style="text-align:center"><strong>All three need a citation, every time.</strong></div>`,
+ "cited-paraphrase": `<div class="dg-cap">What a cited paraphrase looks like</div><div class="dg-stack"><div class="dg-card"><small>Original sentence</small><p>“Researchers surveyed 400 students and found that most used AI tools.”</p></div><div class="dg-arrow down" aria-hidden="true">↓</div><div class="dg-card main"><small>Your paraphrase</small><p><mark class="m1">Most of 400 students surveyed had used AI tools</mark> <mark class="m0">(Ahmed, 2024)</mark>.</p><div class="dg-checks" style="gap:6px"><span style="font-size:13.5px"><mark class="m1">&nbsp;</mark> Result first: a new structure, in your own words</span><span style="font-size:13.5px"><mark class="m0">&nbsp;</mark> Citation: author and year</span></div></div></div>`
+};
+
+function fig(slot, cls, cap){
+  if(D[slot]) return `<figure class="dgm" data-slot="${slot}">${D[slot]}</figure>`;
+  return `<figure class="fig ${cls||""}" data-slot="${slot}">${S[slot]||""}<img class="photo" src="essay-images/${slot}.jpg" alt="" loading="lazy" onerror="this.remove()">${cap?`<figcaption class="cap">${cap}</figcaption>`:""}</figure>`;
+}
+
+/* ---------- blocks ---------- */
+const ICON = {
+  mc:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>`,
+  flash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></svg>`,
+  process:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h9M13 8.5l3.5 3.5-3.5 3.5"/></svg>`,
+  match:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6 L17 18 M7 18 L17 6"/></svg>`,
+  sort:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7" stroke-linecap="round"/></svg>`
+};
+const BAND = {
+  mc:["Activity","Check your understanding","Choose an answer, then submit."],
+  flash:["Activity","Flashcards","Tap a card to turn it over."],
+  process:["Activity","Step by step","Work through each step in order."],
+  sort:["Activity","Sorting activity","Tap the pile where each sentence belongs."],
+  match:["Activity","Matching","Choose the right answer for each item, then submit."],
+  mcm:["Activity","Check your understanding","Tick every answer that applies, then submit."]
+};
+function band(kind, inner){
+  const h = BAND[kind]; kind = kind==="mcm"?"mc":kind;
+  return `<section class="band"><div class="band-head"><span class="band-icon" aria-hidden="true">${ICON[kind]}</span><span><small>${h[0]}</small><b>${h[1]}</b><span class="sub">${h[2]}</span></span></div>${inner}</section>`;
+}
+let uid = 0;
+function blockHTML(b){
+  const id = "b"+(++uid);
+  switch(b.t){
+    case "banner": return `<div class="wide">${fig(b.img,"banner",b.cap)}</div>`;
+    case "image": return fig(b.img,"",b.cap);
+    case "text": return `<section class="${b.h?"sec":""}">${b.h?`<h2 class="bh">${esc(b.h)}</h2>`:""}<div class="prose">${b.p}</div></section>`;
+    case "list": return `<ol class="nlist">${b.items.map((x,i)=>`<li><span>${i+1}</span><div>${x}</div></li>`).join("")}</ol>`;
+    case "acc": return `<div class="acc">${b.items.map(x=>`<details><summary>${esc(x.h)}</summary><div class="prose">${x.p}</div></details>`).join("")}</div>`;
+    case "mc": return band(b.multi?"mcm":"mc",`<div class="act" data-kind="mc" id="${id}"></div>`);
+    case "match": return band("match",`<div class="act" data-kind="match" id="${id}"></div>`);
+    case "note": return `<aside class="note"><span class="note-ic" aria-hidden="true">!</span><div class="prose">${b.p}</div></aside>`;
+    case "tabs": return `<div class="tabs"><div class="tablist" role="tablist">${b.items.map((x,i)=>`<button role="tab" id="${id}-t${i}" aria-controls="${id}-p${i}" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${esc(x.h)}</button>`).join("")}</div>${b.items.map((x,i)=>`<div class="tabpanel" role="tabpanel" id="${id}-p${i}" aria-labelledby="${id}-t${i}" ${i?"hidden":""}><div class="prose">${x.p}</div></div>`).join("")}</div>`;
+    case "flash": return band("flash",`<div class="act"><div class="cards">${b.cards.map(c=>`<button class="flash" aria-pressed="false"><span class="in"><span class="face front"><small>Term</small>${c.f}</span><span class="face back"><small>Meaning</small>${c.b}</span></span></button>`).join("")}</div></div>`);
+    case "process": return band("process",`<div class="act" data-kind="process" id="${id}"></div>`);
+    case "sort": return band("sort",`<div class="act" data-kind="sort" id="${id}"></div>`);
+  }
+  return "";
+}
+function mountMC(el, b, opts){
+  opts = opts || {};
+  let pick = b.multi ? new Set() : null, checked = false, ok = false;
+  const isOn = i => b.multi ? pick.has(i) : pick===i;
+  const any = () => b.multi ? pick.size>0 : pick!=null;
+  const draw = () => {
+    let fbText = "";
+    if(checked){ fbText = (!b.multi && b.answers[pick].f) || b.fb || ""; }
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label}</div>`:""}<div class="q">${b.q}</div>
+      <div class="choices" role="${b.multi?"group":"radiogroup"}">${b.answers.map((x,i)=>{
+        let cls=""; if(checked){ if(isOn(i)) cls = x.c?" right":" wrong"; else if(opts.reveal && x.c) cls=" right"; }
+        return `<button class="choice${cls}" role="${b.multi?"checkbox":"radio"}" aria-checked="${isOn(i)}" data-i="${i}" ${checked?"disabled":""}>${b.multi?`<span class="box">${isOn(i)?"✓":""}</span>`:`<span class="dot"></span>`}<span>${x.h}</span></button>`;}).join("")}</div>
+      ${checked?`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct":"Not quite"}</b>${fbText?`<div>${fbText}</div>`:(!ok&&!opts.reveal?`<div>Have another look and try again.</div>`:"")}</div>`:""}
+      <div class="btnrow">${checked
+        ? (opts.onNext ? `<button class="btn" data-act="next">${opts.nextLabel||"Next"}</button>` : (ok?"":`<button class="btn ghost" data-act="retry">Try again</button>`))
+        : `<button class="btn" data-act="check" ${any()?"":"disabled"}>Submit</button>`}</div>`;
+    el.querySelectorAll(".choice").forEach(c=>c.onclick=()=>{ const i=+c.dataset.i; if(b.multi){ pick.has(i)?pick.delete(i):pick.add(i); } else pick=i; draw(); });
+    const btn = el.querySelector("[data-act]");
+    if(btn) btn.onclick = () => {
+      if(btn.dataset.act==="check"){
+        checked=true;
+        ok = b.multi ? b.answers.every((x,i)=>x.c===pick.has(i)) : b.answers[pick].c;
+        if(opts.onAnswer) opts.onAnswer(ok); draw();
+      }
+      else if(btn.dataset.act==="retry"){ checked=false; pick=b.multi?new Set():null; draw(); }
+      else opts.onNext();
+    };
+  };
+  draw();
+}
+function mountProcess(el, b){
+  let i = 0; const n = b.steps.length, stepsOnly = b.steps.filter(s=>s.k==="step").length;
+  const draw = () => {
+    const s = b.steps[i]; const stepNo = b.steps.slice(0,i+1).filter(x=>x.k==="step").length;
+    el.innerHTML = `<div class="proc-top"><div class="proc-dots" aria-hidden="true">${b.steps.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</div><div class="proc-step">${s.k==="step"?`Step ${stepNo} of ${stepsOnly}`:(s.k==="intro"?"Overview":"Summary")}</div></div>
+      <div class="proc-body"><h3>${esc(s.h)}</h3><div class="prose">${s.p}</div></div>
+      <div class="btnrow">${i>0?`<button class="btn ghost" data-d="-1">Back</button>`:""}${i<n-1?`<button class="btn" data-d="1">${i===0?"Start":"Next"}</button>`:`<button class="btn ghost" data-d="restart">Start again</button>`}</div>`;
+    el.querySelectorAll("[data-d]").forEach(x=>x.onclick=()=>{ i = x.dataset.d==="restart"?0:i+(+x.dataset.d); draw(); });
+  };
+  draw();
+}
+function mountSort(el, b){
+  let deck, placed, msg, msgCls;
+  const reset = () => { deck = shuffle(b.cards); placed = b.piles.map(()=>[]); msg = "Tap the pile where this sentence belongs."; msgCls=""; draw(); };
+  const draw = (shake) => {
+    const card = deck[0];
+    el.innerHTML = `<div class="label">${b.cards.length-deck.length} of ${b.cards.length} sorted</div>
+      ${card?`<div class="sort-card${shake?" shake":""}">${esc(card.h)}</div>`:`<div class="fb ok"><b>All sorted</b><div>Every sentence is in the right pile.</div></div>`}
+      <div class="sort-msg ${msgCls}" aria-live="polite">${card?esc(msg):""}</div>
+      <div class="piles">${b.piles.map((p,i)=>`<button class="pile" data-p="${i}" ${card?"":"disabled"}><b>${esc(p)}</b>${placed[i].map(t=>`<span class="placed">${esc(t)}</span>`).join("")}</button>`).join("")}</div>
+      ${card?"":`<div class="btnrow"><button class="btn ghost" data-r="1">Start again</button></div>`}`;
+    el.querySelectorAll(".pile").forEach(x=>x.onclick=()=>{
+      const p=+x.dataset.p;
+      if(p===card.p){ placed[p].push(card.h); deck.shift(); msg="Correct. Tap the pile for the next sentence."; msgCls="ok"; draw(); }
+      else { msg=`Not quite. This isn't ${b.piles[p].toLowerCase()} — try another pile.`; msgCls="no"; draw(true); }
+    });
+    const r=el.querySelector("[data-r]"); if(r) r.onclick=reset;
+  };
+  reset();
+}
+function mountAll(blocks){
+  main.querySelectorAll(".act[data-kind]").forEach((el,k)=>{
+    const b = blocks.filter(x=>["mc","process","sort","match"].includes(x.t))[k];
+    if(b.t==="mc") mountMC(el,b); else if(b.t==="process") mountProcess(el,b); else if(b.t==="match") mountMatch(el,b,{}); else mountSort(el,b);
+  });
+  main.querySelectorAll(".tabs").forEach(tb=>{
+    const tabs=[...tb.querySelectorAll('[role="tab"]')];
+    const sel=i=>tabs.forEach((x,k)=>{ x.setAttribute("aria-selected",k===i); x.tabIndex=k===i?0:-1; document.getElementById(x.getAttribute("aria-controls")).hidden=k!==i; });
+    tabs.forEach((x,i)=>{ x.onclick=()=>sel(i); x.onkeydown=e=>{ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ const n=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length; sel(n); tabs[n].focus(); } }; });
+  });
+  main.querySelectorAll(".flash").forEach(f=>f.onclick=()=>f.setAttribute("aria-pressed", f.getAttribute("aria-pressed")==="true"?"false":"true"));
+}
+
+/* ---------- views ---------- */
+function setBar(kick, title){ $("barKick").textContent = kick; $("barTitle").textContent = title; }
+function footer(){ return `<div class="foot"><span>© Luke Murgatroyd · Academic Skills</span><span style="display:flex;gap:16px;flex-wrap:wrap">${CFG.links.map(l=>`<a href="${l[0]}">${esc(l[1])}</a>`).join("")}</span></div>`; }
+function home(){
+  setBar("Course", CFG.short);
+  const u = units(); const firstOpen = u.find(x=>!isDone(x.id)) || u[0];
+  const started = u.some(x=>isDone(x.id));
+  main.innerHTML = `<div class="col">
+    <div class="wide">${fig("cover","banner")}</div>
+    <div class="cover">
+      <div class="badge"><i>LM</i>${esc(CFG.series)}</div>
+      <h1>${esc(C.title)}</h1>
+      <p class="lede">${esc(C.description)}</p>
+      <a class="btn big" href="#${firstOpen.id}" style="text-align:center;text-decoration:none">${started?"Continue: "+esc(firstOpen.kind):"Start the course"}</a>
+    </div>
+    <div class="lessons">${u.map((x,i)=>`<a class="lcard" href="#${x.id}" style="text-decoration:none;color:inherit"><span class="num ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b>${x.id==="quiz"&&P.quiz?`<small>Best score: ${P.quiz.best}%</small>`:""}</span><span class="go">${isDone(x.id)?"Review":"Open"} →</span></a>`).join("")}</div>
+    ${footer()}</div>`;
+}
+function lesson(n){
+  const L = C.lessons[n]; if(!L) return home();
+  const id = "lesson-"+(n+1), next = units()[n+1];
+  setBar(`Lesson ${n+1} of ${C.lessons.length}`, L.title);
+  uid = 0;
+  const first = L.blocks[0] && L.blocks[0].t==="banner" ? blockHTML(L.blocks[0]) : "";
+  const rest = (first?L.blocks.slice(1):L.blocks);
+  const chunks = [[]]; rest.forEach(b=>{ if(b.t==="cont") chunks.push([]); else chunks[chunks.length-1].push(b); });
+  const total = chunks.length;
+  let opened = isDone(id) ? total : Math.min(total, Math.max(1, P.open[id]||1));
+  const contHTML = k => `<div class="cont" data-k="${k}" ${k>=opened?"hidden":""}>${k===opened-1?`<button class="btn" data-go="${k}">Continue <span aria-hidden="true">↓</span></button>`:`<span class="done">Section ${k+1} of ${total} done</span>`}</div>`;
+  main.innerHTML = `<div class="col lesson">${first}
+    <div><div class="kick">Lesson ${n+1} · ${total} sections</div><h1 style="margin-top:6px">${esc(L.title)}</h1></div>
+    ${chunks.map((ch,k)=>`<div class="chunk" data-k="${k}" ${k>=opened?"hidden":""}>${ch.map(blockHTML).join("")}</div>${k<total-1?contHTML(k):""}`).join("")}
+    <div class="next" id="lessonEnd" ${opened<total?"hidden":""}><small>${isDone(id)?"You've completed this lesson.":"You've reached the end of this lesson."}</small>
+      <button class="btn big" id="doneBtn">${next?`Complete and continue: ${esc(next.kind==="Final check"?"Quiz":next.title)}`:"Complete"}</button>
+      <a href="#" style="color:var(--brand);font-weight:700;font-size:14px">Back to course home</a></div>
+    ${footer()}</div>`;
+  mountAll(rest.filter(b=>b.t!=="cont"));
+  main.addEventListener("click", function go(e){
+    const btn = e.target.closest("[data-go]"); if(!btn) return;
+    const k = +btn.dataset.go; opened = k+2; P.open[id] = opened; save();
+    btn.parentElement.innerHTML = `<span class="done">Section ${k+1} of ${total} done</span>`;
+    const nx = main.querySelector(`.chunk[data-k="${k+1}"]`); nx.hidden = false;
+    const c2 = main.querySelector(`.cont[data-k="${k+1}"]`);
+    if(c2){ c2.hidden=false; c2.innerHTML = `<button class="btn" data-go="${k+1}">Continue <span aria-hidden="true">↓</span></button>`; }
+    else $("lessonEnd").hidden = false;
+    nx.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+  });
+  $("doneBtn").onclick = () => { P.done[id]=true; save(); updateProgress(); location.hash = next ? next.id : ""; };
+}
+let Q = null;
+function quiz(){
+  setBar("Final check", "Quiz");
+  const qs = C.quiz.questions;
+  const startScreen = () => {
+    main.innerHTML = `<div class="col"><div><div class="kick">Final check</div><h1 style="margin-top:6px">Quiz</h1></div>
+      <div class="act"><p class="lede" style="font-size:18px">${qs.length} questions on everything in the course. You need ${C.quiz.pass}% to pass, and you can take it as many times as you like.</p>
+      ${P.quiz?`<div class="fb ${P.quiz.passed?"ok":"no"}"><b>Your best score so far: ${P.quiz.best}%</b><div>${P.quiz.passed?"You've passed this quiz.":"Not passed yet."}</div></div>`:""}
+      <button class="btn big" id="qStart">${P.quiz?"Take the quiz again":"Start the quiz"}</button></div>${footer()}</div>`;
+    $("qStart").onclick = () => { Q = {i:0, res:[]}; question(); };
+  };
+  const question = () => {
+    const q = qs[Q.i], last = Q.i===qs.length-1;
+    main.innerHTML = `<div class="col"><div class="qhead"><span>Question ${Q.i+1} of ${qs.length}</span><span>Pass mark ${C.quiz.pass}%</span></div>
+      <div class="qbar"><i style="width:${(Q.i)/qs.length*100}%"></i></div><div class="act" id="qa"></div></div>`;
+    window.scrollTo(0,0);
+    const el = $("qa");
+    const onNext = () => { if(last) results(); else { Q.i++; question(); } };
+    if(q.t==="mc") mountMC(el, q, {label:"Question "+(Q.i+1), reveal:true, onAnswer:ok=>Q.res[Q.i]=ok, onNext, nextLabel:last?"See my result":"Next question"});
+    else if(q.t==="fitb") mountFITB(el, q, {label:"Question "+(Q.i+1), onAnswer:ok=>Q.res[Q.i]=ok, onNext, last});
+    else mountMatch(el, q, {label:"Question "+(Q.i+1)+" · Matching", onAnswer:ok=>Q.res[Q.i]=ok, onNext, last});
+  };
+  const results = () => {
+    const right = Q.res.filter(Boolean).length, pct = Math.round(right/qs.length*100), passed = pct>=C.quiz.pass;
+    P.quiz = {best: Math.max(pct, P.quiz?P.quiz.best:0), passed: passed || !!(P.quiz&&P.quiz.passed)}; save(); updateProgress();
+    const strip = h => h.replace(/<[^>]+>/g,"");
+    main.innerHTML = `<div class="col"><div><div class="kick">Your result</div><h1 style="margin-top:6px">Quiz complete</h1></div>
+      <div class="act"><div class="score"><b>${pct}%</b><span>${right} of ${qs.length} correct</span></div>
+      <span class="pill ${passed?"ok":"no"}">${passed?"Passed":"Not passed yet · pass mark "+C.quiz.pass+"%"}</span>
+      <div class="review">${qs.map((q,i)=>`<div class="rv"><span class="tick ${Q.res[i]?"done":"no"}">${Q.res[i]?"✓":"✕"}</span><p>${esc(strip(q.q))}</p></div>`).join("")}</div>
+      <div class="btnrow"><button class="btn" id="qAgain">Retake the quiz</button><a class="btn ghost" href="#" style="text-decoration:none">Course home</a></div></div>${footer()}</div>`;
+    $("qAgain").onclick = () => { Q = {i:0,res:[]}; question(); };
+  };
+  startScreen();
+}
+function mountFITB(el, q, opts){
+  let val = "", checked = false, ok = false;
+  const norm = s => s.toLowerCase().replace(/[.,;:!?'"’]/g,"").replace(/\s+/g," ").trim();
+  const draw = () => {
+    const parts = q.q.split(/_{3,}/);
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label} · Fill in the blank</div>`:""}<div class="q">${parts[0]}<input id="fitbIn" class="fitb" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" value="${esc(val)}" ${checked?"disabled":""}>${parts.slice(1).join("")}</div>
+      ${checked?`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct":"Not quite"}</b><div>${ok?q.ok:q.no}</div></div>`:""}
+      <div class="btnrow">${checked?`<button class="btn" data-a="next">${opts.last?"See my result":"Next question"}</button>`:`<button class="btn" data-a="check" ${norm(val)?"":"disabled"}>Submit</button>`}</div>`;
+    const inp = el.querySelector("#fitbIn"), b = el.querySelector("[data-a]");
+    if(!checked){ inp.oninput = () => { val = inp.value; b.disabled = !norm(val); }; inp.onkeydown = e => { if(e.key==="Enter" && norm(val)) b.click(); }; }
+    b.onclick = () => { if(b.dataset.a==="check"){ checked = true; ok = q.a.some(x=>norm(x)===norm(val)); if(opts.onAnswer) opts.onAnswer(ok); draw(); } else opts.onNext(); };
+  };
+  draw();
+}
+function mountMatch(el, q, opts){
+  const terms = shuffle(q.pairs.map(p=>p.a)); let order = shuffle(q.pairs.map((_,i)=>i));
+  let sel = {}, checked = false;
+  const allRight = () => order.every(i=>sel[i]===q.pairs[i].a);
+  const draw = () => {
+    const allSet = order.every(i=>sel[i]); const ok = checked && allRight();
+    const fbText = checked ? (ok ? q.ok : q.no) : "";
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label}</div>`:""}<div class="q">${q.q}</div>
+      <div class="match">${order.map(i=>{ const p=q.pairs[i]; const r = checked && sel[i]===p.a;
+        return `<div class="mrow ${checked?(r?"right":"wrong"):""}"><p>${esc(p.b)}</p>
+          <select data-i="${i}" ${checked?"disabled":""} aria-label="Choose the match for: ${esc(p.b)}"><option value="">Choose…</option>${terms.map(t=>`<option ${sel[i]===t?"selected":""}>${esc(t)}</option>`).join("")}</select>
+          ${checked&&!r&&opts.onNext?`<span class="ans">Answer: ${esc(p.a)}</span>`:""}</div>`;}).join("")}</div>
+      ${checked?`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct":"Not quite"}</b><div>${fbText || (ok?"Every item is matched correctly.":(opts.onNext?"The right answers are shown under each item.":"The items in red aren't right yet. Try again."))}</div></div>`:""}
+      <div class="btnrow">${checked?(opts.onNext?`<button class="btn" data-a="next">${opts.last?"See my result":"Next question"}</button>`:(ok?"":`<button class="btn ghost" data-a="retry">Try again</button>`)):`<button class="btn" data-a="check" ${allSet?"":"disabled"}>Submit</button>`}</div>`;
+    el.querySelectorAll("select").forEach(s=>s.onchange=()=>{ sel[+s.dataset.i]=s.value; draw(); });
+    const b = el.querySelector("[data-a]");
+    if(b) b.onclick = () => {
+      if(b.dataset.a==="check"){ checked=true; if(opts.onAnswer) opts.onAnswer(allRight()); draw(); }
+      else if(b.dataset.a==="retry"){ checked=false; order.forEach(i=>{ if(sel[i]!==q.pairs[i].a) delete sel[i]; }); draw(); }
+      else opts.onNext();
+    };
+  };
+  draw();
+}
+
+/* ---------- drawer + routing ---------- */
+function drawer(open){
+  $("drawer").hidden = !open; $("scrim").hidden = !open; $("menuBtn").setAttribute("aria-expanded", open);
+  if(open){
+    const cur = location.hash.slice(1);
+    $("drawer").innerHTML = `<h2>${esc(C.title)}</h2>
+      <a class="navitem" href="#" ${!cur?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick">⌂</span><span><b>Course home</b></span></a>
+      ${units().map((x,i)=>`<a class="navitem" href="#${x.id}" ${cur===x.id?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b></span></a>`).join("")}
+      <button class="closebtn" id="closeD">Close</button>`;
+    $("closeD").onclick = () => drawer(false);
+    $("drawer").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>drawer(false)));
+    $("drawer").querySelector("a").focus();
+  }
+}
+$("menuBtn").onclick = () => drawer($("drawer").hidden);
+$("scrim").onclick = () => drawer(false);
+document.addEventListener("keydown", e => { if(e.key==="Escape" && !$("drawer").hidden) drawer(false); });
+function route(){
+  const fresh = main.cloneNode(false); main.replaceWith(fresh); main = fresh;
+  const h = location.hash.slice(1); const m = /^lesson-(\d+)$/.exec(h);
+  if(m) lesson(+m[1]-1); else if(h==="quiz") quiz(); else home();
+  updateProgress(); window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+})();
+</script>
+</body>
+</html>
