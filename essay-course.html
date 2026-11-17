@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Academic Essay Structure · Luke Murgatroyd</title>
+<meta name="description" content="Mastering Basic Academic Essay Structure and Integrity: a short course on essay structure, academic vocabulary and paragraph building, with practice activities and a quiz. By Luke Murgatroyd.">
+<meta property="og:title" content="Academic Essay Structure · Luke Murgatroyd">
+<meta property="og:description" content="A short course on essay structure, academic vocabulary and paragraph building, with practice activities and a quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: single-column course reader — sticky top bar with lesson menu and progress; home, lesson and quiz views swap in place. */
+:root{
+  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6; --accent:#E8742F; --accent-soft:#FDEBDF;
+  --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5;
+  --ill-bg:#E6EEF7; --ill-desk:#D9C3A3; --ill-desk2:#C8AE8A; --ill-paper:#FFFFFF; --ill-line:#B9C6D6; --ill-1:#02437E; --ill-2:#6FA3D6; --ill-3:#E8742F; --ill-4:#9DB7CF;
+  --f-read:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47; --accent:#F29A62; --accent-soft:#3A2516;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A;
+  --ill-bg:#18263A; --ill-desk:#6B5A44; --ill-desk2:#57493A; --ill-paper:#E9EEF4; --ill-line:#7F8FA3; --ill-1:#79AEEA; --ill-2:#3E6C9C; --ill-3:#F29A62; --ill-4:#4D6680;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47; --accent:#F29A62; --accent-soft:#3A2516;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A;
+  --ill-bg:#18263A; --ill-desk:#6B5A44; --ill-desk2:#57493A; --ill-paper:#E9EEF4; --ill-line:#7F8FA3; --ill-1:#79AEEA; --ill-2:#3E6C9C; --ill-3:#F29A62; --ill-4:#4D6680;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding-block:10px}
+.menu-btn{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:10px;height:40px;padding:0 12px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.menu-btn i{display:block;width:16px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
+.bar-title{flex:1;min-width:0}
+.bar-title span{display:block;font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.bar-title b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{flex:none;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:64px}
+.prog b{display:block;font-size:15px;color:var(--brand)}
+.progline{height:4px;background:var(--brand-soft)}
+.progline i{display:block;height:100%;width:0;background:var(--brand);transition:width .4s}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(5,12,24,.45);z-index:40}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(340px,88vw);background:var(--surface);z-index:41;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto;display:flex;flex-direction:column;gap:6px;box-shadow:4px 0 24px rgba(0,0,0,.18)}
+.drawer h2{font-family:var(--f-read);font-weight:600;font-size:19px;line-height:1.25;margin:0 0 10px}
+.navitem{display:flex;gap:12px;align-items:center;text-align:left;border:0;background:transparent;border-radius:10px;padding:10px;width:100%}
+.navitem:hover{background:var(--bg)}
+.navitem[aria-current="page"]{background:var(--brand-soft)}
+.navitem small{display:block;font-size:12px;color:var(--muted)}
+.navitem b{display:block;font-size:15px;line-height:1.3}
+.tick{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.tick.done{background:var(--good);border-color:var(--good);color:var(--surface)}
+.drawer .closebtn{align-self:flex-start;margin-top:12px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-weight:700}
+
+/* page */
+main{max-width:880px;margin:0 auto;padding-block:20px 56px}
+.col{max-width:68ch;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-read);font-weight:600;font-size:clamp(28px,6vw,40px);line-height:1.12;margin:0;text-wrap:balance}
+h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;margin:0 0 8px;text-wrap:balance}
+.prose{font-family:var(--f-read);font-size:18px;line-height:1.65}
+.prose p{margin:0 0 .8em}.prose p:last-child{margin-bottom:0}
+.lede{font-family:var(--f-read);font-size:19px;line-height:1.6;color:var(--muted);margin:0}
+
+/* figures */
+.fig{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--ill-bg)}
+.fig svg{display:block;width:100%;height:auto}
+.fig .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fig.banner{border-radius:0 0 14px 14px}
+.fig .cap{position:relative;padding:10px 18px;background:var(--ill-1);color:var(--ill-bg);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.fig .cap p{margin:0}
+.wide{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+@media (min-width:760px){.wide{margin-inline:-48px}.fig.banner{border-radius:14px}}
+
+/* numbered list */
+.nlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.nlist li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;font-family:var(--f-read);font-size:18px;line-height:1.55}
+.nlist li > span{width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-family:var(--f-ui);font-weight:700;font-size:14px;margin-top:1px}
+.nlist p{margin:0}
+
+/* accordion */
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 4px;font-weight:700;font-size:17px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-size:20px;line-height:1}
+.acc details[open] summary::after{content:"–"}
+.acc .prose{padding:0 4px 18px;font-size:17px}
+
+/* activity card */
+.act{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.act .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.act .q{font-size:18px;font-weight:700;line-height:1.4}
+.act .q p{margin:0}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px;font-size:16px}
+.choice p{margin:0}
+.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.choice[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.choice[aria-checked="true"] .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 45%,transparent 50%)}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.right .dot{border-color:var(--good);background:radial-gradient(circle,var(--good) 45%,transparent 50%)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.wrong .dot{border-color:var(--bad);background:radial-gradient(circle,var(--bad) 45%,transparent 50%)}
+.fb{border-radius:10px;padding:12px 14px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.fb.ok{background:var(--good-soft)} .fb.no{background:var(--bad-soft)}
+.fb b{font-size:15px} .fb.ok b{color:var(--good)} .fb.no b{color:var(--bad)}
+.fb p{margin:0}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:700;padding:12px 18px;font-size:16px}
+.btn:disabled{opacity:.45}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.big{width:100%;padding:15px 18px;font-size:17px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.flash{perspective:900px;border:0;padding:0;background:transparent;min-height:170px;text-align:center}
+.flash .in{position:relative;display:block;width:100%;height:100%;min-height:170px;transition:transform .5s;transform-style:preserve-3d}
+.flash[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.flash .front{background:var(--brand);color:var(--brand-ink);font-family:var(--f-read);font-size:22px}
+.flash .back{background:var(--surface);border:1.5px solid var(--brand);transform:rotateY(180deg);font-size:15.5px;line-height:1.45}
+.flash small{font-family:var(--f-ui);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+@media (prefers-reduced-motion:reduce){.flash .in{transition:none}}
+
+/* process */
+.proc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.proc-dots{display:flex;gap:6px}
+.proc-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.proc-dots i.on{background:var(--brand);width:22px;border-radius:4px}
+.proc-step{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.proc-body h3{font-family:var(--f-read);font-weight:600;font-size:21px;margin:0 0 8px;line-height:1.3}
+.proc-body .prose{font-size:17px}
+
+/* sorting */
+.sort-card{border-radius:12px;background:var(--accent-soft);border:1.5px solid var(--accent);padding:16px;font-family:var(--f-read);font-size:17px;line-height:1.5}
+.sort-card.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.sort-card.shake{animation:none}}
+.piles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.pile{border:1.5px dashed var(--brand);background:var(--brand-soft);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:64px}
+.pile b{color:var(--brand);font-size:15px}
+.pile .placed{font-size:13px;line-height:1.35;background:var(--surface);border-radius:8px;padding:6px 8px;color:var(--ink)}
+.sort-msg{font-size:15px;min-height:1.5em;color:var(--muted)}
+.sort-msg.no{color:var(--bad)} .sort-msg.ok{color:var(--good)}
+
+/* matching */
+.match{display:flex;flex-direction:column;gap:12px}
+.mrow{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:10px;border:1.5px solid var(--line)}
+.mrow.right{border-color:var(--good);background:var(--good-soft)} .mrow.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.mrow p{margin:0;font-size:15.5px}
+.mrow select{font:inherit;font-size:16px;padding:10px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.mrow .ans{font-size:13px;color:var(--good);font-weight:700}
+
+/* home */
+.cover{display:flex;flex-direction:column;gap:20px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.badge i{width:34px;height:34px;border-radius:8px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-style:normal;font-size:13px;letter-spacing:.04em}
+.lessons{display:flex;flex-direction:column;gap:10px}
+.lcard{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:100%}
+.lcard .num{width:40px;height:40px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:16px}
+.lcard .num.done{background:var(--good);color:var(--surface)}
+.lcard b{display:block;font-size:16px;line-height:1.3}
+.lcard small{display:block;font-size:13px;color:var(--muted)}
+.lcard .go{color:var(--brand);font-weight:700;font-size:14px;white-space:nowrap}
+.foot{border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.foot a{color:var(--brand)}
+
+/* lesson end */
+.next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.next small{color:var(--muted);font-size:14px}
+
+/* quiz */
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.score b{font-size:60px;line-height:1;font-variant-numeric:tabular-nums;color:var(--brand)}
+.score span{font-size:20px;color:var(--muted)}
+.pill{display:inline-flex;align-self:flex-start;align-items:center;border-radius:20px;padding:5px 14px;font-weight:700;font-size:15px}
+.pill.ok{background:var(--good-soft);color:var(--good)} .pill.no{background:var(--bad-soft);color:var(--bad)}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted);font-weight:700}
+.qbar{height:6px;border-radius:3px;background:var(--brand-soft);overflow:hidden}
+.qbar i{display:block;height:100%;background:var(--brand)}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:15px}
+.rv .tick{width:24px;height:24px;font-size:12px}
+.rv .tick.no{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.rv p{margin:0}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in gut">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer"><i></i>Lessons</button>
+    <div class="bar-title"><span id="barKick">Course</span><b id="barTitle">Academic Essay Structure</b></div>
+    <div class="prog" aria-live="polite"><b id="progPct">0%</b>complete</div>
+  </div>
+  <div class="progline"><i id="progLine"></i></div>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<nav class="drawer" id="drawer" aria-label="Course contents" hidden></nav>
+<main class="gut" id="main"></main>
+
+<script>
+(function(){
+const C = {"title": "Mastering Basic Academic Essay Structure and Integrity", "description": "Are you ready to write clear, effective essays for university? This course will guide you step-by-step through the basics of academic essay structure and the key skills you need to succeed. Learn how to plan your writing, use important academic vocabulary, and follow the rules of academic integrity. With simple explanations and practical examples, you will build confidence and prepare for your academic journey.", "lessons": [{"title": "Understanding the Structure of an Academic Essay", "blocks": [{"t": "banner", "img": "lesson1-banner", "cap": "<p>ACADEMIC SKILLS SERIES - UNIT ONE; ESSAY STRUCTURE<\/p>"}, {"t": "text", "h": "Why Essay Structure Matters", "p": "<p>Understanding how to structure an academic essay is one of the most important skills for university success. A clear structure helps your ideas flow logically, makes your writing easier to follow, and shows your reader that you understand academic expectations. By mastering essay structure, you will be able to communicate your arguments more effectively and earn better marks.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will learn the basics of academic essay structure. By the end, you will be able to:<\/p>"}, {"t": "list", "items": ["<p>Identify the three main parts of an academic essay<\/p>", "<p>Explain what each part does<\/p>", "<p>Use the 10-80-10 rule to plan your essay<\/p>", "<p>Make a simple essay plan (skeleton)<\/p>"]}, {"t": "image", "img": "essay-proportions", "cap": ""}, {"t": "text", "h": "The Shape of an Academic Essay", "p": "<p>An academic essay has three main parts: the introduction, the body, and the conclusion. The introduction should be <em>about<\/em> 10% of your total word count, the body should be <em>about<\/em> 80%, and the conclusion should be <em>about<\/em> 10%. This is called the 10-80-10 rule. Most of your words - and your marks - come from the body, where you present your main points and evidence.<\/p>"}, {"t": "text", "h": "What Does Each Part Do?", "p": "<p>Expand each section below to learn what each part of an essay should include and how much space it should take.<\/p>"}, {"t": "acc", "items": [{"h": "Introduction: Purpose and Content", "p": "<p>The introduction is the opening paragraph, <em>about<\/em> 10% of your words. It names the topic, gives your answer (thesis), and tells the reader the order of your points. It sets up the topic, narrows to your position, and provides context. No evidence goes here.<\/p>"}, {"h": "Body: Building Your Argument", "p": "<p>The body is the middle section, <em>about<\/em> 80% of your words. Each paragraph makes one point, starting with a topic sentence. You include evidence from research (with citations) and your own analysis or explanation. Each paragraph should focus on a single idea, not several.<\/p>"}, {"h": "Conclusion: Summing Up", "p": "<p>The conclusion is the final paragraph, <em>about<\/em> 10% of your words. It repeats your main points in new language, draws everything together, and answers the 'so what?' question. No new evidence or ideas should appear here. End your essay deliberately, not apologetically.<\/p>"}]}, {"t": "mc", "q": "What percentage of your essay should be the introduction?", "multi": false, "answers": [{"h": "<p><em>around<\/em> 10%<\/p>", "c": true, "f": "The introduction should be about 10% of your total word count, providing a brief overview and setting up your argument."}, {"h": "<p><em>around<\/em> 30%<\/p>", "c": false, "f": "30% is far too much for an introduction; this would leave little room for your main argument and evidence."}, {"h": "<p><em>around <\/em>80%<\/p>", "c": false, "f": "80% is incorrect; the introduction should be concise and not take up most of your essay."}, {"h": "<p><em>around<\/em> 50%<\/p>", "c": false, "f": "25% is too much for an introduction; it should be much shorter, around 10%."}]}, {"t": "text", "h": "Key Academic Essay Terms", "p": "<p>Review each flashcard to learn the essential terms you will use when planning and writing academic essays. Understanding these words will help you follow instructions and build strong essays.<\/p>"}, {"t": "flash", "cards": [{"f": "<b>Introduction<\/b>", "b": "The opening paragraph, about 10% of your words. It names the topic and gives your answer."}, {"f": "<b>Body<\/b>", "b": "The middle paragraphs, about 80% of your words. Each one makes one point, with evidence."}, {"f": "<b>Conclusion<\/b>", "b": "The final paragraph, about 10%. It sums up your answer. No new evidence."}, {"f": "<b>Thesis<\/b>", "b": "One sentence in your introduction that gives your answer to the question."}, {"f": "<b>Topic sentence<\/b>", "b": "The first sentence of a body paragraph. It states that paragraph's one point."}]}, {"t": "text", "h": "", "p": "<p>Planning before you write is one of the best ways to save time and improve your essay. By making a simple plan, or 'skeleton,' you can organize your thoughts, see what you still need to research, and make sure your argument is clear. This helps you spot gaps, group related points together, and avoid rewriting later. Ten minutes of planning can prevent an hour of confusion and editing.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Essay Planning with a Skeleton", "p": "<p>Planning your essay using a skeleton helps you organize your ideas and structure your writing before you begin. Follow these steps to create a clear and effective essay plan.<\/p>"}, {"k": "step", "h": "Read the Question Carefully", "p": "<p>Start by reading the essay question closely. Make sure you understand what it is asking and what kind of answer is expected.<\/p>"}, {"k": "step", "h": "Decide Your Position (Thesis)", "p": "<p>Write one sentence that clearly states your answer or position on the question. This will become your thesis statement in the introduction.<\/p>"}, {"k": "step", "h": "Write Topic Sentences", "p": "<p>For each body paragraph, write a topic sentence that makes one clear point supporting your thesis. Each topic sentence should be different and add to your argument.<\/p>"}, {"k": "step", "h": "Note the Conclusion's Main Idea", "p": "<p>Write one sentence for your conclusion that sums up your answer and explains why it matters. Do not add new evidence here.<\/p>"}, {"k": "step", "h": "Check Your Plan and Word Count", "p": "<p>Review your skeleton to make sure your points are in a logical order and that you have planned the right amount of words for each section (10% introduction, 80% body, 10% conclusion).<\/p>"}, {"k": "summary", "h": "Ready to Write", "p": "<p>With your skeleton complete, you have a clear plan to follow. This will make writing your essay faster and more focused.<\/p>"}]}, {"t": "mc", "q": "Which sentence is the thesis statement in the essay skeleton notes?", "multi": false, "answers": [{"h": "Tourism can bring jobs but also problems.", "c": true, "f": "This sentence gives the overall answer to the essay question and sets up the discussion for the rest of the essay, making it the thesis statement."}, {"h": "Tourism creates jobs, but most are seasonal and low paid.", "c": false, "f": "This is a topic sentence for a body paragraph, focusing on one specific aspect of tourism's impact."}, {"h": "Local businesses may benefit, but big companies often take most profits.", "c": false, "f": "This is another topic sentence for a body paragraph, not the thesis statement."}, {"h": "In conclusion, tourism has both positive and negative effects, so local voices must be heard.", "c": false, "f": "This is the concluding sentence, not the thesis statement."}]}, {"t": "image", "img": "essay-skeleton", "cap": ""}, {"t": "text", "h": "Sample Skeleton Outline: University Education Essay", "p": "<p><strong>Thesis:<\/strong> University education should be free for all students who qualify for a place.<\/p><p><strong>Body Paragraph 1:<\/strong> High fees keep able students out of university, so talent is wasted.<\/p><p><strong>Body Paragraph 2:<\/strong> Graduates pay the cost back through higher taxes.<\/p><p><strong>Body Paragraph 3:<\/strong> Free education helps everyone, not only the graduate.<\/p><p><strong>Conclusion:<\/strong> Free university education is an investment, not a cost, because everyone gains.<\/p>"}, {"t": "mc", "q": "Does each body paragraph make only one point?", "multi": false, "answers": [{"h": "Yes", "c": true, "f": "Correct. Each body paragraph should focus on a single point to maintain clarity and coherence."}, {"h": "No", "c": false, "f": "Incorrect. If a body paragraph covers multiple points, it can confuse the reader and weaken the argument."}]}]}, {"title": "Key Academic Writing Terms and Building Effective Paragraphs", "blocks": [{"t": "banner", "img": "lesson2-banner", "cap": ""}, {"t": "text", "h": "Key Terms and Strong Paragraphs", "p": "<p>Understanding key academic writing terms is essential for building strong, clear paragraphs in your essays. Knowing these terms will help you organize your ideas, explain your points, and meet university expectations. Mastering this language will make academic writing easier and help you succeed in your studies.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will learn important skills to improve your academic writing. Review the objectives below to see what you will achieve by the end of this lesson.<\/p>"}, {"t": "list", "items": ["<p>Know the meaning of key academic writing words<\/p>", "<p>Understand how to build a strong body paragraph<\/p>", "<p>Practise writing topic sentences and analysis<\/p>"]}, {"t": "text", "h": "Key Terms for Academic Paragraphs", "p": "<p>Review each flashcard to learn the most important terms for building academic paragraphs. These words will help you understand and use the language of academic writing.<\/p>"}, {"t": "flash", "cards": [{"f": "<strong>Thesis Statement<\/strong>", "b": "One sentence in your introduction that gives your answer to the question."}, {"f": "<strong>Topic Sentence<\/strong>", "b": "The first sentence of a body paragraph. It states that paragraph's one point."}, {"f": "<strong>Evidence<\/strong>", "b": "Facts, data or ideas from a source that support your point."}, {"f": "<strong>Analysis<\/strong>", "b": "Your explanation of why the evidence supports your point."}, {"f": "<strong>Signpost<\/strong>", "b": "A word or phrase that shows the reader where you are going next, like 'Firstly' or 'However'."}, {"f": "<strong>Argument<\/strong>", "b": "Your overall answer to the question, built up across every paragraph."}]}, {"t": "text", "h": "How Key Terms Work Together in a Body Paragraph", "p": "<p>Expand each section to see how these key terms fit together when writing a body paragraph. Understanding their roles will help you build clear, logical arguments in your essays.<\/p>"}, {"t": "acc", "items": [{"h": "Thesis – Its Place and Purpose", "p": "<p>The thesis appears in your introduction and gives your answer to the essay question. It is the main idea that your whole essay will support. Every body paragraph should connect back to your thesis.<\/p><p><\/p><p>The thesis helps you stay focused and makes your argument clear to the reader.<\/p>"}, {"h": "Topic Sentence – Starting Each Paragraph", "p": "<p>The topic sentence is the first sentence of each body paragraph. It states the one point that paragraph will make, in your own words. This helps the reader know what to expect in the paragraph.<\/p><p><\/p><p>Each topic sentence should be different and add a new reason or idea to your argument.<\/p>"}, {"h": "Evidence – Supporting Your Point", "p": "<p>Evidence is facts, data, or ideas from a source that support your point. You must cite your source to show where the information comes from. Good evidence makes your argument stronger.<\/p><p><\/p><p>Each body paragraph should include evidence after the topic sentence to prove your point.<\/p>"}, {"h": "Analysis – Explaining the Evidence", "p": "<p>Analysis is your explanation of why the evidence supports your point. It shows your understanding and connects the evidence back to your argument.<\/p><p><\/p><p>After giving evidence, always explain its importance in your own words.<\/p>"}]}, {"t": "mc", "q": "Which of the following best describes a topic sentence?", "multi": false, "answers": [{"h": "A sentence that gives your answer to the essay question", "c": false, "f": "This describes a thesis statement, not a topic sentence."}, {"h": "The first sentence of a body paragraph stating its main point", "c": true, "f": "Correct! The topic sentence states the main point of the paragraph."}, {"h": "A fact or statistic from a source", "c": false, "f": "This describes evidence, not a topic sentence."}, {"h": "A word or phrase that links paragraphs", "c": false, "f": "This describes a signpost, not a topic sentence."}]}, {"t": "image", "img": "students-campus", "cap": ""}, {"t": "text", "h": "Example Body Paragraph", "p": "<p>First, high fees keep able students out of university. Richer families can pay the cost, but families with a low income often decide the risk is too big. Students from the poorest areas apply about a third less often than students from the richest areas (Ahmed, 2024). This matters because places go to students with money, not to the best students, so talent is wasted.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction – Start with a Clear Point", "p": "<p>Write a topic sentence in your own words. This sentence should state the one point your paragraph will make.<\/p>"}, {"k": "step", "h": "Add Evidence – Support Your Point", "p": "<p>Include facts, data, or ideas from a source to back up your topic sentence. Remember to cite your source.<\/p>"}, {"k": "step", "h": "Explain with Analysis – Connect Evidence to Your Point", "p": "<p>After giving evidence, explain why it supports your point. This shows your understanding and links the evidence to your argument.<\/p>"}, {"k": "step", "h": "Link Forward – Connect to the Next Point", "p": "<p>End your paragraph by linking forward to the next idea or paragraph. This helps your essay flow smoothly.<\/p>"}, {"k": "summary", "h": "Summary – One Point per Paragraph", "p": "<p>Each body paragraph should focus on one point only. If you have more than one point, start a new paragraph.<\/p>"}]}, {"t": "text", "h": "Sorting Body Paragraph Sentences", "p": "<p>Sort the sentences into the correct category to see how a body paragraph is built. This activity will help you recognize topic sentences, evidence, and analysis in real examples.<\/p>"}, {"t": "sort", "piles": ["Topic Sentence", "Evidence", "Analysis"], "cards": [{"h": "First, high fees keep able students out of university.", "p": 0}, {"h": "Students from the poorest areas apply about a third less often than students of", "p": 1}, {"h": "This matters because places go to students with money, not to the best students,", "p": 2}]}, {"t": "text", "h": "", "p": "<p>In academic writing, it is important to use evidence from sources to support your points. Always explain why your evidence is relevant by adding your own analysis. This shows your understanding and helps your reader follow your argument. Using sources and analysis is expected in university essays and will make your writing stronger.<\/p>"}, {"t": "image", "img": "paragraph-structure", "cap": ""}, {"t": "text", "h": "Skeleton for a Body Paragraph", "p": "<p>Topic sentence: Tourism creates jobs, but most are seasonal and low paid.<br>Evidence: [Insert source or data about tourism jobs] + {Cite source}<br>Analysis: This means that while tourism brings work, it does not always provide stable income for local people.<\/p>"}, {"t": "mc", "q": "Which of the following is the best topic sentence for an essay about the impact of tourism on local communities?", "multi": false, "answers": [{"h": "Tourism can boost local economies, but it may also disrupt traditional ways of life.", "c": true, "f": "This sentence introduces both a positive and a negative impact, setting up a balanced discussion about tourism's effects on local communities."}, {"h": "Many people like to travel to new places for fun and relaxation.", "c": false, "f": "This sentence focuses on tourists' motivations, not the impact on local communities."}, {"h": "Tourism is a popular activity around the world.", "c": false, "f": "This sentence is too general and does not address the impact on local communities."}, {"h": "Some tourists take photos when they visit new places.", "c": false, "f": "This sentence is too specific and does not address the broader impact on local communities."}]}]}], "quiz": {"title": "Quiz", "pass": 80, "questions": [{"t": "mc", "q": "In the 10-80-10 rule, the body of an academic essay should take about 80% of the total word count.", "multi": false, "answers": [{"h": "True", "c": true, "f": "Correct. The 10-80-10 rule means the introduction is about 10%, the body is about 80%, and the conclusion is about 10% of the essay."}, {"h": "False", "c": false, "f": "Incorrect. In the 10-80-10 rule, the body is the main section and should be about 80% of the total word count, while the introduction and conclusion are about 10% each."}]}, {"t": "mc", "q": "Which sentence best shows the role of a topic sentence in a strong academic paragraph?", "multi": false, "answers": [{"h": "It states the essay’s overall answer in the introduction.", "c": false, "f": "This describes a thesis statement, which presents the main argument of the whole essay rather than the main point of one body paragraph."}, {"h": "It explains why the evidence is important to the argument.", "c": false, "f": "This describes analysis, which comes after evidence and shows how the support connects to the writer’s point."}, {"h": "It introduces the main point that the paragraph will develop.", "c": true, "f": "A topic sentence tells the reader the main idea of the paragraph before the supporting details follow."}, {"h": "It gives source details that support the paragraph’s main point.", "c": false, "f": "This describes evidence, not a topic sentence. Evidence supports the point with facts, data, or ideas from a source after the main point has been introduced."}]}, {"t": "match", "q": "Match each part of an essay skeleton to what it does in the plan. Focus on how each sentence helps organize the essay before writing begins.", "pairs": [{"a": "Thesis statement", "b": "Gives the writer's overall answer or position on the question and guides the whole essay"}, {"a": "Topic sentence for a body paragraph", "b": "States one clear point that supports the main argument in a single body paragraph"}, {"a": "Concluding sentence", "b": "Brings the argument together at the end and explains the importance of the overall answer"}, {"a": "Body paragraph topic sentences as a set", "b": "Maps out the main supporting ideas that will appear in the essay's middle section"}], "ok": "Correct. In an essay skeleton, the thesis statement gives the overall answer, each topic sentence plans one supporting body paragraph, the set of topic sentences maps the main argument, and the concluding sentence sums up the answer and its significance.", "no": "Incorrect. These parts of an essay skeleton do different jobs: the thesis gives the main answer, each topic sentence plans one body point, the body topic sentences together shape the middle of the essay, and the concluding sentence brings the argument to a close without adding new evidence."}, {"t": "mc", "q": "Which set correctly identifies the three main parts of an academic essay?", "multi": false, "answers": [{"h": "Title, body, conclusion", "c": false, "f": "A title may appear on an essay, but it is not one of the three main structural parts of the essay itself."}, {"h": "Introduction, body, conclusion", "c": true, "f": "These are the three standard parts of an academic essay."}, {"h": "Introduction, evidence, conclusion", "c": false, "f": "Evidence is something used within body paragraphs, not a main part of the essay structure."}, {"h": "Introduction, thesis, conclusion", "c": false, "f": "A thesis is usually a sentence within the introduction, not a separate main part of the essay."}]}, {"t": "mc", "q": "A student writes this topic sentence: \"University libraries improve student success by giving access to academic support resources.\" Which sentence works best as evidence to support this point?", "multi": false, "answers": [{"h": "Library staff can explain how to search databases, although some students prefer studying with friends off campus.", "c": false, "f": "This option mixes a relevant detail with an unrelated comment, so it does not work as strong evidence for the point. The second part weakens the support instead of clearly backing the topic sentence."}, {"h": "A topic sentence should come first in the paragraph and introduce the writer’s main point clearly.", "c": false, "f": "This statement is true about paragraph structure, but it is not evidence supporting the topic sentence. It explains a writing concept instead of supplying support for the argument."}, {"h": "University libraries usually have quiet spaces, comfortable seating, and long opening hours for students.", "c": false, "f": "This option sounds relevant to libraries, but it does not provide evidence about academic support resources improving student success. It describes library features rather than support for the specific point being argued."}, {"h": "A campus survey found that students who used library tutoring and research help completed assignments more successfully than those who did not.", "c": true, "f": "This sentence provides source-based information that directly supports the claim that libraries improve student success through academic support resources."}]}, {"t": "mc", "q": "A student is reviewing an essay before submission. Which action best shows academic integrity?", "multi": false, "answers": [{"h": "Adding extra details to make the essay sound more impressive.", "c": false, "f": "This choice may seem related to improving academic work, but sounding impressive is not the main measure of academic integrity. The key issue is honesty, responsibility, and proper credit for borrowed ideas or information."}, {"h": "Changing a few words from the source and leaving out the citation.", "c": false, "f": "This choice sounds plausible because the student has edited the original wording, but it still fails to credit the source. Academic integrity requires both honest use of ideas and proper acknowledgment of where they came from."}, {"h": "Writing a strong conclusion without including any new evidence.", "c": false, "f": "This is a good essay-writing practice, but it does not directly show the main principle being tested here. Academic integrity is specifically about honest work, following rules, and giving credit when using others’ ideas."}, {"h": "Using the source in their own words and adding a citation.", "c": true, "f": "This action shows honesty and responsibility by giving credit to the original source while presenting the work appropriately."}]}, {"t": "mc", "q": "A student is planning an academic essay and wants each section to do its proper job. Which option best explains the purpose of the introduction, body, and conclusion?", "multi": false, "answers": [{"h": "The introduction gives detailed evidence, the body states the topic, and the conclusion adds one final supporting source.", "c": false, "f": "This choice includes essay-related tasks, but it assigns them to the wrong sections. Evidence belongs in the body, while the introduction sets up the topic and thesis, and the conclusion should close the essay rather than introduce more support."}, {"h": "The introduction outlines one paragraph point, the body repeats the thesis, and the conclusion presents the main evidence.", "c": false, "f": "This distractor uses real essay terms, but it applies them incorrectly. A single paragraph point belongs to a body paragraph, the body should expand the argument rather than merely repeat the thesis, and the conclusion should summarize instead of presenting main evidence."}, {"h": "The introduction gives the final judgment, the body lists sources, and the conclusion explains the essay question.", "c": false, "f": "This option refers to relevant essay activities, but it confuses their order and purpose. The introduction explains the topic and thesis, the body develops points with evidence and analysis, and the conclusion gives the final wrap-up rather than the introduction’s job."}, {"h": "The introduction presents the topic and thesis, the body develops the argument with evidence, and the conclusion brings the main points together.", "c": true, "f": "This option correctly matches each essay section with its main purpose."}]}]}};
+const KEY = "lm-essay-course-v1";
+const $ = id => document.getElementById(id);
+const main = $("main");
+
+/* ---------- saved progress (this browser only) ---------- */
+let P = {done:{}, quiz:null};
+try{ const v = localStorage.getItem(KEY); if(v) P = Object.assign(P, JSON.parse(v)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+const units = () => [...C.lessons.map((l,i)=>({id:"lesson-"+(i+1), title:l.title, kind:"Lesson "+(i+1)})), {id:"quiz", title:"Quiz", kind:"Final check"}];
+const isDone = id => id==="quiz" ? !!(P.quiz && P.quiz.passed) : !!P.done[id];
+function updateProgress(){
+  const u = units(), n = u.filter(x=>isDone(x.id)).length, pct = Math.round(n/u.length*100);
+  $("progPct").textContent = pct+"%"; $("progLine").style.width = pct+"%";
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; };
+
+/* ---------- illustrations (original artwork; drop a photo named essay-images/<slot>.jpg next to this page to replace one) ---------- */
+const S = {
+ "lesson1-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/><rect y="250" width="1360" height="140" fill="var(--ill-desk)"/><rect y="250" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(250 150)"><rect width="120" height="84" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="18" y="22" width="70" height="6" rx="3" fill="var(--ill-3)"/><rect x="18" y="40" width="84" height="5" rx="2.5" fill="var(--ill-line)"/><rect x="18" y="54" width="60" height="5" rx="2.5" fill="var(--ill-line)"/></g>
+   <g transform="translate(450 120)">${[0,1,2,3,4,5].map(i=>`<g transform="translate(${i*72} ${i%2?14:0})"><rect width="120" height="110" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="16" y="20" width="62" height="6" rx="3" fill="var(--ill-1)"/><rect x="16" y="38" width="88" height="5" rx="2.5" fill="var(--ill-line)"/><rect x="16" y="52" width="80" height="5" rx="2.5" fill="var(--ill-line)"/><rect x="16" y="66" width="70" height="5" rx="2.5" fill="var(--ill-line)"/></g>`).join("")}</g>
+   <g transform="translate(990 150)"><rect width="120" height="84" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="18" y="22" width="70" height="6" rx="3" fill="var(--ill-3)"/><rect x="18" y="40" width="84" height="5" rx="2.5" fill="var(--ill-line)"/><rect x="18" y="54" width="60" height="5" rx="2.5" fill="var(--ill-line)"/></g>
+   <g transform="translate(1180 186)"><rect width="74" height="80" rx="10" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M74 18h12a16 16 0 0 1 0 32H74" fill="none" stroke="var(--ill-line)" stroke-width="7"/></g>
+   <g transform="translate(110 270) rotate(-8)"><rect width="150" height="10" rx="5" fill="var(--ill-1)"/><path d="M150 0l18 5-18 5z" fill="var(--ill-1)"/></g></svg>`,
+ "essay-proportions": `<svg viewBox="0 0 1280 720" role="img" aria-label="Diagram: introduction about 10 percent, body about 80 percent, conclusion about 10 percent of the words"><rect width="1280" height="720" fill="var(--ill-bg)"/>
+   <text x="640" y="120" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="40" font-weight="700" fill="var(--ill-1)">The 10-80-10 rule</text>
+   <g transform="translate(100 260)"><rect width="108" height="180" rx="12" fill="var(--ill-3)"/><rect x="120" width="840" height="180" rx="12" fill="var(--ill-1)"/><rect x="972" width="108" height="180" rx="12" fill="var(--ill-3)"/>
+   <line x1="400" y1="18" x2="400" y2="162" stroke="var(--ill-bg)" stroke-width="3" stroke-dasharray="10 8"/><line x1="680" y1="18" x2="680" y2="162" stroke="var(--ill-bg)" stroke-width="3" stroke-dasharray="10 8"/>
+   <text x="260" y="102" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="26" fill="var(--ill-bg)">Point 1</text><text x="540" y="102" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="26" fill="var(--ill-bg)">Point 2</text><text x="820" y="102" text-anchor="middle" font-family="Atkinson Hyperlegible, sans-serif" font-size="26" fill="var(--ill-bg)">Point 3</text>
+   <g font-family="Atkinson Hyperlegible, sans-serif" text-anchor="middle" fill="var(--ill-1)"><text x="54" y="240" font-size="30" font-weight="700">10%</text><text x="540" y="240" font-size="30" font-weight="700">80%</text><text x="1026" y="240" font-size="30" font-weight="700">10%</text>
+   <text x="54" y="230" dy="250" font-size="26">Introduction</text><text x="540" y="230" dy="250" font-size="26">Body paragraphs</text><text x="1026" y="230" dy="250" font-size="26">Conclusion</text></g></g></svg>`,
+ "essay-skeleton": `<svg viewBox="0 0 1280 720" role="img" aria-label="Essay skeleton plan: thesis in the introduction, one topic sentence for each body paragraph, and the main idea of the conclusion"><rect width="1280" height="720" fill="var(--ill-bg)"/>
+   <g transform="translate(250 50)"><rect width="780" height="620" rx="16" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>
+   <text x="40" y="66" font-family="Source Serif 4, Georgia, serif" font-size="30" font-weight="600" fill="var(--ill-1)">Should university education be free?</text>
+   ${[["Introduction","Thesis: your answer","var(--ill-3)"],["Body 1","Topic sentence: point 1","var(--ill-1)"],["Body 2","Topic sentence: point 2","var(--ill-1)"],["Body 3","Topic sentence: point 3","var(--ill-1)"],["Conclusion","Main idea: sum up your answer","var(--ill-3)"]].map((r,i)=>`<g transform="translate(40 ${110+i*98})"><rect width="12" height="72" rx="6" fill="${r[2]}"/><text x="32" y="28" font-family="Atkinson Hyperlegible, sans-serif" font-size="24" font-weight="700" fill="${r[2]}">${r[0]}</text><text x="32" y="60" font-family="Atkinson Hyperlegible, sans-serif" font-size="22" fill="var(--ill-1)" opacity=".75">${r[1]}</text><rect x="420" y="38" width="${220-i*14}" height="8" rx="4" fill="var(--ill-line)"/></g>`).join("")}</g></svg>`,
+ "lesson2-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/>
+   ${[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<g transform="translate(${30+i*112} 30)"><rect width="100" height="10" fill="var(--ill-desk2)"/>${[0,1,2,3,4,5].map(j=>`<rect x="${6+j*15}" y="${-48-(j%3)*8}" width="12" height="${48+(j%3)*8}" rx="2" fill="${["var(--ill-1)","var(--ill-4)","var(--ill-3)","var(--ill-2)"][(i+j)%4]}" opacity=".55"/>`).join("")}</g>`).join("")}
+   <rect y="270" width="1360" height="120" fill="var(--ill-desk)"/><rect y="270" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(560 200)"><path d="M0 70 L120 50 L240 70 L240 90 L120 74 L0 90Z" fill="var(--ill-line)"/><path d="M0 70 C40 40 90 40 120 50 L120 -6 C90 -18 40 -14 0 12Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M240 70 C200 40 150 40 120 50 L120 -6 C150 -18 200 -14 240 12Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/></g>
+   <g transform="translate(400 108)"><rect width="150" height="70" rx="18" fill="var(--ill-1)"/><path d="M40 70l-6 22 28-22z" fill="var(--ill-1)"/><rect x="24" y="22" width="100" height="7" rx="3.5" fill="var(--ill-bg)"/><rect x="24" y="40" width="70" height="7" rx="3.5" fill="var(--ill-bg)"/></g>
+   <g transform="translate(830 92)"><rect width="150" height="70" rx="18" fill="var(--ill-3)"/><path d="M110 70l6 22-28-22z" fill="var(--ill-3)"/><rect x="24" y="22" width="100" height="7" rx="3.5" fill="var(--ill-paper)"/><rect x="24" y="40" width="60" height="7" rx="3.5" fill="var(--ill-paper)"/></g>
+   <g transform="translate(1110 230)">${[0,1,2].map(i=>`<rect x="${i*4}" y="${-i*16}" width="130" height="14" rx="3" fill="${["var(--ill-1)","var(--ill-4)","var(--ill-3)"][i]}"/>`).join("")}</g></svg>`,
+ "students-campus": `<svg viewBox="0 0 1280 720" role="img" aria-label="A university building: a group of students walks in through the doors while three students wait outside"><rect width="1280" height="720" fill="var(--ill-bg)"/>
+   <g transform="translate(560 120)"><path d="M0 120 L310 30 L620 120Z" fill="var(--ill-1)"/><rect x="20" y="120" width="580" height="330" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>${[0,1,2,3,4,5].map(i=>`<rect x="${52+i*96}" y="140" width="30" height="300" fill="var(--ill-4)" opacity=".55"/>`).join("")}<rect x="250" y="270" width="120" height="180" rx="6" fill="var(--ill-1)" opacity=".85"/>${[0,1,2].map(i=>`<rect x="${-10-i*20}" y="${450+i*22}" width="${640+i*40}" height="22" fill="var(--ill-line)"/>`).join("")}</g>
+   <rect y="630" width="1280" height="90" fill="var(--ill-line)" opacity=".5"/>
+   ${[[860,560,"var(--ill-3)"],[920,550,"var(--ill-1)"],[980,560,"var(--ill-2)"],[1040,552,"var(--ill-3)"]].map(p=>`<g transform="translate(${p[0]} ${p[1]})"><circle cx="0" cy="-74" r="20" fill="var(--ill-desk2)"/><path d="M-24 0 L-24 -36 Q-24 -52 -8 -52 L8 -52 Q24 -52 24 -36 L24 0Z" fill="${p[2]}"/><rect x="-18" y="0" width="14" height="44" fill="var(--ill-1)"/><rect x="4" y="0" width="14" height="44" fill="var(--ill-1)"/></g>`).join("")}
+   ${[[140,620],[230,620],[320,620]].map((p,i)=>`<g transform="translate(${p[0]} ${p[1]})" opacity=".8"><circle cx="0" cy="-74" r="20" fill="var(--ill-desk2)"/><path d="M-24 0 L-24 -36 Q-24 -52 -8 -52 L8 -52 Q24 -52 24 -36 L24 0Z" fill="var(--ill-4)"/><rect x="-18" y="0" width="14" height="44" fill="var(--ill-1)" opacity=".7"/><rect x="4" y="0" width="14" height="44" fill="var(--ill-1)" opacity=".7"/></g>`).join("")}
+   <rect x="80" y="664" width="320" height="26" rx="6" fill="var(--ill-desk)" opacity=".8"/></svg>`,
+ "paragraph-structure": `<svg viewBox="0 0 1280 720" role="img" aria-label="Diagram of a body paragraph: topic sentence, then evidence, then analysis, then a link to the next point"><rect width="1280" height="720" fill="var(--ill-bg)"/>
+   ${[["Topic sentence","State one clear point","var(--ill-1)","var(--ill-bg)"],["Evidence","Support it with a source","var(--ill-2)","var(--ill-paper)"],["Analysis","Explain why it matters","var(--ill-3)","var(--ill-paper)"],["Link","Lead to the next point","var(--ill-paper)","var(--ill-1)"]].map((r,i)=>`<g transform="translate(340 ${70+i*156})"><rect width="600" height="112" rx="16" fill="${r[2]}" stroke="var(--ill-line)" stroke-width="${i==3?2:0}"/><text x="36" y="50" font-family="Atkinson Hyperlegible, sans-serif" font-size="32" font-weight="700" fill="${r[3]}">${r[0]}</text><text x="36" y="86" font-family="Atkinson Hyperlegible, sans-serif" font-size="24" fill="${r[3]}" opacity=".85">${r[1]}</text>${i<3?`<path d="M300 118 v26 m-12 -12 l12 12 l12 -12" fill="none" stroke="var(--ill-1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`:""}</g>`).join("")}</svg>`,
+ "cover": `<svg viewBox="0 0 1280 720" aria-hidden="true"><rect width="1280" height="720" fill="var(--ill-bg)"/><rect y="500" width="1280" height="220" fill="var(--ill-desk)"/><rect y="500" width="1280" height="12" fill="var(--ill-desk2)"/>
+   <g transform="translate(330 170)"><path d="M0 360 L310 330 L620 360 L620 380 L310 352 L0 380Z" fill="var(--ill-line)"/><path d="M0 360 C90 320 220 316 310 330 L310 0 C220 -14 90 -10 0 24Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M620 360 C530 320 400 316 310 330 L310 0 C400 -14 530 -10 620 24Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>
+   <rect x="40" y="58" width="150" height="10" rx="5" fill="var(--ill-3)"/>${[0,1,2,3,4,5,6,7].map(i=>`<rect x="40" y="${92+i*28}" width="${230-(i%3)*30}" height="7" rx="3.5" fill="${i>0&&i<6?"var(--ill-1)":"var(--ill-3)"}" opacity="${i>0&&i<6?.45:.8}"/>`).join("")}
+   ${[0,1,2,3,4,5,6,7,8].map(i=>`<rect x="340" y="${66+i*28}" width="${240-(i%4)*28}" height="7" rx="3.5" fill="var(--ill-line)"/>`).join("")}
+   <circle cx="540" cy="300" r="34" fill="var(--good, #1B7443)" opacity=".9"/><path d="M523 300l12 12 22-24" fill="none" stroke="var(--ill-paper)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+   <g transform="translate(990 450) rotate(-28)"><rect width="200" height="16" rx="8" fill="var(--ill-1)"/><path d="M200 0l26 8-26 8z" fill="var(--ill-1)"/></g>
+   <g transform="translate(150 380)"><rect width="110" height="120" rx="14" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M110 28h18a24 24 0 0 1 0 48h-18" fill="none" stroke="var(--ill-line)" stroke-width="10"/></g></svg>`
+};
+function fig(slot, cls, cap){
+  return `<figure class="fig ${cls||""}" data-slot="${slot}">${S[slot]||""}<img class="photo" src="essay-images/${slot}.jpg" alt="" loading="lazy" onerror="this.remove()">${cap?`<figcaption class="cap">${cap}</figcaption>`:""}</figure>`;
+}
+
+/* ---------- blocks ---------- */
+let uid = 0;
+function blockHTML(b){
+  const id = "b"+(++uid);
+  switch(b.t){
+    case "banner": return `<div class="wide">${fig(b.img,"banner",b.cap)}</div>`;
+    case "image": return fig(b.img,"",b.cap);
+    case "text": return `<section>${b.h?`<h2 class="bh">${esc(b.h)}</h2>`:""}<div class="prose">${b.p}</div></section>`;
+    case "list": return `<ol class="nlist">${b.items.map((x,i)=>`<li><span>${i+1}</span><div>${x}</div></li>`).join("")}</ol>`;
+    case "acc": return `<div class="acc">${b.items.map(x=>`<details><summary>${esc(x.h)}</summary><div class="prose">${x.p}</div></details>`).join("")}</div>`;
+    case "mc": return `<div class="act" data-kind="mc" id="${id}"></div>`;
+    case "flash": return `<div class="act"><div class="label">Flashcards · tap a card to turn it over</div><div class="cards">${b.cards.map(c=>`<button class="flash" aria-pressed="false"><span class="in"><span class="face front"><small>Term</small>${c.f}</span><span class="face back"><small>Meaning</small>${c.b}</span></span></button>`).join("")}</div></div>`;
+    case "process": return `<div class="act" data-kind="process" id="${id}"></div>`;
+    case "sort": return `<div class="act" data-kind="sort" id="${id}"></div>`;
+  }
+  return "";
+}
+function mountMC(el, b, opts){
+  opts = opts || {};
+  let pick = null, checked = false;
+  const draw = () => {
+    const a = pick!=null ? b.answers[pick] : null;
+    el.innerHTML = `<div class="label">${opts.label||"Knowledge check"}</div><div class="q">${b.q}</div>
+      <div class="choices" role="radiogroup">${b.answers.map((x,i)=>{
+        let cls=""; if(checked){ if(i===pick) cls = x.c?" right":" wrong"; else if(opts.reveal && x.c) cls=" right"; }
+        return `<button class="choice${cls}" role="radio" aria-checked="${pick===i}" data-i="${i}" ${checked?"disabled":""}><span class="dot"></span><span>${x.h}</span></button>`;}).join("")}</div>
+      ${checked?`<div class="fb ${a.c?"ok":"no"}"><b>${a.c?"Correct":"Not quite"}</b><div>${a.f}</div></div>`:""}
+      <div class="btnrow">${checked
+        ? (opts.onNext ? `<button class="btn" data-act="next">${opts.nextLabel||"Next"}</button>` : (a.c?"":`<button class="btn ghost" data-act="retry">Try again</button>`))
+        : `<button class="btn" data-act="check" ${pick==null?"disabled":""}>Submit</button>`}</div>`;
+    el.querySelectorAll(".choice").forEach(c=>c.onclick=()=>{ pick=+c.dataset.i; draw(); });
+    const btn = el.querySelector("[data-act]");
+    if(btn) btn.onclick = () => {
+      if(btn.dataset.act==="check"){ checked=true; if(opts.onAnswer) opts.onAnswer(b.answers[pick].c); draw(); }
+      else if(btn.dataset.act==="retry"){ checked=false; pick=null; draw(); }
+      else opts.onNext();
+    };
+  };
+  draw();
+}
+function mountProcess(el, b){
+  let i = 0; const n = b.steps.length, stepsOnly = b.steps.filter(s=>s.k==="step").length;
+  const draw = () => {
+    const s = b.steps[i]; const stepNo = b.steps.slice(0,i+1).filter(x=>x.k==="step").length;
+    el.innerHTML = `<div class="proc-top"><div class="label">Process</div><div class="proc-step">${s.k==="step"?`Step ${stepNo} of ${stepsOnly}`:(s.k==="intro"?"Overview":"Summary")}</div></div>
+      <div class="proc-dots" aria-hidden="true">${b.steps.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</div>
+      <div class="proc-body"><h3>${esc(s.h)}</h3><div class="prose">${s.p}</div></div>
+      <div class="btnrow">${i>0?`<button class="btn ghost" data-d="-1">Back</button>`:""}${i<n-1?`<button class="btn" data-d="1">${i===0?"Start":"Next"}</button>`:`<button class="btn ghost" data-d="restart">Start again</button>`}</div>`;
+    el.querySelectorAll("[data-d]").forEach(x=>x.onclick=()=>{ i = x.dataset.d==="restart"?0:i+(+x.dataset.d); draw(); });
+  };
+  draw();
+}
+function mountSort(el, b){
+  let deck, placed, msg, msgCls;
+  const reset = () => { deck = shuffle(b.cards); placed = b.piles.map(()=>[]); msg = "Tap the pile where this sentence belongs."; msgCls=""; draw(); };
+  const draw = (shake) => {
+    const card = deck[0];
+    el.innerHTML = `<div class="label">Sorting activity · ${b.cards.length-deck.length} of ${b.cards.length} sorted</div>
+      ${card?`<div class="sort-card${shake?" shake":""}">${esc(card.h)}</div>`:`<div class="fb ok"><b>All sorted</b><div>Every sentence is in the right pile.</div></div>`}
+      <div class="sort-msg ${msgCls}" aria-live="polite">${card?esc(msg):""}</div>
+      <div class="piles">${b.piles.map((p,i)=>`<button class="pile" data-p="${i}" ${card?"":"disabled"}><b>${esc(p)}</b>${placed[i].map(t=>`<span class="placed">${esc(t)}</span>`).join("")}</button>`).join("")}</div>
+      ${card?"":`<div class="btnrow"><button class="btn ghost" data-r="1">Start again</button></div>`}`;
+    el.querySelectorAll(".pile").forEach(x=>x.onclick=()=>{
+      const p=+x.dataset.p;
+      if(p===card.p){ placed[p].push(card.h); deck.shift(); msg="Correct. Tap the pile for the next sentence."; msgCls="ok"; draw(); }
+      else { msg=`Not quite. This isn't ${b.piles[p].toLowerCase()} — try another pile.`; msgCls="no"; draw(true); }
+    });
+    const r=el.querySelector("[data-r]"); if(r) r.onclick=reset;
+  };
+  reset();
+}
+function mountAll(blocks){
+  main.querySelectorAll(".act[data-kind]").forEach((el,k)=>{
+    const b = blocks.filter(x=>["mc","process","sort"].includes(x.t))[k];
+    if(b.t==="mc") mountMC(el,b); else if(b.t==="process") mountProcess(el,b); else mountSort(el,b);
+  });
+  main.querySelectorAll(".flash").forEach(f=>f.onclick=()=>f.setAttribute("aria-pressed", f.getAttribute("aria-pressed")==="true"?"false":"true"));
+}
+
+/* ---------- views ---------- */
+function setBar(kick, title){ $("barKick").textContent = kick; $("barTitle").textContent = title; }
+function footer(){ return `<div class="foot"><span>© Luke Murgatroyd · Academic Skills</span><a href="./">IELTS reading practice tests</a></div>`; }
+function home(){
+  setBar("Course","Academic Essay Structure");
+  const u = units(); const firstOpen = u.find(x=>!isDone(x.id)) || u[0];
+  const started = u.some(x=>isDone(x.id));
+  main.innerHTML = `<div class="col">
+    <div class="wide">${fig("cover","banner")}</div>
+    <div class="cover">
+      <div class="badge"><i>LM</i>Luke Murgatroyd · Academic Skills Series</div>
+      <h1>${esc(C.title)}</h1>
+      <p class="lede">${esc(C.description)}</p>
+      <a class="btn big" href="#${firstOpen.id}" style="text-align:center;text-decoration:none">${started?"Continue: "+esc(firstOpen.kind):"Start the course"}</a>
+    </div>
+    <div class="lessons">${u.map((x,i)=>`<a class="lcard" href="#${x.id}" style="text-decoration:none;color:inherit"><span class="num ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b>${x.id==="quiz"&&P.quiz?`<small>Best score: ${P.quiz.best}%</small>`:""}</span><span class="go">${isDone(x.id)?"Review":"Open"} →</span></a>`).join("")}</div>
+    ${footer()}</div>`;
+}
+function lesson(n){
+  const L = C.lessons[n]; if(!L) return home();
+  const id = "lesson-"+(n+1), next = units()[n+1];
+  setBar(`Lesson ${n+1} of ${C.lessons.length}`, L.title);
+  uid = 0;
+  const first = L.blocks[0] && L.blocks[0].t==="banner" ? blockHTML(L.blocks[0]) : "";
+  const rest = (first?L.blocks.slice(1):L.blocks);
+  main.innerHTML = `<div class="col">${first}
+    <div><div class="kick">Lesson ${n+1}</div><h1 style="margin-top:6px">${esc(L.title)}</h1></div>
+    ${rest.map(blockHTML).join("")}
+    <div class="next"><small>${isDone(id)?"You've completed this lesson.":"Finished reading?"}</small>
+      <button class="btn big" id="doneBtn">${next?`Complete and continue: ${esc(next.kind==="Final check"?"Quiz":next.title)}`:"Complete"}</button>
+      <a href="#" style="color:var(--brand);font-weight:700;font-size:14px">Back to course home</a></div>
+    ${footer()}</div>`;
+  mountAll(rest);
+  $("doneBtn").onclick = () => { P.done[id]=true; save(); updateProgress(); location.hash = next ? next.id : ""; };
+}
+let Q = null;
+function quiz(){
+  setBar("Final check", "Quiz");
+  const qs = C.quiz.questions;
+  const startScreen = () => {
+    main.innerHTML = `<div class="col"><div><div class="kick">Final check</div><h1 style="margin-top:6px">Quiz</h1></div>
+      <div class="act"><p class="lede" style="font-size:18px">${qs.length} questions on everything in the course. You need ${C.quiz.pass}% to pass, and you can take it as many times as you like.</p>
+      ${P.quiz?`<div class="fb ${P.quiz.passed?"ok":"no"}"><b>Your best score so far: ${P.quiz.best}%</b><div>${P.quiz.passed?"You've passed this quiz.":"Not passed yet."}</div></div>`:""}
+      <button class="btn big" id="qStart">${P.quiz?"Take the quiz again":"Start the quiz"}</button></div>${footer()}</div>`;
+    $("qStart").onclick = () => { Q = {i:0, res:[]}; question(); };
+  };
+  const question = () => {
+    const q = qs[Q.i], last = Q.i===qs.length-1;
+    main.innerHTML = `<div class="col"><div class="qhead"><span>Question ${Q.i+1} of ${qs.length}</span><span>Pass mark ${C.quiz.pass}%</span></div>
+      <div class="qbar"><i style="width:${(Q.i)/qs.length*100}%"></i></div><div class="act" id="qa"></div></div>`;
+    window.scrollTo(0,0);
+    const el = $("qa");
+    const onNext = () => { if(last) results(); else { Q.i++; question(); } };
+    if(q.t==="mc") mountMC(el, q, {label:"Question "+(Q.i+1), reveal:true, onAnswer:ok=>Q.res[Q.i]=ok, onNext, nextLabel:last?"See my result":"Next question"});
+    else mountMatch(el, q, ok=>Q.res[Q.i]=ok, onNext, last);
+  };
+  const results = () => {
+    const right = Q.res.filter(Boolean).length, pct = Math.round(right/qs.length*100), passed = pct>=C.quiz.pass;
+    P.quiz = {best: Math.max(pct, P.quiz?P.quiz.best:0), passed: passed || !!(P.quiz&&P.quiz.passed)}; save(); updateProgress();
+    const strip = h => h.replace(/<[^>]+>/g,"");
+    main.innerHTML = `<div class="col"><div><div class="kick">Your result</div><h1 style="margin-top:6px">Quiz complete</h1></div>
+      <div class="act"><div class="score"><b>${pct}%</b><span>${right} of ${qs.length} correct</span></div>
+      <span class="pill ${passed?"ok":"no"}">${passed?"Passed":"Not passed yet · pass mark "+C.quiz.pass+"%"}</span>
+      <div class="review">${qs.map((q,i)=>`<div class="rv"><span class="tick ${Q.res[i]?"done":"no"}">${Q.res[i]?"✓":"✕"}</span><p>${esc(strip(q.q))}</p></div>`).join("")}</div>
+      <div class="btnrow"><button class="btn" id="qAgain">Retake the quiz</button><a class="btn ghost" href="#" style="text-decoration:none">Course home</a></div></div>${footer()}</div>`;
+    $("qAgain").onclick = () => { Q = {i:0,res:[]}; question(); };
+  };
+  startScreen();
+}
+function mountMatch(el, q, onAnswer, onNext, last){
+  const terms = shuffle(q.pairs.map(p=>p.a)); const order = shuffle(q.pairs.map((_,i)=>i));
+  let sel = {}, checked = false;
+  const draw = () => {
+    const allSet = order.every(i=>sel[i]);
+    el.innerHTML = `<div class="label">Question ${Q.i+1} · Matching</div><div class="q">${q.q}</div>
+      <div class="match">${order.map(i=>{ const p=q.pairs[i]; const ok = checked && sel[i]===p.a;
+        return `<div class="mrow ${checked?(ok?"right":"wrong"):""}"><p>${esc(p.b)}</p>
+          <select data-i="${i}" ${checked?"disabled":""} aria-label="Choose the matching part"><option value="">Choose…</option>${terms.map(t=>`<option ${sel[i]===t?"selected":""}>${esc(t)}</option>`).join("")}</select>
+          ${checked&&!ok?`<span class="ans">Answer: ${esc(p.a)}</span>`:""}</div>`;}).join("")}</div>
+      ${checked?`<div class="fb ${order.every(i=>sel[i]===q.pairs[i].a)?"ok":"no"}"><b>${order.every(i=>sel[i]===q.pairs[i].a)?"Correct":"Not quite"}</b><div>${order.every(i=>sel[i]===q.pairs[i].a)?q.ok:q.no}</div></div>`:""}
+      <div class="btnrow">${checked?`<button class="btn" data-a="next">${last?"See my result":"Next question"}</button>`:`<button class="btn" data-a="check" ${allSet?"":"disabled"}>Submit</button>`}</div>`;
+    el.querySelectorAll("select").forEach(s=>s.onchange=()=>{ sel[+s.dataset.i]=s.value; draw(); });
+    const b = el.querySelector("[data-a]");
+    b.onclick = () => { if(b.dataset.a==="check"){ checked=true; onAnswer(order.every(i=>sel[i]===q.pairs[i].a)); draw(); } else onNext(); };
+  };
+  draw();
+}
+
+/* ---------- drawer + routing ---------- */
+function drawer(open){
+  $("drawer").hidden = !open; $("scrim").hidden = !open; $("menuBtn").setAttribute("aria-expanded", open);
+  if(open){
+    const cur = location.hash.slice(1);
+    $("drawer").innerHTML = `<h2>${esc(C.title)}</h2>
+      <a class="navitem" href="#" ${!cur?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick">⌂</span><span><b>Course home</b></span></a>
+      ${units().map((x,i)=>`<a class="navitem" href="#${x.id}" ${cur===x.id?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b></span></a>`).join("")}
+      <button class="closebtn" id="closeD">Close</button>`;
+    $("closeD").onclick = () => drawer(false);
+    $("drawer").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>drawer(false)));
+    $("drawer").querySelector("a").focus();
+  }
+}
+$("menuBtn").onclick = () => drawer($("drawer").hidden);
+$("scrim").onclick = () => drawer(false);
+document.addEventListener("keydown", e => { if(e.key==="Escape" && !$("drawer").hidden) drawer(false); });
+function route(){
+  const h = location.hash.slice(1); const m = /^lesson-(\d+)$/.exec(h);
+  if(m) lesson(+m[1]-1); else if(h==="quiz") quiz(); else home();
+  updateProgress(); window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+})();
+</script>
+</body>
+</html>
