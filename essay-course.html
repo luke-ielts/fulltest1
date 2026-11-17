@@ -13,7 +13,7 @@
 <style>
 /* Layout: single-column course reader — sticky top bar with lesson menu and progress; home, lesson and quiz views swap in place. */
 :root{
-  --bg:#F4F7FB; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
   --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6; --accent:#E8742F; --accent-soft:#FDEBDF;
   --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5;
   --ill-bg:#E6EEF7; --ill-desk:#D9C3A3; --ill-desk2:#C8AE8A; --ill-paper:#FFFFFF; --ill-line:#B9C6D6; --ill-1:#02437E; --ill-2:#6FA3D6; --ill-3:#E8742F; --ill-4:#9DB7CF;
@@ -84,6 +84,7 @@ h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;
 
 /* figures */
 .fig{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--ill-bg)}
+.lcard,.next,.col > .act{background:var(--brand-soft);border-color:transparent}
 .fig svg{display:block;width:100%;height:auto}
 .fig .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .fig.banner{border-radius:0 0 14px 14px}
@@ -91,6 +92,22 @@ h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;
 .fig .cap p{margin:0}
 .wide{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
 @media (min-width:760px){.wide{margin-inline:-48px}.fig.banner{border-radius:14px}}
+
+/* section rhythm */
+.col.lesson{gap:32px}
+.sec{border-top:1px solid var(--line);padding-top:30px}
+.band{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:22px max(16px,env(safe-area-inset-left,0px)) 26px;background:var(--brand-soft);display:flex;flex-direction:column;gap:14px}
+@media (min-width:760px){.band{margin-inline:-48px;padding:28px 48px 32px;border-radius:18px}}
+.band-head{display:flex;align-items:center;gap:12px}
+.band-icon{flex:none;width:42px;height:42px;border-radius:12px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center}
+.band-icon svg{width:22px;height:22px}
+.band-head small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.band-head b{display:block;font-size:19px;line-height:1.25}
+.band-head span.sub{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.band .act{border-color:transparent;box-shadow:0 1px 3px rgba(2,30,60,.08)}
+.band .cards .flash{min-height:132px}
+.flash .front{font-size:19px}
+.band + .band{margin-top:-8px}
 
 /* numbered list */
 .nlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
@@ -133,13 +150,13 @@ h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;
 .btn.big{width:100%;padding:15px 18px;font-size:17px}
 
 /* flashcards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
 .flash{perspective:900px;border:0;padding:0;background:transparent;min-height:170px;text-align:center}
-.flash .in{position:relative;display:block;width:100%;height:100%;min-height:170px;transition:transform .5s;transform-style:preserve-3d}
+.flash .in{position:relative;display:grid;width:100%;height:100%;min-height:132px;transition:transform .5s;transform-style:preserve-3d}
 .flash[aria-pressed="true"] .in{transform:rotateY(180deg)}
-.flash .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.flash .face{grid-area:1/1;position:relative;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
 .flash .front{background:var(--brand);color:var(--brand-ink);font-family:var(--f-read);font-size:22px}
-.flash .back{background:var(--surface);border:1.5px solid var(--brand);transform:rotateY(180deg);font-size:15.5px;line-height:1.45}
+.flash .back{background:var(--surface);border:1.5px solid var(--brand);transform:rotateY(180deg);font-size:14px;line-height:1.4;padding:12px}
 .flash small{font-family:var(--f-ui);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
 @media (prefers-reduced-motion:reduce){.flash .in{transition:none}}
 
@@ -286,19 +303,35 @@ function fig(slot, cls, cap){
 }
 
 /* ---------- blocks ---------- */
+const ICON = {
+  mc:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>`,
+  flash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></svg>`,
+  process:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h9M13 8.5l3.5 3.5-3.5 3.5"/></svg>`,
+  sort:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7" stroke-linecap="round"/></svg>`
+};
+const BAND = {
+  mc:["Activity","Check your understanding","Choose an answer, then submit."],
+  flash:["Activity","Flashcards","Tap a card to turn it over."],
+  process:["Activity","Step by step","Work through each step in order."],
+  sort:["Activity","Sorting activity","Tap the pile where each sentence belongs."]
+};
+function band(kind, inner){
+  const h = BAND[kind];
+  return `<section class="band"><div class="band-head"><span class="band-icon" aria-hidden="true">${ICON[kind]}</span><span><small>${h[0]}</small><b>${h[1]}</b><span class="sub">${h[2]}</span></span></div>${inner}</section>`;
+}
 let uid = 0;
 function blockHTML(b){
   const id = "b"+(++uid);
   switch(b.t){
     case "banner": return `<div class="wide">${fig(b.img,"banner",b.cap)}</div>`;
     case "image": return fig(b.img,"",b.cap);
-    case "text": return `<section>${b.h?`<h2 class="bh">${esc(b.h)}</h2>`:""}<div class="prose">${b.p}</div></section>`;
+    case "text": return `<section class="${b.h?"sec":""}">${b.h?`<h2 class="bh">${esc(b.h)}</h2>`:""}<div class="prose">${b.p}</div></section>`;
     case "list": return `<ol class="nlist">${b.items.map((x,i)=>`<li><span>${i+1}</span><div>${x}</div></li>`).join("")}</ol>`;
     case "acc": return `<div class="acc">${b.items.map(x=>`<details><summary>${esc(x.h)}</summary><div class="prose">${x.p}</div></details>`).join("")}</div>`;
-    case "mc": return `<div class="act" data-kind="mc" id="${id}"></div>`;
-    case "flash": return `<div class="act"><div class="label">Flashcards · tap a card to turn it over</div><div class="cards">${b.cards.map(c=>`<button class="flash" aria-pressed="false"><span class="in"><span class="face front"><small>Term</small>${c.f}</span><span class="face back"><small>Meaning</small>${c.b}</span></span></button>`).join("")}</div></div>`;
-    case "process": return `<div class="act" data-kind="process" id="${id}"></div>`;
-    case "sort": return `<div class="act" data-kind="sort" id="${id}"></div>`;
+    case "mc": return band("mc",`<div class="act" data-kind="mc" id="${id}"></div>`);
+    case "flash": return band("flash",`<div class="act"><div class="cards">${b.cards.map(c=>`<button class="flash" aria-pressed="false"><span class="in"><span class="face front"><small>Term</small>${c.f}</span><span class="face back"><small>Meaning</small>${c.b}</span></span></button>`).join("")}</div></div>`);
+    case "process": return band("process",`<div class="act" data-kind="process" id="${id}"></div>`);
+    case "sort": return band("sort",`<div class="act" data-kind="sort" id="${id}"></div>`);
   }
   return "";
 }
@@ -307,7 +340,7 @@ function mountMC(el, b, opts){
   let pick = null, checked = false;
   const draw = () => {
     const a = pick!=null ? b.answers[pick] : null;
-    el.innerHTML = `<div class="label">${opts.label||"Knowledge check"}</div><div class="q">${b.q}</div>
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label}</div>`:""}<div class="q">${b.q}</div>
       <div class="choices" role="radiogroup">${b.answers.map((x,i)=>{
         let cls=""; if(checked){ if(i===pick) cls = x.c?" right":" wrong"; else if(opts.reveal && x.c) cls=" right"; }
         return `<button class="choice${cls}" role="radio" aria-checked="${pick===i}" data-i="${i}" ${checked?"disabled":""}><span class="dot"></span><span>${x.h}</span></button>`;}).join("")}</div>
@@ -329,8 +362,7 @@ function mountProcess(el, b){
   let i = 0; const n = b.steps.length, stepsOnly = b.steps.filter(s=>s.k==="step").length;
   const draw = () => {
     const s = b.steps[i]; const stepNo = b.steps.slice(0,i+1).filter(x=>x.k==="step").length;
-    el.innerHTML = `<div class="proc-top"><div class="label">Process</div><div class="proc-step">${s.k==="step"?`Step ${stepNo} of ${stepsOnly}`:(s.k==="intro"?"Overview":"Summary")}</div></div>
-      <div class="proc-dots" aria-hidden="true">${b.steps.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</div>
+    el.innerHTML = `<div class="proc-top"><div class="proc-dots" aria-hidden="true">${b.steps.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</div><div class="proc-step">${s.k==="step"?`Step ${stepNo} of ${stepsOnly}`:(s.k==="intro"?"Overview":"Summary")}</div></div>
       <div class="proc-body"><h3>${esc(s.h)}</h3><div class="prose">${s.p}</div></div>
       <div class="btnrow">${i>0?`<button class="btn ghost" data-d="-1">Back</button>`:""}${i<n-1?`<button class="btn" data-d="1">${i===0?"Start":"Next"}</button>`:`<button class="btn ghost" data-d="restart">Start again</button>`}</div>`;
     el.querySelectorAll("[data-d]").forEach(x=>x.onclick=()=>{ i = x.dataset.d==="restart"?0:i+(+x.dataset.d); draw(); });
@@ -342,7 +374,7 @@ function mountSort(el, b){
   const reset = () => { deck = shuffle(b.cards); placed = b.piles.map(()=>[]); msg = "Tap the pile where this sentence belongs."; msgCls=""; draw(); };
   const draw = (shake) => {
     const card = deck[0];
-    el.innerHTML = `<div class="label">Sorting activity · ${b.cards.length-deck.length} of ${b.cards.length} sorted</div>
+    el.innerHTML = `<div class="label">${b.cards.length-deck.length} of ${b.cards.length} sorted</div>
       ${card?`<div class="sort-card${shake?" shake":""}">${esc(card.h)}</div>`:`<div class="fb ok"><b>All sorted</b><div>Every sentence is in the right pile.</div></div>`}
       <div class="sort-msg ${msgCls}" aria-live="polite">${card?esc(msg):""}</div>
       <div class="piles">${b.piles.map((p,i)=>`<button class="pile" data-p="${i}" ${card?"":"disabled"}><b>${esc(p)}</b>${placed[i].map(t=>`<span class="placed">${esc(t)}</span>`).join("")}</button>`).join("")}</div>
@@ -389,7 +421,7 @@ function lesson(n){
   uid = 0;
   const first = L.blocks[0] && L.blocks[0].t==="banner" ? blockHTML(L.blocks[0]) : "";
   const rest = (first?L.blocks.slice(1):L.blocks);
-  main.innerHTML = `<div class="col">${first}
+  main.innerHTML = `<div class="col lesson">${first}
     <div><div class="kick">Lesson ${n+1}</div><h1 style="margin-top:6px">${esc(L.title)}</h1></div>
     ${rest.map(blockHTML).join("")}
     <div class="next"><small>${isDone(id)?"You've completed this lesson.":"Finished reading?"}</small>
