@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Academic Integrity · Luke Murgatroyd</title>
+<meta name="description" content="Academic Integrity: Research, Plagiarism, and Referencing Essentials. A short course on finding reliable sources, avoiding plagiarism, and citing and referencing in Harvard and APA, with practice activities and a quiz. By Luke Murgatroyd.">
+<meta property="og:title" content="Academic Integrity · Luke Murgatroyd">
+<meta property="og:description" content="Finding reliable sources, avoiding plagiarism, and citing and referencing in Harvard and APA, with practice activities and a quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: single-column course reader — sticky top bar with lesson menu and progress; home, lesson and quiz views swap in place. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#152033; --muted:#566479; --line:#D9E1EB;
+  --brand:#02437E; --brand-ink:#FFFFFF; --brand-soft:#E2EBF6; --accent:#E8742F; --accent-soft:#FDEBDF;
+  --good:#1B7443; --good-soft:#E1F2E8; --bad:#B42318; --bad-soft:#FBE7E5;
+  --ill-bg:#E6EEF7; --ill-desk:#D9C3A3; --ill-desk2:#C8AE8A; --ill-paper:#FFFFFF; --ill-line:#B9C6D6; --ill-1:#02437E; --ill-2:#6FA3D6; --ill-3:#E8742F; --ill-4:#9DB7CF;
+  --f-read:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47; --accent:#F29A62; --accent-soft:#3A2516;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A;
+  --ill-bg:#18263A; --ill-desk:#6B5A44; --ill-desk2:#57493A; --ill-paper:#E9EEF4; --ill-line:#7F8FA3; --ill-1:#79AEEA; --ill-2:#3E6C9C; --ill-3:#F29A62; --ill-4:#4D6680;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1520; --surface:#142033; --ink:#E5ECF5; --muted:#9BA9BC; --line:#263750;
+  --brand:#79AEEA; --brand-ink:#0A182A; --brand-soft:#1B2E47; --accent:#F29A62; --accent-soft:#3A2516;
+  --good:#5FCB8E; --good-soft:#15331F; --bad:#F38A80; --bad-soft:#3A1C1A;
+  --ill-bg:#18263A; --ill-desk:#6B5A44; --ill-desk2:#57493A; --ill-paper:#E9EEF4; --ill-line:#7F8FA3; --ill-1:#79AEEA; --ill-2:#3E6C9C; --ill-3:#F29A62; --ill-4:#4D6680;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding-block:10px}
+.menu-btn{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:10px;height:40px;padding:0 12px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.menu-btn i{display:block;width:16px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor,0 -5px 0 currentColor}
+.bar-title{flex:1;min-width:0}
+.bar-title span{display:block;font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.bar-title b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{flex:none;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:64px}
+.prog b{display:block;font-size:15px;color:var(--brand)}
+.progline{height:4px;background:var(--brand-soft)}
+.progline i{display:block;height:100%;width:0;background:var(--brand);transition:width .4s}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(5,12,24,.45);z-index:40}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(340px,88vw);background:var(--surface);z-index:41;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-y:auto;display:flex;flex-direction:column;gap:6px;box-shadow:4px 0 24px rgba(0,0,0,.18)}
+.drawer h2{font-family:var(--f-read);font-weight:600;font-size:19px;line-height:1.25;margin:0 0 10px}
+.navitem{display:flex;gap:12px;align-items:center;text-align:left;border:0;background:transparent;border-radius:10px;padding:10px;width:100%}
+.navitem:hover{background:var(--bg)}
+.navitem[aria-current="page"]{background:var(--brand-soft)}
+.navitem small{display:block;font-size:12px;color:var(--muted)}
+.navitem b{display:block;font-size:15px;line-height:1.3}
+.tick{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
+.tick.done{background:var(--good);border-color:var(--good);color:var(--surface)}
+.drawer .closebtn{align-self:flex-start;margin-top:12px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font-weight:700}
+
+/* page */
+main{max-width:880px;margin:0 auto;padding-block:20px 56px}
+.col{max-width:68ch;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-read);font-weight:600;font-size:clamp(28px,6vw,40px);line-height:1.12;margin:0;text-wrap:balance}
+h2.bh{font-family:var(--f-read);font-weight:600;font-size:23px;line-height:1.25;margin:0 0 8px;text-wrap:balance}
+.prose{font-family:var(--f-read);font-size:18px;line-height:1.65}
+.prose p{margin:0 0 .8em}.prose p:last-child{margin-bottom:0}
+.lede{font-family:var(--f-read);font-size:19px;line-height:1.6;color:var(--muted);margin:0}
+
+/* figures */
+.fig{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--ill-bg)}
+.lcard,.next,.col > .act{background:var(--brand-soft);border-color:transparent}
+.fig svg{display:block;width:100%;height:auto}
+.fig .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fig.banner{border-radius:0 0 14px 14px}
+.fig .cap{position:relative;padding:10px 18px;background:var(--ill-1);color:var(--ill-bg);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.fig .cap p{margin:0}
+.wide{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+@media (min-width:760px){.wide{margin-inline:-48px}.fig.banner{border-radius:14px}}
+
+/* section rhythm */
+.col.lesson{gap:32px}
+.sec{border-top:1px solid var(--line);padding-top:30px}
+.band{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:22px max(16px,env(safe-area-inset-left,0px)) 26px;background:var(--brand-soft);display:flex;flex-direction:column;gap:14px}
+@media (min-width:760px){.band{margin-inline:-48px;padding:28px 48px 32px;border-radius:18px}}
+.band-head{display:flex;align-items:center;gap:12px}
+.band-icon{flex:none;width:42px;height:42px;border-radius:12px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center}
+.band-icon svg{width:22px;height:22px}
+.band-head small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.band-head b{display:block;font-size:19px;line-height:1.25}
+.band-head span.sub{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.band .act{border-color:transparent;box-shadow:0 1px 3px rgba(2,30,60,.08)}
+.band .cards .flash{min-height:132px}
+.flash .front{font-size:19px}
+.band + .band{margin-top:-8px}
+
+/* continue sections */
+.chunk{display:flex;flex-direction:column;gap:32px;scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
+.cont{display:flex;align-items:center;gap:14px}
+.cont::before,.cont::after{content:"";flex:1;height:1px;background:var(--line)}
+.cont .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:30px}
+.cont .done{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+/* callout */
+.note{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;background:var(--accent-soft);border-radius:14px;padding:18px}
+.note-ic{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:22px;font-family:var(--f-read)}
+.note .prose{font-size:18px;font-weight:600}
+/* tabs */
+.tabs{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tablist{display:flex;background:var(--brand-soft)}
+.tablist button{flex:1;border:0;background:transparent;padding:14px 10px;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent}
+.tablist button[aria-selected="true"]{color:var(--brand);background:var(--surface);border-bottom-color:var(--brand)}
+.tabpanel{padding:18px}
+.tabpanel .prose{font-size:17px}
+.tabpanel ul{margin:.4em 0 0;padding-left:1.2em}
+/* tick boxes */
+.choice .box{width:20px;height:20px;border-radius:5px;border:2px solid var(--muted);flex:none;display:grid;place-items:center;font-size:13px;line-height:1;color:var(--brand-ink)}
+.choice[aria-checked="true"] .box{border-color:var(--brand);background:var(--brand)}
+.choice.right .box{border-color:var(--good);background:var(--good);color:var(--surface)}
+.choice.wrong .box{border-color:var(--bad);background:var(--bad);color:var(--surface)}
+/* text diagrams */
+.dgm{margin:0;border-radius:14px;background:var(--ill-bg);padding:18px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.45}
+.dg-cap{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.dg-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.dg-win,.dg-card,.dg-note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.dg-card small,.dg-note small{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dg-card p{margin:0}
+.dg-winbar{display:flex;align-items:center;gap:5px;margin:-14px -14px 4px;padding:9px 12px;background:var(--brand-soft);border-radius:12px 12px 0 0}
+.dg-winbar i{width:9px;height:9px;border-radius:50%;background:var(--ill-4)}
+.dg-winbar b{margin-left:8px;font-size:14px;color:var(--brand)}
+.dg-search{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:22px;padding:6px 6px 6px 14px}
+.dg-search span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dg-search em{font-style:normal;font-weight:700;font-size:13px;background:var(--brand);color:var(--brand-ink);border-radius:16px;padding:5px 12px}
+.dg-sub{color:var(--muted);font-size:13px}
+.dg-res{display:flex;flex-direction:column;gap:5px;padding-top:8px;border-top:1px solid var(--line)}
+.dg-line{height:8px;border-radius:4px;background:var(--brand);opacity:.55;width:85%}.dg-line.short{width:60%;background:var(--ill-line);opacity:1}
+.dg-chips{display:flex;flex-wrap:wrap;gap:6px}
+.dg-chips span{font-size:12px;font-weight:700;background:var(--brand-soft);color:var(--brand);border-radius:12px;padding:3px 10px}
+.dg-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.dg-tile{border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line)}
+.dg-tile b{font-family:var(--f-read);font-size:34px;line-height:1;color:var(--accent)}
+.dg-tile.t0 b,.dg-tile.t2 b,.dg-tile.t4 b{color:var(--brand)}
+.dg-tile strong{font-size:16px}
+.dg-tile span{color:var(--muted);font-size:14px}
+.dg-three{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.dg-src{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.dg-ic{width:44px;height:44px;color:var(--brand)}.dg-ic svg{width:100%;height:100%}
+.dg-src strong{font-size:15.5px;line-height:1.3}
+.dg-src span{color:var(--muted);font-size:14px}
+.dg-src em{font-style:normal;font-weight:700;align-self:flex-start;border-radius:12px;padding:3px 12px;font-size:13.5px}
+.dg-src em.ok{background:var(--good-soft);color:var(--good)} .dg-src em.no{background:var(--bad-soft);color:var(--bad)}
+.dg-notehead{font-family:var(--f-read);font-weight:600;font-size:17px;color:var(--brand)}
+.dg-entry{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px 12px;padding-top:10px;border-top:1px dashed var(--line)}
+.dg-entry div{display:flex;flex-direction:column}
+.dg-entry span{font-size:14px}
+.dg-entry.empty span{height:18px;border-bottom:1.5px solid var(--line)}
+.dg-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+@media (max-width:560px){.dg-flow{grid-template-columns:minmax(0,1fr)}.dg-flow .dg-arrow{transform:rotate(90deg)}}
+.dg-arrow{font-size:26px;font-weight:700;color:var(--brand);text-align:center;line-height:1}
+.dg-arrow.down{transform:none}
+.dg-stack{display:flex;flex-direction:column;gap:8px}
+.dg-card.main{border-color:var(--brand)}
+.dgm mark{border-radius:4px;padding:0 3px;color:var(--ink)}
+.dgm mark.m0{background:#FFD8B8}.dgm mark.m1{background:#FBE7A6}.dgm mark.m2{background:#BFE6D5}.dgm mark.m3{background:#E3CCF0}
+.hang{padding-left:1.6em;text-indent:-1.6em;margin:0}
+.dg-refs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.dg-refs li{display:flex;flex-direction:column;gap:3px}
+.dg-type{align-self:flex-start;font-size:11.5px;font-weight:700;background:var(--brand-soft);color:var(--brand);border-radius:10px;padding:2px 9px}
+.dg-az{align-self:flex-start;font-size:12.5px;font-weight:700;color:var(--accent)}
+.dg-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.dg-checks li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:start;padding:8px;border-radius:8px}
+.dg-checks li.no{background:var(--bad-soft)} .dg-checks li.warn{background:var(--accent-soft)}
+.dg-checks p{margin:0}
+.dg-checks small{font-weight:700;font-size:12.5px;text-transform:none;letter-spacing:0}
+.dg-checks li.ok small{color:var(--good)} .dg-checks li.no small{color:var(--bad)} .dg-checks li.warn small{color:var(--accent)}
+.dg-mark{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--surface)}
+.dg-checks li.ok .dg-mark{background:var(--good)} .dg-checks li.no .dg-mark{background:var(--bad)} .dg-checks li.warn .dg-mark{background:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dgm mark{color:#152033}}
+:root[data-theme="dark"] .dgm mark{color:#152033}
+
+/* numbered list */
+.nlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.nlist li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;align-items:start;font-family:var(--f-read);font-size:18px;line-height:1.55}
+.nlist li > span{width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-family:var(--f-ui);font-weight:700;font-size:14px;margin-top:1px}
+.nlist p{margin:0}
+
+/* accordion */
+.acc{border-top:1px solid var(--line)}
+.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 4px;font-weight:700;font-size:17px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";flex:none;width:28px;height:28px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-size:20px;line-height:1}
+.acc details[open] summary::after{content:"–"}
+.acc .prose{padding:0 4px 18px;font-size:17px}
+
+/* activity card */
+.act{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.act .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.act .q{font-size:18px;font-weight:700;line-height:1.4}
+.act .q p{margin:0}
+.choices{display:flex;flex-direction:column;gap:8px}
+.choice{display:flex;align-items:center;gap:12px;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:12px 14px;font-size:16px}
+.choice p{margin:0}
+.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.choice[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.choice[aria-checked="true"] .dot{border-color:var(--brand);background:radial-gradient(circle,var(--brand) 45%,transparent 50%)}
+.choice.right{border-color:var(--good);background:var(--good-soft)}
+.choice.right .dot{border-color:var(--good);background:radial-gradient(circle,var(--good) 45%,transparent 50%)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.wrong .dot{border-color:var(--bad);background:radial-gradient(circle,var(--bad) 45%,transparent 50%)}
+.fb{border-radius:10px;padding:12px 14px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.fb.ok{background:var(--good-soft)} .fb.no{background:var(--bad-soft)}
+.fb b{font-size:15px} .fb.ok b{color:var(--good)} .fb.no b{color:var(--bad)}
+.fb p{margin:0}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:700;padding:12px 18px;font-size:16px}
+.btn:disabled{opacity:.45}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.big{width:100%;padding:15px 18px;font-size:17px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.flash{perspective:900px;border:0;padding:0;background:transparent;min-height:170px;text-align:center}
+.flash .in{position:relative;display:grid;width:100%;height:100%;min-height:132px;transition:transform .5s;transform-style:preserve-3d}
+.flash[aria-pressed="true"] .in{transform:rotateY(180deg)}
+.flash .face{grid-area:1/1;position:relative;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.flash .front{background:var(--brand);color:var(--brand-ink);font-family:var(--f-read);font-size:22px}
+.flash .back{background:var(--surface);border:1.5px solid var(--brand);transform:rotateY(180deg);font-size:14px;line-height:1.4;padding:12px}
+.flash small{font-family:var(--f-ui);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+@media (prefers-reduced-motion:reduce){.flash .in{transition:none}}
+
+/* process */
+.proc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.proc-dots{display:flex;gap:6px}
+.proc-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.proc-dots i.on{background:var(--brand);width:22px;border-radius:4px}
+.proc-step{font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.proc-body h3{font-family:var(--f-read);font-weight:600;font-size:21px;margin:0 0 8px;line-height:1.3}
+.proc-body .prose{font-size:17px}
+
+/* sorting */
+.sort-card{border-radius:12px;background:var(--accent-soft);border:1.5px solid var(--accent);padding:16px;font-family:var(--f-read);font-size:17px;line-height:1.5}
+.sort-card.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.sort-card.shake{animation:none}}
+.piles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.pile{border:1.5px dashed var(--brand);background:var(--brand-soft);border-radius:12px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:64px}
+.pile b{color:var(--brand);font-size:15px}
+.pile .placed{font-size:13px;line-height:1.35;background:var(--surface);border-radius:8px;padding:6px 8px;color:var(--ink)}
+.sort-msg{font-size:15px;min-height:1.5em;color:var(--muted)}
+.sort-msg.no{color:var(--bad)} .sort-msg.ok{color:var(--good)}
+
+/* matching */
+.match{display:flex;flex-direction:column;gap:12px}
+.mrow{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:10px;border:1.5px solid var(--line)}
+.mrow.right{border-color:var(--good);background:var(--good-soft)} .mrow.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.mrow p{margin:0;font-size:15.5px}
+.mrow select{font:inherit;font-size:16px;padding:10px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.mrow .ans{font-size:13px;color:var(--good);font-weight:700}
+
+/* home */
+.cover{display:flex;flex-direction:column;gap:20px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+.badge i{width:34px;height:34px;border-radius:8px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-style:normal;font-size:13px;letter-spacing:.04em}
+.lessons{display:flex;flex-direction:column;gap:10px}
+.lcard{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:100%}
+.lcard .num{width:40px;height:40px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:16px}
+.lcard .num.done{background:var(--good);color:var(--surface)}
+.lcard b{display:block;font-size:16px;line-height:1.3}
+.lcard small{display:block;font-size:13px;color:var(--muted)}
+.lcard .go{color:var(--brand);font-weight:700;font-size:14px;white-space:nowrap}
+.foot{border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.foot a{color:var(--brand)}
+
+/* lesson end */
+.next{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.next small{color:var(--muted);font-size:14px}
+
+/* quiz */
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.score b{font-size:60px;line-height:1;font-variant-numeric:tabular-nums;color:var(--brand)}
+.score span{font-size:20px;color:var(--muted)}
+.pill{display:inline-flex;align-self:flex-start;align-items:center;border-radius:20px;padding:5px 14px;font-weight:700;font-size:15px}
+.pill.ok{background:var(--good-soft);color:var(--good)} .pill.no{background:var(--bad-soft);color:var(--bad)}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:var(--muted);font-weight:700}
+.qbar{height:6px;border-radius:3px;background:var(--brand-soft);overflow:hidden}
+.qbar i{display:block;height:100%;background:var(--brand)}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:15px}
+.rv .tick{width:24px;height:24px;font-size:12px}
+.rv .tick.no{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.rv p{margin:0}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in gut">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer"><i></i>Lessons</button>
+    <div class="bar-title"><span id="barKick">Course</span><b id="barTitle">Academic Integrity</b></div>
+    <div class="prog" aria-live="polite"><b id="progPct">0%</b>complete</div>
+  </div>
+  <div class="progline"><i id="progLine"></i></div>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<nav class="drawer" id="drawer" aria-label="Course contents" hidden></nav>
+<main class="gut" id="main"></main>
+
+<script>
+(function(){
+const C = {"title": "Academic Integrity: Research, Plagiarism, and Referencing Essentials", "description": "Are you ready to succeed at university and avoid common academic pitfalls? This course will guide you through the essentials of academic integrity, from finding reliable sources and understanding plagiarism to mastering citation and referencing in your assignments. You'll gain practical skills to help you research effectively, use sources correctly, and build your confidence for university-level study. By the end, you'll know how to protect your work and your reputation as a student.", "lessons": [{"title": "Research Skills and Finding Reliable Sources", "blocks": [{"t": "banner", "img": "l1-banner", "cap": ""}, {"t": "text", "h": "Why Good Research Matters for Your Success", "p": "<p>At university, using reliable information is essential for writing strong assignments and building your academic reputation. Knowing how to find and judge sources will help you write better essays, avoid mistakes, and set yourself up for success throughout your studies. Mastering these skills now will save you time and trouble later on.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will gain essential skills for approaching research assignments effectively. You will learn how to interpret assignment requirements, locate quality sources, and evaluate the reliability and trustworthiness of information.<\/p>"}, {"t": "list", "items": ["<p>How to understand what your assignment is asking for.<\/p>", "<p>Where and how to find good sources for your research.<\/p>", "<p>How to check if a source is reliable using the CRAAP test.<\/p>", "<p>How to judge if a website or article is trustworthy.<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "Understanding Your Assignment", "p": "<p>Before you start searching for information, it’s important to carefully analyze your assignment. This helps you focus your research and avoid wasting time on irrelevant sources. Ask yourself three key questions: What does the essay need to do? What do I already know? What kind of source will help me answer the question?<\/p>"}, {"t": "text", "h": "Three Steps to Analyze Your Assignment", "p": "<p>Explore each step to learn how to break down your assignment before you begin your research. Taking a few minutes to do this will make your research much more effective.<\/p>"}, {"t": "acc", "items": [{"h": "Step 1: Find the Command Word and Topic", "p": "<p>Underline the command word (like \"discuss\", \"compare\", or \"analyze\") and the main topic in your assignment question. Write one sentence explaining what your essay needs to do. This helps you stay focused on the task.<\/p>"}, {"h": "Step 2: List What You Know and What You Need", "p": "<p>Make a quick list of what you already know about the topic. Then, write down what you still need to find out. Everything you don’t know yet becomes a question for your research, not just something to browse for.<\/p>"}, {"h": "Step 3: Decide What Kind of Source Will Help", "p": "<p>Think about what type of information would best answer your questions. Do you need statistics, a case study, a peer-reviewed article, or a policy document? Deciding this before you start searching will save you time and help you find the most useful sources.<\/p>"}]}, {"t": "mc", "q": "Which question should you ask before you start searching for sources?", "multi": false, "fb": "", "answers": [{"h": "What is my essay about?", "c": true, "f": ""}, {"h": "What is the weather today?", "c": false, "f": ""}, {"h": "What is my favorite color?", "c": false, "f": ""}, {"h": "What time is lunch?", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "Where and How to Search for Sources", "p": "<p>There are many places to look for information, but not all sources are equally reliable. Your university library database, Google Scholar, and JSTOR are great places to find academic books and articles. Google and Wikipedia can help you get background information, but they are not always suitable for academic work. It’s best to start with library resources because they are already checked for quality.<\/p>"}, {"t": "image", "img": "search-tools", "cap": ""}, {"t": "text", "h": "Using Library Databases and Google Scholar", "p": "<p>Library databases provide access to academic books and journals that are recommended by your university. These databases are curated to ensure the quality and reliability of the sources you find. Google Scholar, on the other hand, is a search engine that locates academic papers from a wide range of sources across the internet. Both tools are valuable for finding reliable sources for your assignments and serve as excellent starting points for your research.<\/p>"}, {"t": "text", "h": "Where Should You Start Your Research?", "p": "<p>Expand each section to see the strengths and weaknesses of different search tools. Understanding where to begin can save you time and help you find better sources.<\/p>"}, {"t": "acc", "items": [{"h": "Library Database", "p": "<p>Offers full text access to academic books and journals your institution has paid for. Everything is already checked for quality, and you can export formatted references for your assignments.<\/p>"}, {"h": "Google Scholar", "p": "<p>Searches academic papers, theses, and citations across many fields. Shows how often a paper has been cited, which can signal its importance. You may need to check if you have access to the full text.<\/p>"}, {"h": "Google", "p": "<p>Fast and easy for finding background information or official statistics. However, results are ranked by popularity, not quality, so you need to be careful about what you use.<\/p>"}, {"h": "Wikipedia", "p": "<p>Useful for getting an overview of a topic and finding sources in the reference list. However, because anyone can edit it, you should not cite Wikipedia directly in your essays.<\/p>"}]}, {"t": "mc", "q": "Which tool should you use first to find academic sources for your essay?", "multi": false, "fb": "", "answers": [{"h": "Library database", "c": true, "f": ""}, {"h": "Google", "c": false, "f": ""}, {"h": "Social media", "c": false, "f": ""}, {"h": "Wikipedia", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "What Makes a Source Scholarly?", "p": "<p>Scholarly sources are written by experts and reviewed by other experts before publication. They are based on evidence, support their claims with data, and include a list of references. Using scholarly sources helps ensure your work is accurate and trustworthy.<\/p>"}, {"t": "text", "h": "Key Features of Scholarly Sources", "p": "<p>Review each flashcard to learn what makes a source scholarly and reliable.<\/p>"}, {"t": "flash", "cards": [{"f": "<strong>Evidence-Based<\/strong>", "b": "<p>Claims are supported by data, not just opinion.<\/p>"}, {"f": "<strong>Peer-Reviewed<\/strong>", "b": "<p>Other experts checked the work before it was published.<\/p>"}, {"f": "<strong>Reference List<\/strong>", "b": "<p>Shows what research the author used.<\/p>"}, {"f": "<strong>Author’s Qualifications<\/strong>", "b": "<p>Who wrote it and their expertise.<\/p>"}]}, {"t": "mc", "q": "A peer-reviewed article is always checked by other experts before it is published.", "multi": false, "fb": "", "answers": [{"h": "True", "c": true, "f": ""}, {"h": "False", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "The CRAAP Test: Checking Your Sources", "p": "<p>The CRAAP test is a simple way to decide if a source is good enough for academic work. Each letter stands for a different question you should ask about a source: Currency, Relevance, Authority, Accuracy, and Purpose. Using this test helps you quickly judge if a source is trustworthy and useful for your assignment.<\/p>"}, {"t": "text", "h": "What Does CRAAP Mean?", "p": "<p>Expand each section to see what each part of the CRAAP test checks for. This will help you remember what to look for when evaluating sources.<\/p>"}, {"t": "acc", "items": [{"h": "Currency", "p": "<p>When was the source published or last updated? For some topics, you need the most recent data available.<\/p>"}, {"h": "Relevance", "p": "<p>Does the source answer your question and is it detailed enough for academic work? Make sure it matches your assignment’s needs.<\/p>"}, {"h": "Authority", "p": "<p>Who wrote the source? Check the author’s qualifications and who published it to judge its reliability.<\/p>"}, {"h": "Accuracy", "p": "<p>Is the information supported by evidence? Are there citations you can check elsewhere?<\/p>"}, {"h": "Purpose", "p": "<p>Why does this source exist? Is it meant to inform, sell, or persuade? Consider who benefits if you believe the information.<\/p>"}]}, {"t": "text", "h": "Match CRAAP Questions to What They Check", "p": "<p>Test your understanding by matching each part of the CRAAP test to the type of information it helps you evaluate. This will help you remember how to use the CRAAP test in your own research.<\/p>"}, {"t": "sort", "piles": ["Currency", "Relevance", "Authority", "Accuracy"], "cards": [{"h": "When was it published?", "p": 0}, {"h": "Does it answer my question?", "p": 1}, {"h": "Who wrote it and what are their qualifications?", "p": 2}, {"h": "Is the information supported by evidence?", "p": 3}]}, {"t": "image", "img": "craap-test", "cap": ""}, {"t": "text", "h": "Applying the CRAAP Test: An Example", "p": "<p>Suppose you are researching tourism and come across three different sources: a government statistics page, a tourism industry blog, and a peer-reviewed journal article. The government page is up-to-date and official, but it does not list an author. The blog is authored by a marketing manager, lacks cited sources, and is designed to persuade readers. The journal article, on the other hand, is written by academics, has undergone peer review, and includes an extensive reference list.<\/p><p>By applying the CRAAP Test - which evaluates Currency, Relevance, Authority, Accuracy, and Purpose - you can determine that the journal article is the most reliable source for your essay, while the blog is the least trustworthy.<\/p>"}, {"t": "mc", "q": "Which of these sources would be best to use in your essay on tourism?", "multi": false, "fb": "", "answers": [{"h": "A government statistics page", "c": false, "f": "While government statistics are reliable for data, they are not typically used for in-depth analysis or argumentation in academic essays."}, {"h": "A marketing blog with no sources", "c": false, "f": "A marketing blog without sources is not reliable or credible for academic writing."}, {"h": "A peer-reviewed journal article", "c": true, "f": "Peer-reviewed journal articles are considered the most credible sources for academic essays because they are reviewed by experts and well-referenced."}, {"h": "Wikipedia", "c": false, "f": "Wikipedia is not considered a suitable source for academic essays because it can be edited by anyone and may not always be accurate or well-referenced."}]}, {"t": "cont"}, {"t": "text", "h": "Judging Web Addresses and Source Authority", "p": "<p>Web addresses can give you clues about where information comes from. For example, .ac.uk and .edu are used by universities, .gov by governments, and .org by organizations. However, the domain alone doesn’t guarantee quality - always check who wrote the content and why. If you can’t find a named author or organization, it’s best not to use the source.<\/p>"}, {"t": "text", "h": "What Does This Web Address Mean?", "p": "<p>Review each flashcard to learn what different web addresses can tell you about a source.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>.ac.uk / .edu<\/p>", "b": "<p>University or college site, often reliable<\/p>"}, {"f": "<p>.gov / .int<\/p>", "b": "<p>Government or international organization, strong for data<\/p>"}, {"f": "<p>.org<\/p>", "b": "<p>Any group, may have a point of view<\/p>"}, {"f": "<p>.com / .net<\/p>", "b": "<p>Commercial, judge the author carefully<\/p>"}, {"f": "<p>No author<\/p>", "b": "<p>If you can’t name a person or group, don’t use it<\/p>"}]}, {"t": "mc", "q": ".org websites are always neutral and reliable.", "multi": false, "fb": "", "answers": [{"h": "True", "c": false, "f": ""}, {"h": "False", "c": true, "f": ""}]}, {"t": "cont"}, {"t": "image", "img": "three-sources", "cap": ""}, {"t": "text", "h": "Practice: Which Source Would You Use?", "p": "<p>You are writing about tourism in Saudi Arabia and have found three sources: a government statistics website, a blog post with no author or sources, and a peer-reviewed journal article by university researchers. To determine which source to use, apply the CRAAP test, which evaluates Currency, Relevance, Authority, Accuracy, and Purpose.<\/p><ul><li><strong>Government statistics website:<\/strong> Likely to be current, authoritative, and accurate, as it is an official source. It is relevant for factual data.<\/li><li><strong>Blog post with no author or sources:<\/strong> Lacks authority and accuracy, and its purpose may be biased or unclear. Not reliable for academic work.<\/li><li><strong>Peer-reviewed journal article:<\/strong> Written by university researchers, reviewed by experts, and likely to be accurate, authoritative, and relevant.<\/li><\/ul><p><strong>Conclusion:<\/strong> The peer-reviewed journal article and the government statistics website are the best choices, as they meet the CRAAP criteria. The blog post should be avoided due to its lack of credibility.<\/p>"}, {"t": "mc", "q": "You find a blog about tourism with no sources and no author. Should you use it in your essay?", "multi": false, "fb": "", "answers": [{"h": "Yes", "c": false, "f": ""}, {"h": "No", "c": true, "f": ""}]}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned how to analyze your assignment, search for good sources, use the CRAAP test, and judge web addresses. Practicing these skills will help you find reliable information and write stronger essays. In the next lesson, you’ll learn about plagiarism and how to avoid it - an essential part of academic integrity.<\/p>"}]}, {"title": "Understanding and Avoiding Plagiarism", "blocks": [{"t": "banner", "img": "l2-banner", "cap": ""}, {"t": "text", "h": "Why Avoiding Plagiarism is Important for Your Success", "p": "<p>Understanding plagiarism is a crucial part of university life. When you know how to use sources correctly, you protect your grades, your reputation, and build trust with your teachers. Academic honesty is not just about following rules - it’s about showing respect for your own work and the work of others.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you will explore the concept of plagiarism, its significance, and practical strategies to avoid it in your academic work.<\/p>"}, {"t": "list", "items": ["<p>Understand what plagiarism is and why it is important to avoid it.<\/p>", "<p>Identify the different types of plagiarism.<\/p>", "<p>Learn about the consequences of plagiarism at university.<\/p>", "<p>Discover three simple habits that can help you avoid plagiarism.<\/p>", "<p>Find out how to keep an effective and accurate source list.<\/p>", "<p>Practice how to paraphrase and cite sources correctly.<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "What is Plagiarism?", "p": "<p>Plagiarism means using someone else’s ideas or words as if they were your own, without giving them credit. This includes copying text directly, but also using someone’s ideas, structure, or findings - even if you change the words. If you use information that is not your own, you must always show where it came from.<\/p>"}, {"t": "text", "h": "Key Points to Remember About Plagiarism", "p": "<p>Review each flashcard to understand the essentials of plagiarism and how to avoid it.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>What is plagiarism?<\/p>", "b": "<p>Plagiarism is using someone else’s ideas or words as your own.<\/p>"}, {"f": "<p>What must you do when you use someone else's ideas, even if you change the words?<\/p>", "b": "<p>You must always give credit, even when you change the words.<\/p>"}, {"f": "<p>Is it enough to just change the words of a source to avoid plagiarism?<\/p>", "b": "<p>No, changing the words is not enough; you must add a citation.<\/p>"}, {"f": "<p>Can plagiarism happen by accident?<\/p>", "b": "<p>Yes, you can plagiarise by accident, not just on purpose.<\/p>"}]}, {"t": "mc", "q": "Which of these is plagiarism?", "multi": false, "fb": "", "answers": [{"h": "Using someone’s idea without a citation", "c": false, "f": "Using someone’s idea without a citation is plagiarism, but the question asks for all correct options."}, {"h": "Copying a sentence and changing some words without credit", "c": false, "f": "Copying a sentence and changing some words without credit is also plagiarism, but the question asks for all correct options."}, {"h": "Both (a) and (b)", "c": true, "f": "Both using someone’s idea without a citation and copying words without credit are forms of plagiarism."}, {"h": "Only copying exact words", "c": false, "f": "Plagiarism is not limited to copying exact words; it also includes using ideas or paraphrasing without credit."}]}, {"t": "cont"}, {"t": "text", "h": "Types of Plagiarism", "p": "<p>Plagiarism is not just about copying and pasting someone else’s words. It also includes using someone’s ideas without credit, forgetting to add a citation even when you paraphrase, and even reusing your own old work or text generated by AI as if it were new. Understanding these types helps you avoid mistakes.<\/p>"}, {"t": "text", "h": "What Plagiarism Can Look Like", "p": "<p>Expand each section to see examples of different types of plagiarism. Knowing what to watch for will help you avoid accidental mistakes.<\/p>"}, {"t": "acc", "items": [{"h": "Copying Words", "p": "<p>Taking sentences or phrases from a source and using them as your own writing.<\/p><p>This can include copying and pasting, or making only small changes to the original text.<\/p>"}, {"h": "Using Ideas", "p": "<p>Taking someone’s argument, structure, or findings and not naming them, even if you have written it in your own words.<\/p><p>Paraphrasing well but forgetting to add a citation is still plagiarism.<\/p>"}, {"h": "Missing Credit", "p": "<p>Leaving out a citation, even when you have changed all the words.<\/p><p>Good paraphrasing without a citation is not enough - you must always show where the idea came from.<\/p>"}, {"h": "Reused or Generated Work", "p": "<p>Submitting your own earlier work again, or text produced by an AI tool, as if it were new work written by you.<\/p><p>This is called self-plagiarism or academic misconduct.<\/p>"}]}, {"t": "match", "q": "Match each example to the type of plagiarism it shows.", "pairs": [{"a": "Copying words", "b": "Copying a paragraph word-for-word from a book"}, {"a": "Using ideas", "b": "Using someone’s research idea without naming them"}, {"a": "Missing credit", "b": "Paraphrasing well but not adding a citation"}, {"a": "Reused work", "b": "Submitting your own old essay again"}], "ok": "", "no": ""}, {"t": "cont"}, {"t": "image", "img": "consequences", "cap": ""}, {"t": "text", "h": "What Happens if You Plagiarise?", "p": "<p>If you plagiarise, you could lose marks on your assignment, fail a module, or even face a formal academic process. In serious or repeated cases, you might be suspended or removed from your course. Remember, accidental plagiarism is treated seriously too - always check your work carefully.<\/p>"}, {"t": "text", "h": "", "p": "<p>Understanding the consequences of plagiarism at university is crucial. Even accidental plagiarism can lead to serious outcomes. Here are some of the main consequences you could face:<\/p>"}, {"t": "list", "items": ["<p>Loss of marks on your assignment.<\/p>", "<p>Failing a module or needing to retake it.<\/p>", "<p>Formal process and record on your file.<\/p>", "<p>Possible suspension or removal from your course.<\/p>"]}, {"t": "mc", "q": "If you plagiarise by accident, you will not face any consequences.", "multi": false, "fb": "", "answers": [{"h": "True", "c": false, "f": ""}, {"h": "False", "c": true, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "Three Habits to Avoid Plagiarism", "p": "<p>There are three simple habits that will help you avoid plagiarism: paraphrasing, citing, and referencing. By following these steps, you can use sources correctly and show where your information comes from in your writing.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Staying Safe from Plagiarism", "p": "<p>Understanding how to avoid plagiarism is essential for academic success. Here are three important steps to help you stay safe from plagiarism whenever you use a source.<\/p>"}, {"k": "step", "h": "Paraphrase", "p": "<p>Read the source material carefully, then write the idea in your own words from memory. This ensures you truly understand the content and are not copying directly.<\/p>"}, {"k": "step", "h": "Cite", "p": "<p>Include the author and year in your sentence wherever you use their point. This gives credit to the original creator and shows where your information comes from.<\/p>"}, {"k": "step", "h": "Reference", "p": "<p>Add the full entry to your reference list at the end of your work. This allows others to find the original source if they want more information.<\/p>"}, {"k": "summary", "h": "Summary: Build Good Academic Habits", "p": "<p>Following these three steps every time you use a source will help you avoid plagiarism and develop strong academic habits.<\/p>"}]}, {"t": "mc", "q": "Which habit helps you show where your information came from in your essay?", "multi": false, "fb": "", "answers": [{"h": "Paraphrasing", "c": false, "f": ""}, {"h": "Citing", "c": true, "f": ""}, {"h": "Guessing", "c": false, "f": ""}, {"h": "Ignoring sources", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "image", "img": "source-list", "cap": ""}, {"t": "text", "h": "Keep a Source List While You Research", "p": "<p>Keeping a source list as you research is a smart habit. Write down the author, title, year, and where you found each source - even if you’re not sure you’ll use it. This saves you time later and helps prevent mistakes or missing information in your references.<\/p>"}, {"t": "text", "h": "What Information Should You Record?", "p": "<p>Review each flashcard to see what details you should write down for every source you use.<\/p>"}, {"t": "flash", "cards": [{"f": "<strong>Author<\/strong>", "b": "<p>Person or organization responsible for the source.<\/p>"}, {"f": "<strong>Title<\/strong>", "b": "<p>The title of the article, book, or webpage.<\/p>"}, {"f": "<strong>Year<\/strong>", "b": "<p>The year the source was published or last updated.<\/p>"}, {"f": "<strong>Page<\/strong>", "b": "<p>Page number(s) for specific quotes or data.<\/p>"}, {"f": "<strong>URL or DOI<\/strong>", "b": "<p>The web address or Digital Object Identifier if the source is found online.<\/p>"}, {"f": "<strong>Date Accessed<\/strong>", "b": "<p>The date you accessed the source, required for web sources.<\/p>"}]}, {"t": "mc", "q": "Why is it important to keep a source list while you research?", "multi": false, "fb": "", "answers": [{"h": "It saves time later", "c": false, "f": "While saving time is one benefit, this answer does not capture all the reasons why keeping a source list is important."}, {"h": "It helps you avoid plagiarism", "c": false, "f": "Avoiding plagiarism is an important reason, but this answer does not include all the benefits of keeping a source list."}, {"h": "Both (a) and (b)", "c": true, "f": "Keeping a source list both saves you time later and helps you avoid plagiarism by ensuring you have all the details needed for citations and references."}, {"h": "It is optional", "c": false, "f": "Keeping a source list is not optional if you want to save time and avoid plagiarism; it is an essential part of the research process."}]}, {"t": "cont"}, {"t": "text", "h": "Practice: Paraphrasing and Citing", "p": "<p>Paraphrasing means putting information from a source into your own words. But even when you paraphrase well, you must always add a citation to show where the idea came from. Let’s look at a worked example before you try it yourself.<\/p>"}, {"t": "image", "img": "paraphrase", "cap": ""}, {"t": "text", "h": "Worked Example: Paraphrasing with Citation", "p": "<p>Original statement: \"Tourism is a major contributor to the global economy.\"<\/p><p>Paraphrased version: Numerous nations depend on tourism as a key source of economic support. Citation: (UN Tourism, 2025).<\/p><p>This example demonstrates how to restate information in your own words while properly acknowledging the original source.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Paraphrasing", "p": "<p>Paraphrasing is an essential skill that allows you to express ideas from a source in your own words. This process helps demonstrate your understanding and ensures academic integrity.<\/p>"}, {"k": "step", "h": "Read and Understand", "p": "<p>Begin by carefully reading the source material. Make sure you fully understand the main idea or concept being presented.<\/p>"}, {"k": "step", "h": "Write in Your Own Words", "p": "<p>After closing the source, try to recall and write the idea using your own words and sentence structure. This ensures the paraphrase is original and not too close to the source text.<\/p>"}, {"k": "step", "h": "Add a Citation", "p": "<p>Always include a citation to credit the original source of the idea, even though you have used your own words.<\/p>"}, {"k": "summary", "h": "Summary: The Importance of Paraphrasing", "p": "<p>By following these three steps, you can avoid plagiarism and demonstrate your understanding of the material.<\/p>"}]}, {"t": "mc", "q": "Which step is missing? Read, write in your own words, ____?", "multi": false, "fb": "", "answers": [{"h": "Add a citation", "c": true, "f": ""}, {"h": "Guess the author", "c": false, "f": ""}, {"h": "Change the topic", "c": false, "f": ""}, {"h": "Leave it blank", "c": false, "f": ""}]}, {"t": "note", "p": "<p>Remember: The test is simple - are these words mine, and is this idea mine? If not, give credit every time.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned what plagiarism is, why it matters, the different types, the consequences, and the habits that help you avoid it. Practice these habits in all your assignments to protect your work and reputation. In the next lesson, you’ll learn how to use citations and references the right way to support your academic writing.<\/p>"}]}, {"title": "Citations and Referencing: Harvard and APA Basics", "blocks": [{"t": "banner", "img": "l3-banner", "cap": ""}, {"t": "text", "h": "Why Citations and References Matter for Your Success", "p": "<p>Using citations and references in your assignments is essential for academic success. They show which ideas are your own and which come from other sources, helping you build trust with your teachers and avoid plagiarism. Mastering this skill will make your work clearer, more credible, and ready for university standards.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you’ll discover the essentials of referencing and citation. You’ll learn how to use them correctly, spot the differences between Harvard and APA styles, and avoid common mistakes. By the end, you’ll be ready to build a reference list and match your citations with confidence.<\/p>"}, {"t": "list", "items": ["<p>What referencing is and why it is important.<\/p>", "<p>How to use in-text citations and make a reference list.<\/p>", "<p>The differences between Harvard and APA styles.<\/p>", "<p>Common citation mistakes and how to avoid them.<\/p>", "<p>How to practise building a reference list and matching citations.<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "What is Referencing?", "p": "<p>Referencing means showing which words and ideas in your work are yours, and which come from other sources. It helps your reader see your own thinking and gives proper credit to others whose work you use. Referencing is a key part of honest academic writing and helps you avoid plagiarism.<\/p>"}, {"t": "text", "h": "Key Facts About Referencing", "p": "<p>Review each flashcard to learn the most important facts about referencing. These points will help you remember why referencing matters and what it involves.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>What are the two parts of referencing?<\/p>", "b": "<p>Referencing has two parts: a short in-text citation and a full reference at the end.<\/p>"}, {"f": "<p>Do you need to reference all types of sources?<\/p>", "b": "<p>You must reference any source you use: books, articles, websites, videos, data, etc.<\/p>"}, {"f": "<p>Is referencing required when you paraphrase or only when you quote?<\/p>", "b": "<p>You need a reference whether you use the exact words or your own words.<\/p>"}, {"f": "<p>What does referencing show about your work?<\/p>", "b": "<p>Referencing shows you did the reading and research.<\/p>"}]}, {"t": "mc", "q": "Which of these must you reference in your essay?", "multi": false, "fb": "", "answers": [{"h": "A book", "c": false, "f": "While you must reference books you use, you also need to reference other types of sources."}, {"h": "A website", "c": false, "f": "Websites must be referenced, but so must other sources you use."}, {"h": "A data set", "c": false, "f": "Data sets require referencing, but you must also reference other types of sources."}, {"h": "All of the above", "c": true, "f": "You must reference every type of source you use, including books, websites, data sets, and more."}]}, {"t": "cont"}, {"t": "text", "h": "How Referencing Works: Two Parts", "p": "<p>Referencing always has two halves. First, you add a short note in your sentence, called an in-text citation, to show where you used someone else’s idea. Second, you include a full reference at the end of your work so the reader can find the source. Both parts must always match each other.<\/p>"}, {"t": "text", "h": "The Two Places for Referencing", "p": "<p>Expand each section to see how referencing works in practice. Understanding both parts will help you avoid mistakes and keep your work organized.<\/p>"}, {"t": "acc", "items": [{"h": "In-Text Citation", "p": "<p>A short note in your sentence, such as (UN Tourism, 2025). Place it exactly where you use the idea, not just at the end of the paragraph.<\/p>"}, {"h": "Reference List", "p": "<p>At the end of your work, give full details so the reader can find the source: Author. (Year). Title. Where you found it.<\/p>"}, {"h": "Matching Rule", "p": "<p>Every citation needs a reference. Every reference needs a citation. They must match exactly, with no extras or missing entries.<\/p>"}]}, {"t": "mc", "q": "Where should you place the in-text citation?", "multi": false, "fb": "", "answers": [{"h": "At the end of your essay", "c": false, "f": ""}, {"h": "Where you use the idea in your sentence", "c": true, "f": ""}, {"h": "At the end of the paragraph", "c": false, "f": ""}, {"h": "In the reference list", "c": false, "f": ""}]}, {"t": "image", "img": "citation-match", "cap": ""}, {"t": "text", "h": "Example: Citation and Reference", "p": "<p>This diagram shows how an in-text citation, such as (UN Tourism, 2025), matches a full reference in your list: UN Tourism. (2025). World Tourism Barometer: January 2025. Retrieved September 14, 2025, from URL. Both parts must match exactly so your reader can check your sources.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "In-Text Citation Rules", "p": "<p>In-text citations follow a simple pattern: include the author and year in brackets, like (Ahmed, 2024). If you use a direct quote, add the page number too. Remember, you need a citation even when you paraphrase someone’s idea in your own words.<\/p>"}, {"t": "text", "h": "Common Citation Patterns", "p": "<p>Review these flashcards to see the main ways to format in-text citations. Knowing these patterns will help you cite sources correctly in any assignment.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>How do you cite a paraphrased idea from a source with one author?<\/p>", "b": "<p>Example: (UN Tourism, 2025)<\/p>"}, {"f": "<p>How do you cite a source when the author is named in the sentence?<\/p>", "b": "<p>Example: UN Tourism (2025) reports that ...<\/p>"}, {"f": "<p>How do you cite a source with two authors?<\/p>", "b": "<p>Example: (Ahmed &amp; Ozturk, 2023)<\/p>"}, {"f": "<p>How do you cite a source with three or more authors?<\/p>", "b": "<p>Example: (Ahmed et al., 2023)<\/p>"}, {"f": "<p>How do you cite a direct quotation?<\/p>", "b": "<p>Example: “quote” (UN Tourism, 2025, p. 4)<\/p>"}]}, {"t": "match", "q": "Match each in-text citation to the pattern it uses.", "pairs": [{"a": "Non-integral: author and year in brackets", "b": "(UN Tourism, 2025)"}, {"a": "Integral: the author is part of your sentence", "b": "UN Tourism (2025) reports that ..."}, {"a": "Two authors", "b": "(Ahmed & Ozturk, 2023)"}, {"a": "Three or more authors", "b": "(Ahmed et al., 2023)"}, {"a": "Direct quotation, with a page number", "b": "“quote” (UN Tourism, 2025, p. 4)"}], "ok": "", "no": ""}, {"t": "text", "h": "Integral and Non-Integral Citations", "p": "<p>Explore the two main ways to include citations in your writing. Knowing when to use each style can make your writing clearer and more engaging.<\/p>"}, {"t": "acc", "items": [{"h": "Integral Citation", "p": "<p>The author is part of your sentence, for example: Ahmed (2024) argues that ... This style is useful when the writer’s identity is important.<\/p>"}, {"h": "Non-Integral Citation", "p": "<p>The author is in brackets at the end, such as (Ahmed, 2024). Use this when the finding or idea is more important than who wrote it.<\/p>"}, {"h": "When to Use Each", "p": "<p>Use integral citations when you want to highlight the writer, or when comparing authors. Use non-integral citations when the information matters more. Mixing both styles makes your writing more interesting.<\/p>"}]}, {"t": "mc", "q": "Which is an example of an integral citation?", "multi": false, "fb": "", "answers": [{"h": "(Ahmed, 2024)", "c": false, "f": ""}, {"h": "Ahmed (2024) argues that...", "c": true, "f": ""}, {"h": "(UN Tourism, 2025)", "c": false, "f": ""}, {"h": "(Ahmed &amp; Ozturk, 2023)", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "Harvard vs. APA: What’s the Difference?", "p": "<p>Harvard and APA are both author-date referencing styles. Their in-text citations are almost the same, but their reference lists use different punctuation and formatting. Always use only one style in each assignment, and check your university’s guidelines for details.<\/p>"}, {"t": "text", "h": "See the Differences in Reference List Formats", "p": "<p>Expand each tab to compare how Harvard and APA reference lists are formatted. Notice the differences in punctuation, order, and details.<\/p>"}, {"t": "tabs", "items": [{"h": "Harvard Format", "p": "<p><strong>Example:<\/strong> Bell, J. (2024) Writing at university. 2nd edn. London: Routledge.<\/p><ul><li>There is no full stop after the year.<\/li><li>The place of publication comes before the publisher.<\/li><\/ul>"}, {"h": "APA Format", "p": "<p><strong>Example:<\/strong> Bell, J. (2024). Writing at university (2nd ed.). Routledge.<\/p><ul><li>There is a full stop after the year.<\/li><li>No place of publication is included.<\/li><li>“ed.” is used instead of “edn”.<\/li><\/ul>"}]}, {"t": "mc", "q": "In APA style, do you include the place of publication in your reference list?", "multi": false, "fb": "", "answers": [{"h": "Yes", "c": false, "f": "This is incorrect. APA style does not require the place of publication in the reference list."}, {"h": "No", "c": true, "f": "Correct. APA style does not require the place of publication, unlike some other citation styles."}, {"h": "Only for books", "c": false, "f": "This is incorrect. Even for books, APA style does not require the place of publication."}, {"h": "Only for journal articles", "c": false, "f": "This is incorrect. APA style does not require the place of publication for journal articles or any other sources."}]}, {"t": "cont"}, {"t": "text", "h": "How to Write a Reference List", "p": "<p>A reference list gives all the details for every source you used in your work. It should be in alphabetical order by author, with exact information so your reader can find each source. Make sure every entry is complete and matches your in-text citations.<\/p>"}, {"t": "image", "img": "reference-list", "cap": ""}, {"t": "text", "h": "Reference List Examples", "p": "<p>This example shows how to format references for different types of sources, such as journal articles, books, reports, and data sets. Each entry includes the author, year, title, and source, arranged in alphabetical order for easy checking.<\/p><ul><li><strong>Journal Article:<\/strong> Smith, J. A. (2020). Exploring learning strategies in higher education. <em>Journal of Educational Research, 45<\/em>(2), 123-135. https://doi.org/10.1234/jer.2020.45.2.123<\/li><li><strong>Book:<\/strong> Brown, L. M. (2018). <em>Understanding human behavior<\/em> (3rd ed.). Academic Press.<\/li><li><strong>Report:<\/strong> World Health Organization. (2021). <em>Global health statistics 2021<\/em> (WHO Publication No. 2021-001). https://www.who.int/publications/2021-001<\/li><li><strong>Data Set:<\/strong> National Center for Education Statistics. (2019). <em>Public school enrollment data, 2018-2019<\/em> [Data set]. U.S. Department of Education. https://nces.ed.gov/data/2018-2019<\/li><\/ul>"}, {"t": "text", "h": "Reference Formats for Different Source Types", "p": "<p>Explore each section to see the correct format for different kinds of sources. Knowing these patterns will help you build a complete and accurate reference list.<\/p>"}, {"t": "acc", "items": [{"h": "Journal Article", "p": "<p>Author, A. (Year). Title. <i>Journal Name<\/i>, volume(issue), pages.<\/p>"}, {"h": "Book", "p": "<p>Author, A. (Year). <i>Title<\/i> (edition). Publisher.<\/p>"}, {"h": "Chapter in Book", "p": "<p>Author, A. (Year). Chapter title. In B. Editor (Ed.), <i>Book title<\/i> (pp. x-y). Publisher.<\/p>"}, {"h": "Report or Web Page", "p": "<p>Organisation. (Year). <i>Title<\/i>. Retrieved Month Day, Year, from URL.<\/p>"}, {"h": "Statistics/Data Set", "p": "<p>Organisation. (Year). <i>Title<\/i> [Data set]. Retrieved Month Day, Year, from URL.<\/p>"}]}, {"t": "match", "q": "Match each reference format to the type of source it is for.", "pairs": [{"a": "Journal article", "b": "Author, A. (Year). Title. Journal Name, volume(issue), pages."}, {"a": "Book", "b": "Author, A. (Year). Title (edition). Publisher."}, {"a": "Chapter in book", "b": "Author, A. (Year). Chapter title. In B. Editor (Ed.), Book title (pp. x-y). Publisher."}, {"a": "Report or web page", "b": "Organisation. (Year). Title. Retrieved Month Day, Year, from URL."}, {"a": "Data set", "b": "Organisation. (Year). Title [Data set]. Retrieved Month Day, Year, from URL."}], "ok": "", "no": ""}, {"t": "cont"}, {"t": "text", "h": "Reporting Verbs: How to Introduce Sources", "p": "<p>Reporting verbs help you show what the author is doing in your source. Choosing the right verb can show if you agree, disagree, or are simply presenting information. Using a variety of reporting verbs makes your writing clearer and more academic.<\/p>"}, {"t": "text", "h": "Types of Reporting Verbs", "p": "<p>Review these flashcards to learn the main types of reporting verbs. Using the right verb helps you communicate your point of view and the author’s intent.<\/p>"}, {"t": "flash", "cards": [{"f": "<b>Neutral Reporting Verbs<\/b>", "b": "<ul><li>states that<\/li><li>notes that<\/li><li>reports that<\/li><\/ul>"}, {"f": "<b>Strong Reporting Verbs<\/b>", "b": "<ul><li>argues that<\/li><li>maintains that<\/li><li>shows that<\/li><\/ul>"}, {"f": "<b>Tentative Reporting Verbs<\/b>", "b": "<ul><li>suggests that<\/li><li>indicates that<\/li><li>proposes that<\/li><\/ul>"}, {"f": "<b>Too Informal Reporting Verbs (Do not use these)<\/b>", "b": "<ul><li>says<\/li><li>talks about<\/li><li>thinks<\/li><\/ul>"}]}, {"t": "mc", "q": "Which reporting verb is too informal for academic writing?", "multi": false, "fb": "", "answers": [{"h": "suggests", "c": false, "f": ""}, {"h": "talks about", "c": true, "f": ""}, {"h": "argues", "c": false, "f": ""}, {"h": "reports that", "c": false, "f": ""}]}, {"t": "text", "h": "Common Citation Errors and How to Fix Them", "p": "<p>Expand each section to learn about common mistakes students make with citations. Knowing these errors will help you avoid them in your own work.<\/p>"}, {"t": "acc", "items": [{"h": "Using Initials in Citations", "p": "<p>Never include initials - use only the surname and year in your in-text citation.<\/p>"}, {"h": "Citing URLs as Authors", "p": "<p>Always name the author or organization, not the web address, in your citation.<\/p>"}, {"h": "Missing Dates", "p": "<p>Use (n.d.) only if there is genuinely no date available for the source.<\/p>"}, {"h": "Full Names in Citations", "p": "<p>Do not use full first names - just the surname and year are needed in citations.<\/p>"}]}, {"t": "mc", "q": "You should use only the surname and year in an in-text citation.", "multi": false, "fb": "", "answers": [{"h": "True", "c": true, "f": ""}, {"h": "False", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "image", "img": "color-match", "cap": ""}, {"t": "text", "h": "Practice: Build and Match Your References", "p": "<p>In this example, you see four sources listed in a reference list, each with a matching in-text citation highlighted in the essay. This helps you check that every citation matches a reference and every reference is used in your writing.<\/p>"}, {"t": "process", "steps": [{"k": "intro", "h": "Introduction to Building a Reference List", "p": "<p>Follow these steps to create a complete and accurate reference list for your assignments.<\/p>"}, {"k": "step", "h": "Write Full References", "p": "<p>Write the full reference for each source you use.<\/p>"}, {"k": "step", "h": "Alphabetize the List", "p": "<p>Put the list in alphabetical order by author.<\/p>"}, {"k": "step", "h": "Match In-Text Citations", "p": "<p>Check that every in-text citation has a matching entry in the list.<\/p>"}, {"k": "step", "h": "Ensure All References Are Cited", "p": "<p>Check that every reference in the list is cited in your essay.<\/p>"}, {"k": "summary", "h": "Summary: Accurate and Easy Referencing", "p": "<p>By following these steps, you’ll make sure your referencing is correct and easy to check.<\/p>"}]}, {"t": "mc", "q": "What should you check when you finish your reference list?", "multi": false, "fb": "", "answers": [{"h": "It is alphabetical", "c": false, "f": "While your reference list should be alphabetical, this is only one aspect to check."}, {"h": "Every citation and reference match", "c": false, "f": "Ensuring every citation and reference match is important, but it's not the only thing to check."}, {"h": "All dates are correct", "c": false, "f": "Checking that all dates are correct is necessary, but there are other factors to consider as well."}, {"h": "All of the above", "c": true, "f": "A correct reference list should be alphabetical, have matching citations and references, and use consistent dates throughout."}]}, {"t": "note", "p": "<p>Remember: Every in-text citation must match a reference in your list, and every reference must be cited in your work. This is the fastest way to show you did your research well.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you learned what referencing is, how to use in-text citations and reference lists, the differences between Harvard and APA styles, and how to avoid common mistakes. Practise using these skills in your own assignments to build confidence and avoid plagiarism. In the next lesson, you’ll review everything you’ve learned and take a final quiz to test your knowledge.<\/p>"}]}, {"title": "Academic Integrity Review and Final Quiz", "blocks": [{"t": "banner", "img": "l4-banner", "cap": ""}, {"t": "text", "h": "Congratulations! You’re Nearly Ready for University Success", "p": "<p>You’ve worked hard to build your research, referencing, and academic honesty skills. These are the foundations for success at university and beyond. Take a moment to celebrate your progress! Now, let’s review what you’ve learned and check your understanding before you start your next assignment. This is your chance to make sure you’re confident and ready to protect your academic reputation.<\/p>"}, {"t": "text", "h": "", "p": "<p>In this lesson, you’ll have the chance to review the most important skills and concepts from the course. You’ll also practise using key academic vocabulary, spot common mistakes, and test your knowledge with a final quiz. Here’s what to expect:<\/p>"}, {"t": "list", "items": ["<p>The most important points about research, plagiarism, citation, and referencing.<\/p>", "<p>Key academic vocabulary and definitions.<\/p>", "<p>Common mistakes and how to avoid them.<\/p>", "<p>A final quiz to check your knowledge and confidence.<\/p>"]}, {"t": "cont"}, {"t": "text", "h": "Research Skills and Finding Good Sources", "p": "<p>Good research starts with understanding your assignment, choosing the right tools to find information, and checking if your sources are reliable. Remember to analyze the task, use trusted search tools like your library database or Google Scholar, and always check each source with the CRAAP test. These steps help you find strong evidence for your work and avoid wasting time on unreliable information.<\/p>"}, {"t": "text", "h": "Quick Review: Research Skills", "p": "<p>Reflect on the key steps for effective research. Review each flashcard to remind yourself of the essentials before you move on.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>Assignment Analysis<\/p>", "b": "<p>Underline the command word, know your topic, and decide what kind of source you need before you start searching.<\/p>"}, {"f": "<p>Where to Search<\/p>", "b": "<p>Use your library database, Google Scholar, or JSTOR for academic sources—not just Google or Wikipedia.<\/p>"}, {"f": "<p>Scholarly Source<\/p>", "b": "<p>A scholarly source is peer-reviewed, evidence-based, and includes a reference list so you can check its claims.<\/p>"}, {"f": "<p>CRAAP Test<\/p>", "b": "<p>Always check for Currency, Relevance, Authority, Accuracy, and Purpose when deciding if a source is reliable.<\/p>"}]}, {"t": "mc", "q": "Which question is NOT part of the CRAAP test?", "multi": false, "fb": "", "answers": [{"h": "Why does the source exist?", "c": false, "f": ""}, {"h": "What color is the website?", "c": true, "f": ""}, {"h": "Who wrote it?", "c": false, "f": ""}, {"h": "Is the information accurate?", "c": false, "f": ""}]}, {"t": "cont"}, {"t": "text", "h": "Plagiarism and How to Avoid It", "p": "<p>Plagiarism means using someone else’s ideas or words without giving them credit. It includes copying text, using ideas without naming the source, missing citations, or reusing your own or AI-generated work as if it’s new. Avoiding plagiarism is essential for protecting your grades and your reputation as a trustworthy student.<\/p>"}, {"t": "text", "h": "Check Your Understanding: Types of Plagiarism", "p": "<p>Explore each type of plagiarism to make sure you can recognize and avoid them in your own work. Expand each section for a quick review.<\/p>"}, {"t": "acc", "items": [{"h": "Copying Words", "p": "<p>Taking sentences or phrases from a source and using them as your own writing, even if you change a few words, is plagiarism. Always use quotation marks and a citation for direct quotes.<\/p>"}, {"h": "Using Ideas", "p": "<p>Paraphrasing someone’s argument, structure, or findings without naming them is also plagiarism. Even if you use your own words, you must give credit to the original source.<\/p>"}, {"h": "Missing Credit", "p": "<p>Leaving out a citation, even when you have paraphrased well, is still plagiarism. Every borrowed idea or fact needs a citation in your work.<\/p>"}, {"h": "Reused or Generated Work", "p": "<p>Submitting your own earlier work again, or using text produced by an AI tool as if it were new, counts as plagiarism. Always create original work for each assignment.<\/p>"}]}, {"t": "mc", "q": "If you change all the words but use someone else’s idea, do you need to cite them?", "multi": false, "fb": "", "answers": [{"h": "True", "c": false, "f": ""}, {"h": "False", "c": true, "f": ""}]}, {"t": "image", "img": "safe-research", "cap": ""}, {"t": "text", "h": "Best Practices: Stay Safe from Plagiarism", "p": "<p>Remember the three habits that protect you from plagiarism: paraphrase information in your own words, cite the source in your writing, and add a full reference at the end. Keeping a source list as you research will save you time and help you avoid mistakes. These simple steps will keep your work honest and your reputation strong.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "Review: Citations and Reference Lists", "p": "<p>Referencing has two parts: a short in-text citation in your sentence and a full reference at the end of your work. Every citation must match a reference, and you must use the correct style (Harvard or APA) as required by your university. This system helps you show which ideas are yours and which come from others.<\/p>"}, {"t": "text", "h": "Quick Review: Citation and Referencing Rules", "p": "<p>Review these flashcards to refresh your memory on the main rules for citations and references.<\/p>"}, {"t": "flash", "cards": [{"f": "<p>In-Text Citation<\/p>", "b": "<p>Add a short note in your sentence with the author and year, like (Ahmed, 2024).<\/p>"}, {"f": "<p>Reference List<\/p>", "b": "<p>Give full details at the end of your work: author, year, title, and source.<\/p>"}, {"f": "<p>Matching Rule<\/p>", "b": "<p>Every in-text citation must have a matching reference, and every reference must be cited in your essay.<\/p>"}, {"f": "<p>Harvard vs. APA<\/p>", "b": "<p>Both use author and year in-text, but their reference list punctuation and order are different.<\/p>"}]}, {"t": "mc", "q": "Which of these is a correct in-text citation?", "multi": false, "fb": "", "answers": [{"h": "(Ahmed, 2024)", "c": true, "f": "This is the correct format for an in-text citation: only the author's surname and the year are included."}, {"h": "(Robert Ahmed, 2024)", "c": false, "f": "Including the author's first name is incorrect; only the surname and year should be used."}, {"h": "(https://example.com, 2024)", "c": false, "f": "URLs should not be included in in-text citations; only the author's surname and year are needed."}, {"h": "(Ahmed, p. 2024)", "c": false, "f": "Extra details like page numbers are not included unless directly quoting; for a standard in-text citation, only the surname and year are needed."}]}, {"t": "image", "img": "check-references", "cap": ""}, {"t": "text", "h": "Avoid Common Mistakes", "p": "<p>Check your reference list carefully: every in-text citation should match a full reference, and your list should be in alphabetical order. Missing details, unmatched entries, or the wrong order are common errors. Always double-check your work to avoid losing marks for simple mistakes.<\/p>"}, {"t": "cont"}, {"t": "text", "h": "Final Quiz: Test Your Academic Integrity Skills", "p": "<p>This is your chance to check your understanding of everything you’ve learned. Don’t worry if you make mistakes—this quiz is for practice and learning. Try your best and see how much you remember about research, plagiarism, citations, and referencing!<\/p>"}, {"t": "mc", "q": "Which tool is best for finding peer-reviewed academic sources?", "multi": false, "fb": "", "answers": [{"h": "Library database", "c": true, "f": ""}, {"h": "Social media", "c": false, "f": ""}, {"h": "Wikipedia", "c": false, "f": ""}, {"h": "Personal blogs", "c": false, "f": ""}]}, {"t": "mc", "q": "What is the first step before you start researching for an assignment?", "multi": false, "fb": "", "answers": [{"h": "Start searching on Google", "c": false, "f": ""}, {"h": "Analyze the assignment question", "c": true, "f": ""}, {"h": "Write your introduction", "c": false, "f": ""}, {"h": "Ask a friend for help", "c": false, "f": ""}]}, {"t": "mc", "q": "Which of the following is NOT a type of plagiarism?", "multi": false, "fb": "", "answers": [{"h": "Copying words without credit", "c": false, "f": ""}, {"h": "Using ideas without citation", "c": false, "f": ""}, {"h": "Paraphrasing with a citation", "c": true, "f": ""}, {"h": "Submitting old work as new", "c": false, "f": ""}]}, {"t": "mc", "q": "What does the 'A' in the CRAAP test stand for?", "multi": false, "fb": "", "answers": [{"h": "Authority", "c": false, "f": ""}, {"h": "Accuracy", "c": true, "f": ""}, {"h": "Analysis", "c": false, "f": ""}, {"h": "Access", "c": false, "f": ""}]}, {"t": "mc", "q": "If you use a direct quote, what must you include in your in-text citation?", "multi": false, "fb": "", "answers": [{"h": "Only the author", "c": false, "f": ""}, {"h": "Author and year", "c": false, "f": ""}, {"h": "Author, year, and page number", "c": true, "f": ""}, {"h": "Only the page number", "c": false, "f": ""}]}, {"t": "mc", "q": "Which statement about reference lists is correct?", "multi": false, "fb": "", "answers": [{"h": "Only books need to be listed", "c": false, "f": "This is incorrect. Reference lists should include all types of sources used, not just books."}, {"h": "The list should be alphabetical by author", "c": true, "f": "This is correct. Reference lists must be in alphabetical order by author."}, {"h": "You can include sources you didn’t use", "c": false, "f": "This is incorrect. Only sources you actually used should be included in the reference list."}, {"h": "List only websites", "c": false, "f": "This is incorrect. All types of sources used should be listed, not just websites."}]}, {"t": "mc", "q": "In Harvard and APA styles, what is the main difference?", "multi": false, "fb": "", "answers": [{"h": "In-text citations are different", "c": false, "f": "Both Harvard and APA styles use author and year for in-text citations, so this is not the main difference."}, {"h": "Reference list punctuation and order", "c": true, "f": "The main difference between Harvard and APA styles is in the punctuation and order used in the reference list."}, {"h": "Only APA uses author and year", "c": false, "f": "This is incorrect because both styles use author and year in their in-text citations."}, {"h": "Harvard does not use a reference list", "c": false, "f": "This is incorrect; both styles use a reference list."}]}, {"t": "mc", "q": "What should you do if you can’t find a publication date for a source?", "multi": false, "fb": "", "answers": [{"h": "Leave the date blank", "c": false, "f": "Leaving the date blank is not correct. You should indicate that there is no date available."}, {"h": "Use (n.d.) for no date", "c": true, "f": "This is correct. (n.d.) stands for 'no date' and should be used in your citation and reference when a publication date is not available."}, {"h": "Make up a date", "c": false, "f": "Making up a date is incorrect and can be misleading or unethical in academic work."}, {"h": "Use today’s date", "c": false, "f": "Using today’s date is not appropriate unless you are citing a source that was published today."}]}, {"t": "mc", "q": "Which is a sign that a source is scholarly?", "multi": false, "fb": "", "answers": [{"h": "It is peer-reviewed", "c": true, "f": "Peer review is a process where experts evaluate the quality and credibility of the work, which is a key characteristic of scholarly sources."}, {"h": "It has no author", "c": false, "f": "Scholarly sources typically have identifiable authors with credentials; lack of an author is not a sign of scholarly work."}, {"h": "It is a personal blog", "c": false, "f": "Personal blogs are not considered scholarly because they are not peer-reviewed or evidence-based."}, {"h": "It is the first result on Google", "c": false, "f": "Search ranking does not determine whether a source is scholarly; the content and review process are what matter."}]}, {"t": "mc", "q": "What is the most important reason to reference your sources?", "multi": false, "fb": "", "answers": [{"h": "To make your essay longer", "c": false, "f": ""}, {"h": "To show you did the reading and give credit", "c": true, "f": ""}, {"h": "To impress your friends", "c": false, "f": ""}, {"h": "To fill space in your assignment", "c": false, "f": ""}]}, {"t": "note", "p": "<p>Well done! You have finished the Academic Skills Unit 2. Using good research, avoiding plagiarism, and referencing correctly will help you succeed and earn your teachers’ trust.<\/p>"}, {"t": "text", "h": "", "p": "<p>This course has given you the tools to research effectively, avoid plagiarism, and use citations and references with confidence. Remember, you can revisit any lesson for practice whenever you need. Use these skills in all your assignments, and don’t hesitate to ask for help if you’re unsure. You are ready for your academic journey—good luck!<\/p>"}]}], "quiz": {"title": "Quiz", "pass": 80, "questions": [{"t": "mc", "q": "You are selecting sources for an academic essay. Which source is the most credible choice for supporting your argument?", "multi": false, "fb": "", "answers": [{"h": "A crowd-edited reference website", "c": false, "f": "A crowd-edited reference website can provide a quick overview and point to other sources, but it is not typically the most credible source to cite in an academic essay."}, {"h": "A general encyclopedia entry", "c": false, "f": "An encyclopedia entry can help with background understanding, but it is usually not the strongest source for supporting an academic argument compared with a peer-reviewed journal article."}, {"h": "A personal blog post", "c": false, "f": "A personal blog post may express opinions or experiences, but it usually lacks peer review and the level of academic credibility needed for an essay."}, {"h": "A peer-reviewed journal article", "c": true, "f": "Peer-reviewed journal articles are the most credible sources for academic essays because experts review them before publication and they are usually supported by evidence and references."}]}, {"t": "mc", "q": "A student includes a direct quote from Ahmed’s 2024 article in an essay. Which in-text citation uses the correct information for that direct quote?", "multi": false, "fb": "", "answers": [{"h": "(Ahmed, 2024, p. 12)", "c": true, "f": "This option includes the author’s surname, year, and page number, which are required for a direct quote."}, {"h": "(Ahmed, p. 12)", "c": false, "f": "This option includes the surname and page number, but it leaves out the year, so it does not meet the full in-text citation requirement for a direct quote."}, {"h": "(Robert Ahmed, 2024, p. 12)", "c": false, "f": "This option includes a first name, but in-text citations use the author’s surname rather than the full personal name in this format."}, {"h": "(Ahmed, 2024)", "c": false, "f": "This option is suitable for a standard in-text citation, but a direct quote also requires a page number."}]}, {"t": "mc", "q": "Using someone else’s ideas in your own words without giving a citation is plagiarism.", "multi": false, "fb": "", "answers": [{"h": "False", "c": false, "f": "Incorrect. Rewriting an idea in your own words does not make it your original idea. If the idea came from another source, you must give credit with a citation to avoid plagiarism."}, {"h": "True", "c": true, "f": "Correct. Plagiarism includes using someone else’s ideas without giving credit, even if you rewrite the idea in your own words. A citation is still required."}]}, {"t": "match", "q": "Match each academic situation to the correct type of plagiarism. Focus on what the writer did wrong in each case, and choose the label that best identifies that specific mistake.", "pairs": [{"a": "Copying words", "b": "A student lifts several sentences from a textbook and includes them in an essay with only minor word changes."}, {"a": "Using ideas without credit", "b": "A student builds an argument around another researcher's findings but never names the original researcher."}, {"a": "Missing citations", "b": "A student rewrites a source in their own words accurately but does not include any in-text reference to where the idea came from."}, {"a": "Reusing one's own work", "b": "A student submits part of an essay from a previous class assignment as if it were newly written for the current course."}], "ok": "Correct. Each situation matches a distinct type of plagiarism: copying exact or near-exact language is copying words, using another person's argument or findings without naming them is using ideas without credit, paraphrasing without acknowledging the source is missing citations, and submitting old personal work again is reusing one's own work.", "no": "Incorrect. These situations are distinguished by what kind of source misuse occurred: copied language points to copying words, uncited ownership of an argument points to using ideas without credit, paraphrased material without acknowledgment points to missing citations, and resubmitting previous personal work points to reusing one's own work."}, {"t": "mc", "q": "A student is evaluating a website for use in an academic essay and asks, \"Who wrote this source and what are their qualifications?\" Which part of the CRAAP test is the student applying?", "multi": false, "fb": "", "answers": [{"h": "Authority", "c": true, "f": "Authority focuses on who wrote the source and whether that person or organization has appropriate expertise."}, {"h": "Relevance", "c": false, "f": "Relevance asks whether the source matches the research question and provides useful detail, not who the author is."}, {"h": "Currency", "c": false, "f": "Currency focuses on when a source was published or updated, not on who created it."}, {"h": "Purpose", "c": false, "f": "Purpose examines why the source exists and whether it aims to inform, persuade, or sell, rather than the author’s qualifications."}]}, {"t": "mc", "q": "A student uses ideas from several sources in an essay. What is the main purpose of referencing those sources?", "multi": false, "fb": "", "answers": [{"h": "To summarize every source used at the end of the essay", "c": false, "f": "This includes a related part of referencing, since full references appear at the end, but it misses the broader purpose of showing where ideas come from throughout the work."}, {"h": "To show which ideas are the student’s own and which come from other sources", "c": true, "f": "This is correct because referencing identifies borrowed ideas and gives proper credit to the original source."}, {"h": "To make the essay sound more formal and academic", "c": false, "f": "This sounds plausible because referencing often appears in formal academic writing, but formality is not its main purpose. The key reason is to identify sourced ideas and give credit clearly."}, {"h": "To prove that all of the student’s ideas come from published authors", "c": false, "f": "This is incorrect because referencing does not show that all ideas are borrowed. It helps show which ideas are the student’s own and which are taken from sources."}]}]}};
+const CFG = {"short": "Academic Integrity", "key": "lm-integrity-course-v1", "series": "Luke Murgatroyd · Academic Skills Series · Unit 2", "links": [["essay-course", "Unit 1: Academic essay structure"], ["./", "IELTS reading practice tests"]]};
+const KEY = CFG.key;
+const $ = id => document.getElementById(id);
+let main = $("main");
+
+/* ---------- saved progress (this browser only) ---------- */
+let P = {done:{}, open:{}, quiz:null};
+try{ const v = localStorage.getItem(KEY); if(v) P = Object.assign(P, JSON.parse(v)); }catch(e){}
+P.open = P.open || {};
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+const units = () => [...C.lessons.map((l,i)=>({id:"lesson-"+(i+1), title:l.title, kind:"Lesson "+(i+1)})), {id:"quiz", title:"Quiz", kind:"Final check"}];
+const isDone = id => id==="quiz" ? !!(P.quiz && P.quiz.passed) : !!P.done[id];
+function updateProgress(){
+  const u = units(), n = u.filter(x=>isDone(x.id)).length, pct = Math.round(n/u.length*100);
+  $("progPct").textContent = pct+"%"; $("progLine").style.width = pct+"%";
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; };
+
+/* ---------- illustrations (original artwork; drop a photo named essay-images/<slot>.jpg next to this page to replace one) ---------- */
+const S = {
+ "cover": `<svg viewBox="0 0 1280 720" aria-hidden="true"><rect width="1280" height="720" fill="var(--ill-bg)"/><rect y="520" width="1280" height="200" fill="var(--ill-desk)"/><rect y="520" width="1280" height="12" fill="var(--ill-desk2)"/>
+   <g transform="translate(300 250)"><path d="M0 300 L250 276 L500 300 L500 318 L250 296 L0 318Z" fill="var(--ill-line)"/><path d="M0 300 C70 268 180 264 250 276 L250 20 C180 8 70 12 0 40Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M500 300 C430 268 320 264 250 276 L250 20 C320 8 430 12 500 40Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>
+   ${[0,1,2,3,4,5,6].map(i=>`<rect x="34" y="${70+i*26}" width="${170-(i%3)*24}" height="7" rx="3.5" fill="var(--ill-line)"/><rect x="284" y="${70+i*26}" width="${176-(i%2)*30}" height="7" rx="3.5" fill="${i===2||i===5?"var(--ill-3)":"var(--ill-line)"}"/>`).join("")}</g>
+   <g transform="translate(760 90)"><path d="M150 0 L300 50 L300 170 C300 270 230 340 150 380 C70 340 0 270 0 170 L0 50Z" fill="var(--ill-1)"/><path d="M150 34 L268 74 L268 172 C268 252 214 310 150 344Z" fill="var(--ill-2)" opacity=".55"/><path d="M92 190 l42 42 l80 -92" fill="none" stroke="var(--ill-paper)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></g>
+   <g transform="translate(130 430)"><rect width="110" height="96" rx="14" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M110 24h18a22 22 0 0 1 0 44h-18" fill="none" stroke="var(--ill-line)" stroke-width="10"/></g></svg>`,
+ "l1-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/>
+   ${[0,1].map(r=>`<rect x="0" y="${118+r*110}" width="1360" height="10" fill="var(--ill-desk2)"/>`+Array.from({length:44},(_,i)=>`<rect x="${12+i*31}" y="${118+r*110-(62+((i*7+r*3)%4)*10)}" width="24" height="${62+((i*7+r*3)%4)*10}" rx="3" fill="${["var(--ill-1)","var(--ill-4)","var(--ill-3)","var(--ill-2)"][(i+r)%4]}" opacity=".35"/>`).join("")).join("")}
+   <rect y="270" width="1360" height="120" fill="var(--ill-desk)"/><rect y="270" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(470 196)">${[["var(--ill-4)",0],["var(--ill-1)",1],["var(--ill-2)",2]].map(([c,i])=>`<rect x="${i*8}" y="${50-i*26}" width="230" height="24" rx="4" fill="${c}"/>`).join("")}</g>
+   <g transform="translate(560 150)" opacity=".55"><rect width="110" height="16" rx="3" fill="var(--ill-4)" transform="translate(-260 104) rotate(-6)"/></g>
+   <g transform="translate(760 70)"><circle cx="90" cy="90" r="74" fill="var(--ill-paper)" fill-opacity=".55" stroke="var(--ill-1)" stroke-width="16"/><path d="M144 146 L220 222" stroke="var(--ill-1)" stroke-width="26" stroke-linecap="round"/><path d="M58 92 l22 22 l40 -46" fill="none" stroke="var(--ill-3)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></g></svg>`,
+ "l2-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/><rect y="262" width="1360" height="128" fill="var(--ill-desk)"/><rect y="262" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(470 120)"><path d="M0 170 L210 150 L420 170 L420 186 L210 168 L0 186Z" fill="var(--ill-line)"/><path d="M0 170 C60 140 150 136 210 150 L210 0 C150 -12 60 -8 0 20Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><path d="M420 170 C360 140 270 136 210 150 L210 0 C270 -12 360 -8 420 20Z" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>
+   ${[0,1,2,3].map(i=>`<rect x="30" y="${44+i*24}" width="${150-(i%2)*30}" height="7" rx="3.5" fill="var(--ill-line)"/><rect x="240" y="${44+i*24}" width="${150-(i%3)*24}" height="7" rx="3.5" fill="var(--ill-line)"/>`).join("")}</g>
+   <g fill="var(--ill-3)" transform="translate(300 70)"><path d="M0 60 Q0 0 50 0 L50 22 Q26 24 26 46 L50 46 L50 100 L0 100Z"/><path d="M70 60 Q70 0 120 0 L120 22 Q96 24 96 46 L120 46 L120 100 L70 100Z"/></g>
+   <g fill="var(--ill-1)" transform="translate(1060 210) rotate(180)"><path d="M0 60 Q0 0 50 0 L50 22 Q26 24 26 46 L50 46 L50 100 L0 100Z"/><path d="M70 60 Q70 0 120 0 L120 22 Q96 24 96 46 L120 46 L120 100 L70 100Z"/></g>
+   <g transform="translate(980 300) rotate(-12)"><rect width="190" height="14" rx="7" fill="var(--ill-1)"/><path d="M190 0l24 7-24 7z" fill="var(--ill-1)"/></g></svg>`,
+ "l3-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/><rect y="290" width="1360" height="100" fill="var(--ill-desk)"/><rect y="290" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(250 120)">${["var(--ill-4)","var(--ill-1)","var(--ill-2)","var(--ill-4)"].map((c,i)=>`<rect x="${i*4}" y="${126-i*40}" width="260" height="38" rx="5" fill="${c}"/><rect x="250" y="${132-i*40}" width="34" height="14" rx="3" fill="${["var(--ill-3)","#E6B33A","#4CA88A","#B072C9"][i]}"/>`).join("")}</g>
+   <g transform="translate(830 70)">${[0,1,2,3].map(i=>`<g transform="translate(${i*10} ${i*44})"><rect width="270" height="150" rx="6" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="-14" y="16" width="30" height="14" rx="3" fill="${["var(--ill-3)","#E6B33A","#4CA88A","#B072C9"][3-i]}"/></g>`).join("")}</g>
+   ${[0,1,2,3].map(i=>{const y1=253-40*i, j=3-i, x2=816+10*j, y2=93+44*j; return `<path d="M${534+4*i} ${y1} C 660 ${y1}, 700 ${y2}, ${x2} ${y2}" fill="none" stroke="${["var(--ill-3)","#E6B33A","#4CA88A","#B072C9"][i]}" stroke-width="5" stroke-dasharray="10 9" stroke-linecap="round"/>`;}).join("")}</svg>`,
+ "l4-banner": `<svg viewBox="0 0 1360 390" aria-hidden="true"><rect width="1360" height="390" fill="var(--ill-bg)"/><rect y="280" width="1360" height="110" fill="var(--ill-desk)"/><rect y="280" width="1360" height="10" fill="var(--ill-desk2)"/>
+   <g transform="translate(540 40)"><rect width="300" height="250" rx="16" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><rect x="110" y="-14" width="80" height="30" rx="8" fill="var(--ill-1)"/>
+   ${[0,1,2,3].map(i=>`<g transform="translate(34 ${48+i*48})"><rect width="30" height="30" rx="7" fill="var(--good, #1B7443)"/><path d="M7 15 l6 6 l11 -12" fill="none" stroke="var(--ill-paper)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="46" y="11" width="${170-(i%2)*40}" height="8" rx="4" fill="var(--ill-line)"/></g>`).join("")}</g>
+   <g transform="translate(240 200)">${["var(--ill-1)","var(--ill-3)","var(--ill-4)"].map((c,i)=>`<rect x="${i*6}" y="${50-i*28}" width="200" height="26" rx="4" fill="${c}"/>`).join("")}</g>
+   <g transform="translate(980 110)"><circle cx="70" cy="70" r="62" fill="var(--ill-3)"/><circle cx="70" cy="70" r="44" fill="none" stroke="var(--ill-paper)" stroke-width="6"/><path d="M70 42 l9 18 l20 3 l-15 14 l4 20 l-18 -10 l-18 10 l4 -20 l-15 -14 l20 -3z" fill="var(--ill-paper)"/><path d="M36 124 l-14 56 l26 -14 l14 24 l12 -52 M104 124 l14 56 l-26 -14 l-14 24 l-12 -52" fill="var(--ill-1)"/></g></svg>`,
+ "consequences": `<svg viewBox="0 0 1280 720" aria-hidden="true"><rect width="1280" height="720" fill="var(--ill-bg)"/><rect y="560" width="1280" height="160" fill="var(--ill-desk)"/><rect y="560" width="1280" height="12" fill="var(--ill-desk2)"/>
+   <g transform="translate(380 90) rotate(-4)"><rect width="440" height="520" rx="10" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/>${Array.from({length:12},(_,i)=>`<rect x="44" y="${70+i*34}" width="${330-(i%4)*40}" height="9" rx="4.5" fill="var(--ill-line)"/>`).join("")}
+   <ellipse cx="200" cy="176" rx="170" ry="34" fill="none" stroke="var(--bad, #B42318)" stroke-width="7" opacity=".85"/><path d="M60 300 l60 0 M60 312 l120 0" stroke="var(--bad, #B42318)" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+   <circle cx="360" cy="420" r="52" fill="none" stroke="var(--bad, #B42318)" stroke-width="8"/><path d="M336 396 l48 48 M384 396 l-48 48" stroke="var(--bad, #B42318)" stroke-width="9" stroke-linecap="round"/></g>
+   <g transform="translate(850 250)"><path d="M110 0 L220 190 L0 190Z" fill="var(--ill-3)" stroke="var(--ill-3)" stroke-width="20" stroke-linejoin="round"/><rect x="100" y="54" width="20" height="78" rx="10" fill="var(--ill-paper)"/><circle cx="110" cy="158" r="12" fill="var(--ill-paper)"/></g>
+   <g transform="translate(190 590) rotate(-20)"><rect width="200" height="16" rx="8" fill="var(--bad, #B42318)"/><path d="M200 0l26 8-26 8z" fill="var(--bad, #B42318)"/></g></svg>`,
+ "safe-research": `<svg viewBox="0 0 1280 720" aria-hidden="true"><rect width="1280" height="720" fill="var(--ill-bg)"/><rect y="520" width="1280" height="200" fill="var(--ill-desk)"/><rect y="520" width="1280" height="12" fill="var(--ill-desk2)"/>
+   <g transform="translate(140 300)">${["var(--ill-1)","var(--ill-3)","var(--ill-4)","var(--ill-2)","var(--ill-1)"].map((c,i)=>`<rect x="${(i%2)*14}" y="${180-i*44}" width="260" height="42" rx="5" fill="${c}"/>`).join("")}</g>
+   <g transform="translate(520 210)"><rect width="420" height="270" rx="14" fill="var(--ill-1)"/><rect x="16" y="16" width="388" height="238" rx="6" fill="var(--ill-paper)"/>${[0,1,2,3,4].map(i=>`<rect x="40" y="${46+i*38}" width="${290-(i%3)*40}" height="10" rx="5" fill="${i===2?"var(--ill-3)":"var(--ill-line)"}"/>`).join("")}<path d="M-40 270 L460 270 L490 300 L-70 300Z" fill="var(--ill-4)"/></g>
+   <g transform="translate(990 380) rotate(6)"><rect width="200" height="150" rx="8" fill="var(--ill-paper)" stroke="var(--ill-line)" stroke-width="2"/><g fill="var(--ill-3)" transform="translate(24 24) scale(.45)"><path d="M0 60 Q0 0 50 0 L50 22 Q26 24 26 46 L50 46 L50 100 L0 100Z"/><path d="M70 60 Q70 0 120 0 L120 22 Q96 24 96 46 L120 46 L120 100 L70 100Z"/></g><rect x="90" y="34" width="86" height="8" rx="4" fill="var(--ill-line)"/><rect x="24" y="84" width="150" height="8" rx="4" fill="var(--ill-line)"/><circle cx="160" cy="118" r="18" fill="var(--good, #1B7443)"/><path d="M151 118 l6 6 l12 -12" fill="none" stroke="var(--ill-paper)" stroke-width="4" stroke-linecap="round"/></g></svg>`
+};
+const D = {
+ "search-tools": `<div class="dg-cap">Two places to search</div><div class="dg-two">${[["Library database","Recommended by your university",[["Journal article","Peer reviewed"],["Book","Full text online"],["Report","Peer reviewed"]]],["Google Scholar","Searches academic papers everywhere",[["Journal article","Cited by 128"],["Conference paper","Cited by 41"],["Thesis","Cited by 9"]]]].map(([n,s,r])=>`<div class="dg-win"><div class="dg-winbar"><i></i><i></i><i></i><b>${n}</b></div><div class="dg-search"><span>tourism Saudi Arabia economy</span><em>Search</em></div><small class="dg-sub">${s}</small>${r.map(x=>`<div class="dg-res"><span class="dg-line"></span><span class="dg-line short"></span><span class="dg-chips"><span>${x[0]}</span><span>${x[1]}</span></span></div>`).join("")}</div>`).join("")}</div>`,
+ "craap-test": `<div class="dg-cap">The CRAAP test</div><div class="dg-tiles">${[["C","Currency","Is it up to date?"],["R","Relevance","Does it answer my question?"],["A","Authority","Who wrote it, and are they qualified?"],["A","Accuracy","Is it supported by evidence?"],["P","Purpose","Why was it written?"]].map(([l,w,q],i)=>`<div class="dg-tile t${i}"><b>${l}</b><strong>${w}</strong><span>${q}</span></div>`).join("")}</div>`,
+ "three-sources": `<div class="dg-cap">Which source would you use?</div><div class="dg-three">${[["gov","Government statistics website","Official, current and accurate","Use",1],["blog","Blog post, no author or sources","No authority, purpose unclear","Avoid",0],["journal","Peer-reviewed journal article","Written by researchers, checked by experts","Use",1]].map(([k,t,d,v,ok])=>`<div class="dg-src"><span class="dg-ic">${({gov:`<svg viewBox="0 0 48 48"><path d="M24 6 L42 16 H6Z" fill="currentColor"/><rect x="9" y="19" width="5" height="17" fill="currentColor"/><rect x="21.5" y="19" width="5" height="17" fill="currentColor"/><rect x="34" y="19" width="5" height="17" fill="currentColor"/><rect x="5" y="38" width="38" height="5" fill="currentColor"/></svg>`,blog:`<svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 16 H42" stroke="currentColor" stroke-width="3.5"/><path d="M19 25 q0 -5 5 -5 q5 0 5 5 q0 3 -5 5 v2" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="24" cy="36.5" r="2" fill="currentColor"/></svg>`,journal:`<svg viewBox="0 0 48 48"><rect x="10" y="5" width="28" height="38" rx="3" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M16 14 H32 M16 21 H32 M16 28 H26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="34" cy="36" r="8" fill="currentColor"/><path d="M30.5 36 l2.5 2.5 l4.5 -5" fill="none" stroke="var(--surface)" stroke-width="2.5" stroke-linecap="round"/></svg>`})[k]}</span><strong>${t}</strong><span>${d}</span><em class="${ok?"ok":"no"}">${ok?"✓":"✕"} ${v}</em></div>`).join("")}</div>`,
+ "source-list": `<div class="dg-cap">Keep a source list as you research</div><div class="dg-note"><div class="dg-notehead">My source list</div>${[["UN Tourism","2025","World Tourism Barometer: January 2025","UN Tourism website"],["Brown, L. M.","2018","Understanding human behavior","Library, book"]].map(r=>`<div class="dg-entry">${["Author","Year","Title","Where found"].map((f,i)=>`<div><small>${f}</small><span>${r[i]}</span></div>`).join("")}</div>`).join("")}<div class="dg-entry empty">${["Author","Year","Title","Where found"].map(f=>`<div><small>${f}</small><span></span></div>`).join("")}</div></div>`,
+ "paraphrase": `<div class="dg-cap">Paraphrase, then cite</div><div class="dg-flow"><div class="dg-card"><small>Original source</small><p>“Tourism is a major contributor to the global economy.”</p></div><div class="dg-arrow" aria-hidden="true">→</div><div class="dg-card main"><small>Your version</small><p>Numerous nations depend on tourism as a key source of economic support <mark class="m0">(UN Tourism, 2025)</mark>.</p><span class="dg-chips"><span>✓ Own words</span><span>✓ Citation</span></span></div></div>`,
+ "citation-match": `<div class="dg-cap">Citation and reference must match</div><div class="dg-stack"><div class="dg-card"><small>In your essay</small><p>Tourism continues to recover around the world <mark class="m0">(UN Tourism, 2025)</mark>.</p></div><div class="dg-arrow down" aria-hidden="true">↓</div><div class="dg-card"><small>In your reference list</small><p class="hang"><mark class="m0">UN Tourism. (2025).</mark> <i>World Tourism Barometer: January 2025</i>. Retrieved September 14, 2025, from URL.</p></div></div>`,
+ "reference-list": `<div class="dg-cap">A reference list, in alphabetical order</div><div class="dg-card"><small>References</small><ol class="dg-refs">${[["Book","Brown, L. M. (2018). <i>Understanding human behavior</i> (3rd ed.). Academic Press."],["Data set","National Center for Education Statistics. (2019). <i>Public school enrollment data, 2018-2019</i> [Data set]. U.S. Department of Education."],["Journal article","Smith, J. A. (2020). Exploring learning strategies in higher education. <i>Journal of Educational Research, 45</i>(2), 123-135."],["Report","World Health Organization. (2021). <i>Global health statistics 2021</i> (WHO Publication No. 2021-001)."]].map(([t,r])=>`<li><span class="dg-type">${t}</span><p class="hang">${r}</p></li>`).join("")}</ol><span class="dg-az">A → Z by author</span></div>`,
+ "color-match": `<div class="dg-cap">Every citation has a matching reference</div><div class="dg-two"><div class="dg-card"><small>Essay paragraph</small><p>Students use a range of learning strategies <mark class="m0">(Smith, 2020)</mark>, and habits shape how they study <mark class="m1">(Brown, 2018)</mark>. Health statistics are collected every year <mark class="m2">(World Health Organization, 2021)</mark>, as are school enrolment figures <mark class="m3">(National Center for Education Statistics, 2019)</mark>.</p></div><div class="dg-card"><small>Reference list</small><ol class="dg-refs plain">${[["m1","Brown, L. M. (2018)."],["m3","National Center for Education Statistics. (2019)."],["m0","Smith, J. A. (2020)."],["m2","World Health Organization. (2021)."]].map(([m,r])=>`<li><p class="hang"><mark class="${m}">${r}</mark> …</p></li>`).join("")}</ol></div></div>`,
+ "check-references": `<div class="dg-cap">Check your reference list before you submit</div><div class="dg-card"><small>Reference list check</small><ul class="dg-checks">${[["ok","Brown, L. M. (2018). <i>Understanding human behavior</i> …","Complete and cited"],["no","Smith, J. A. Exploring learning strategies …","Missing detail: no year"],["warn","World Health Organization. (2021) … listed before National Center …","Wrong order: list A to Z"],["no","Ali, R. (2022). <i>Tourism today</i> …","Not cited in the essay"]].map(([s,r,m])=>`<li class="${s}"><span class="dg-mark">${s==="ok"?"✓":s==="warn"?"!":"✕"}</span><div><p>${r}</p><small>${m}</small></div></li>`).join("")}</ul></div>`
+};
+
+function fig(slot, cls, cap){
+  if(D[slot]) return `<figure class="dgm" data-slot="${slot}">${D[slot]}</figure>`;
+  return `<figure class="fig ${cls||""}" data-slot="${slot}">${S[slot]||""}<img class="photo" src="essay-images/${slot}.jpg" alt="" loading="lazy" onerror="this.remove()">${cap?`<figcaption class="cap">${cap}</figcaption>`:""}</figure>`;
+}
+
+/* ---------- blocks ---------- */
+const ICON = {
+  mc:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>`,
+  flash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="7" width="13" height="13" rx="2"/><path d="M8 4h11a2 2 0 0 1 2 2v11"/></svg>`,
+  process:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h9M13 8.5l3.5 3.5-3.5 3.5"/></svg>`,
+  match:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6 L17 18 M7 18 L17 6"/></svg>`,
+  sort:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7" stroke-linecap="round"/></svg>`
+};
+const BAND = {
+  mc:["Activity","Check your understanding","Choose an answer, then submit."],
+  flash:["Activity","Flashcards","Tap a card to turn it over."],
+  process:["Activity","Step by step","Work through each step in order."],
+  sort:["Activity","Sorting activity","Tap the pile where each sentence belongs."],
+  match:["Activity","Matching","Choose the right answer for each item, then submit."],
+  mcm:["Activity","Check your understanding","Tick every answer that applies, then submit."]
+};
+function band(kind, inner){
+  const h = BAND[kind]; kind = kind==="mcm"?"mc":kind;
+  return `<section class="band"><div class="band-head"><span class="band-icon" aria-hidden="true">${ICON[kind]}</span><span><small>${h[0]}</small><b>${h[1]}</b><span class="sub">${h[2]}</span></span></div>${inner}</section>`;
+}
+let uid = 0;
+function blockHTML(b){
+  const id = "b"+(++uid);
+  switch(b.t){
+    case "banner": return `<div class="wide">${fig(b.img,"banner",b.cap)}</div>`;
+    case "image": return fig(b.img,"",b.cap);
+    case "text": return `<section class="${b.h?"sec":""}">${b.h?`<h2 class="bh">${esc(b.h)}</h2>`:""}<div class="prose">${b.p}</div></section>`;
+    case "list": return `<ol class="nlist">${b.items.map((x,i)=>`<li><span>${i+1}</span><div>${x}</div></li>`).join("")}</ol>`;
+    case "acc": return `<div class="acc">${b.items.map(x=>`<details><summary>${esc(x.h)}</summary><div class="prose">${x.p}</div></details>`).join("")}</div>`;
+    case "mc": return band(b.multi?"mcm":"mc",`<div class="act" data-kind="mc" id="${id}"></div>`);
+    case "match": return band("match",`<div class="act" data-kind="match" id="${id}"></div>`);
+    case "note": return `<aside class="note"><span class="note-ic" aria-hidden="true">!</span><div class="prose">${b.p}</div></aside>`;
+    case "tabs": return `<div class="tabs"><div class="tablist" role="tablist">${b.items.map((x,i)=>`<button role="tab" id="${id}-t${i}" aria-controls="${id}-p${i}" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${esc(x.h)}</button>`).join("")}</div>${b.items.map((x,i)=>`<div class="tabpanel" role="tabpanel" id="${id}-p${i}" aria-labelledby="${id}-t${i}" ${i?"hidden":""}><div class="prose">${x.p}</div></div>`).join("")}</div>`;
+    case "flash": return band("flash",`<div class="act"><div class="cards">${b.cards.map(c=>`<button class="flash" aria-pressed="false"><span class="in"><span class="face front"><small>Term</small>${c.f}</span><span class="face back"><small>Meaning</small>${c.b}</span></span></button>`).join("")}</div></div>`);
+    case "process": return band("process",`<div class="act" data-kind="process" id="${id}"></div>`);
+    case "sort": return band("sort",`<div class="act" data-kind="sort" id="${id}"></div>`);
+  }
+  return "";
+}
+function mountMC(el, b, opts){
+  opts = opts || {};
+  let pick = b.multi ? new Set() : null, checked = false, ok = false;
+  const isOn = i => b.multi ? pick.has(i) : pick===i;
+  const any = () => b.multi ? pick.size>0 : pick!=null;
+  const draw = () => {
+    let fbText = "";
+    if(checked){ fbText = (!b.multi && b.answers[pick].f) || b.fb || ""; }
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label}</div>`:""}<div class="q">${b.q}</div>
+      <div class="choices" role="${b.multi?"group":"radiogroup"}">${b.answers.map((x,i)=>{
+        let cls=""; if(checked){ if(isOn(i)) cls = x.c?" right":" wrong"; else if(opts.reveal && x.c) cls=" right"; }
+        return `<button class="choice${cls}" role="${b.multi?"checkbox":"radio"}" aria-checked="${isOn(i)}" data-i="${i}" ${checked?"disabled":""}>${b.multi?`<span class="box">${isOn(i)?"✓":""}</span>`:`<span class="dot"></span>`}<span>${x.h}</span></button>`;}).join("")}</div>
+      ${checked?`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct":"Not quite"}</b>${fbText?`<div>${fbText}</div>`:(!ok&&!opts.reveal?`<div>Have another look and try again.</div>`:"")}</div>`:""}
+      <div class="btnrow">${checked
+        ? (opts.onNext ? `<button class="btn" data-act="next">${opts.nextLabel||"Next"}</button>` : (ok?"":`<button class="btn ghost" data-act="retry">Try again</button>`))
+        : `<button class="btn" data-act="check" ${any()?"":"disabled"}>Submit</button>`}</div>`;
+    el.querySelectorAll(".choice").forEach(c=>c.onclick=()=>{ const i=+c.dataset.i; if(b.multi){ pick.has(i)?pick.delete(i):pick.add(i); } else pick=i; draw(); });
+    const btn = el.querySelector("[data-act]");
+    if(btn) btn.onclick = () => {
+      if(btn.dataset.act==="check"){
+        checked=true;
+        ok = b.multi ? b.answers.every((x,i)=>x.c===pick.has(i)) : b.answers[pick].c;
+        if(opts.onAnswer) opts.onAnswer(ok); draw();
+      }
+      else if(btn.dataset.act==="retry"){ checked=false; pick=b.multi?new Set():null; draw(); }
+      else opts.onNext();
+    };
+  };
+  draw();
+}
+function mountProcess(el, b){
+  let i = 0; const n = b.steps.length, stepsOnly = b.steps.filter(s=>s.k==="step").length;
+  const draw = () => {
+    const s = b.steps[i]; const stepNo = b.steps.slice(0,i+1).filter(x=>x.k==="step").length;
+    el.innerHTML = `<div class="proc-top"><div class="proc-dots" aria-hidden="true">${b.steps.map((_,k)=>`<i class="${k===i?"on":""}"></i>`).join("")}</div><div class="proc-step">${s.k==="step"?`Step ${stepNo} of ${stepsOnly}`:(s.k==="intro"?"Overview":"Summary")}</div></div>
+      <div class="proc-body"><h3>${esc(s.h)}</h3><div class="prose">${s.p}</div></div>
+      <div class="btnrow">${i>0?`<button class="btn ghost" data-d="-1">Back</button>`:""}${i<n-1?`<button class="btn" data-d="1">${i===0?"Start":"Next"}</button>`:`<button class="btn ghost" data-d="restart">Start again</button>`}</div>`;
+    el.querySelectorAll("[data-d]").forEach(x=>x.onclick=()=>{ i = x.dataset.d==="restart"?0:i+(+x.dataset.d); draw(); });
+  };
+  draw();
+}
+function mountSort(el, b){
+  let deck, placed, msg, msgCls;
+  const reset = () => { deck = shuffle(b.cards); placed = b.piles.map(()=>[]); msg = "Tap the pile where this sentence belongs."; msgCls=""; draw(); };
+  const draw = (shake) => {
+    const card = deck[0];
+    el.innerHTML = `<div class="label">${b.cards.length-deck.length} of ${b.cards.length} sorted</div>
+      ${card?`<div class="sort-card${shake?" shake":""}">${esc(card.h)}</div>`:`<div class="fb ok"><b>All sorted</b><div>Every sentence is in the right pile.</div></div>`}
+      <div class="sort-msg ${msgCls}" aria-live="polite">${card?esc(msg):""}</div>
+      <div class="piles">${b.piles.map((p,i)=>`<button class="pile" data-p="${i}" ${card?"":"disabled"}><b>${esc(p)}</b>${placed[i].map(t=>`<span class="placed">${esc(t)}</span>`).join("")}</button>`).join("")}</div>
+      ${card?"":`<div class="btnrow"><button class="btn ghost" data-r="1">Start again</button></div>`}`;
+    el.querySelectorAll(".pile").forEach(x=>x.onclick=()=>{
+      const p=+x.dataset.p;
+      if(p===card.p){ placed[p].push(card.h); deck.shift(); msg="Correct. Tap the pile for the next sentence."; msgCls="ok"; draw(); }
+      else { msg=`Not quite. This isn't ${b.piles[p].toLowerCase()} — try another pile.`; msgCls="no"; draw(true); }
+    });
+    const r=el.querySelector("[data-r]"); if(r) r.onclick=reset;
+  };
+  reset();
+}
+function mountAll(blocks){
+  main.querySelectorAll(".act[data-kind]").forEach((el,k)=>{
+    const b = blocks.filter(x=>["mc","process","sort","match"].includes(x.t))[k];
+    if(b.t==="mc") mountMC(el,b); else if(b.t==="process") mountProcess(el,b); else if(b.t==="match") mountMatch(el,b,{}); else mountSort(el,b);
+  });
+  main.querySelectorAll(".tabs").forEach(tb=>{
+    const tabs=[...tb.querySelectorAll('[role="tab"]')];
+    const sel=i=>tabs.forEach((x,k)=>{ x.setAttribute("aria-selected",k===i); x.tabIndex=k===i?0:-1; document.getElementById(x.getAttribute("aria-controls")).hidden=k!==i; });
+    tabs.forEach((x,i)=>{ x.onclick=()=>sel(i); x.onkeydown=e=>{ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ const n=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length; sel(n); tabs[n].focus(); } }; });
+  });
+  main.querySelectorAll(".flash").forEach(f=>f.onclick=()=>f.setAttribute("aria-pressed", f.getAttribute("aria-pressed")==="true"?"false":"true"));
+}
+
+/* ---------- views ---------- */
+function setBar(kick, title){ $("barKick").textContent = kick; $("barTitle").textContent = title; }
+function footer(){ return `<div class="foot"><span>© Luke Murgatroyd · Academic Skills</span><span style="display:flex;gap:16px;flex-wrap:wrap">${CFG.links.map(l=>`<a href="${l[0]}">${esc(l[1])}</a>`).join("")}</span></div>`; }
+function home(){
+  setBar("Course", CFG.short);
+  const u = units(); const firstOpen = u.find(x=>!isDone(x.id)) || u[0];
+  const started = u.some(x=>isDone(x.id));
+  main.innerHTML = `<div class="col">
+    <div class="wide">${fig("cover","banner")}</div>
+    <div class="cover">
+      <div class="badge"><i>LM</i>${esc(CFG.series)}</div>
+      <h1>${esc(C.title)}</h1>
+      <p class="lede">${esc(C.description)}</p>
+      <a class="btn big" href="#${firstOpen.id}" style="text-align:center;text-decoration:none">${started?"Continue: "+esc(firstOpen.kind):"Start the course"}</a>
+    </div>
+    <div class="lessons">${u.map((x,i)=>`<a class="lcard" href="#${x.id}" style="text-decoration:none;color:inherit"><span class="num ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b>${x.id==="quiz"&&P.quiz?`<small>Best score: ${P.quiz.best}%</small>`:""}</span><span class="go">${isDone(x.id)?"Review":"Open"} →</span></a>`).join("")}</div>
+    ${footer()}</div>`;
+}
+function lesson(n){
+  const L = C.lessons[n]; if(!L) return home();
+  const id = "lesson-"+(n+1), next = units()[n+1];
+  setBar(`Lesson ${n+1} of ${C.lessons.length}`, L.title);
+  uid = 0;
+  const first = L.blocks[0] && L.blocks[0].t==="banner" ? blockHTML(L.blocks[0]) : "";
+  const rest = (first?L.blocks.slice(1):L.blocks);
+  const chunks = [[]]; rest.forEach(b=>{ if(b.t==="cont") chunks.push([]); else chunks[chunks.length-1].push(b); });
+  const total = chunks.length;
+  let opened = isDone(id) ? total : Math.min(total, Math.max(1, P.open[id]||1));
+  const contHTML = k => `<div class="cont" data-k="${k}" ${k>=opened?"hidden":""}>${k===opened-1?`<button class="btn" data-go="${k}">Continue <span aria-hidden="true">↓</span></button>`:`<span class="done">Section ${k+1} of ${total} done</span>`}</div>`;
+  main.innerHTML = `<div class="col lesson">${first}
+    <div><div class="kick">Lesson ${n+1} · ${total} sections</div><h1 style="margin-top:6px">${esc(L.title)}</h1></div>
+    ${chunks.map((ch,k)=>`<div class="chunk" data-k="${k}" ${k>=opened?"hidden":""}>${ch.map(blockHTML).join("")}</div>${k<total-1?contHTML(k):""}`).join("")}
+    <div class="next" id="lessonEnd" ${opened<total?"hidden":""}><small>${isDone(id)?"You've completed this lesson.":"You've reached the end of this lesson."}</small>
+      <button class="btn big" id="doneBtn">${next?`Complete and continue: ${esc(next.kind==="Final check"?"Quiz":next.title)}`:"Complete"}</button>
+      <a href="#" style="color:var(--brand);font-weight:700;font-size:14px">Back to course home</a></div>
+    ${footer()}</div>`;
+  mountAll(rest.filter(b=>b.t!=="cont"));
+  main.addEventListener("click", function go(e){
+    const btn = e.target.closest("[data-go]"); if(!btn) return;
+    const k = +btn.dataset.go; opened = k+2; P.open[id] = opened; save();
+    btn.parentElement.innerHTML = `<span class="done">Section ${k+1} of ${total} done</span>`;
+    const nx = main.querySelector(`.chunk[data-k="${k+1}"]`); nx.hidden = false;
+    const c2 = main.querySelector(`.cont[data-k="${k+1}"]`);
+    if(c2){ c2.hidden=false; c2.innerHTML = `<button class="btn" data-go="${k+1}">Continue <span aria-hidden="true">↓</span></button>`; }
+    else $("lessonEnd").hidden = false;
+    nx.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+  });
+  $("doneBtn").onclick = () => { P.done[id]=true; save(); updateProgress(); location.hash = next ? next.id : ""; };
+}
+let Q = null;
+function quiz(){
+  setBar("Final check", "Quiz");
+  const qs = C.quiz.questions;
+  const startScreen = () => {
+    main.innerHTML = `<div class="col"><div><div class="kick">Final check</div><h1 style="margin-top:6px">Quiz</h1></div>
+      <div class="act"><p class="lede" style="font-size:18px">${qs.length} questions on everything in the course. You need ${C.quiz.pass}% to pass, and you can take it as many times as you like.</p>
+      ${P.quiz?`<div class="fb ${P.quiz.passed?"ok":"no"}"><b>Your best score so far: ${P.quiz.best}%</b><div>${P.quiz.passed?"You've passed this quiz.":"Not passed yet."}</div></div>`:""}
+      <button class="btn big" id="qStart">${P.quiz?"Take the quiz again":"Start the quiz"}</button></div>${footer()}</div>`;
+    $("qStart").onclick = () => { Q = {i:0, res:[]}; question(); };
+  };
+  const question = () => {
+    const q = qs[Q.i], last = Q.i===qs.length-1;
+    main.innerHTML = `<div class="col"><div class="qhead"><span>Question ${Q.i+1} of ${qs.length}</span><span>Pass mark ${C.quiz.pass}%</span></div>
+      <div class="qbar"><i style="width:${(Q.i)/qs.length*100}%"></i></div><div class="act" id="qa"></div></div>`;
+    window.scrollTo(0,0);
+    const el = $("qa");
+    const onNext = () => { if(last) results(); else { Q.i++; question(); } };
+    if(q.t==="mc") mountMC(el, q, {label:"Question "+(Q.i+1), reveal:true, onAnswer:ok=>Q.res[Q.i]=ok, onNext, nextLabel:last?"See my result":"Next question"});
+    else mountMatch(el, q, {label:"Question "+(Q.i+1)+" · Matching", onAnswer:ok=>Q.res[Q.i]=ok, onNext, last});
+  };
+  const results = () => {
+    const right = Q.res.filter(Boolean).length, pct = Math.round(right/qs.length*100), passed = pct>=C.quiz.pass;
+    P.quiz = {best: Math.max(pct, P.quiz?P.quiz.best:0), passed: passed || !!(P.quiz&&P.quiz.passed)}; save(); updateProgress();
+    const strip = h => h.replace(/<[^>]+>/g,"");
+    main.innerHTML = `<div class="col"><div><div class="kick">Your result</div><h1 style="margin-top:6px">Quiz complete</h1></div>
+      <div class="act"><div class="score"><b>${pct}%</b><span>${right} of ${qs.length} correct</span></div>
+      <span class="pill ${passed?"ok":"no"}">${passed?"Passed":"Not passed yet · pass mark "+C.quiz.pass+"%"}</span>
+      <div class="review">${qs.map((q,i)=>`<div class="rv"><span class="tick ${Q.res[i]?"done":"no"}">${Q.res[i]?"✓":"✕"}</span><p>${esc(strip(q.q))}</p></div>`).join("")}</div>
+      <div class="btnrow"><button class="btn" id="qAgain">Retake the quiz</button><a class="btn ghost" href="#" style="text-decoration:none">Course home</a></div></div>${footer()}</div>`;
+    $("qAgain").onclick = () => { Q = {i:0,res:[]}; question(); };
+  };
+  startScreen();
+}
+function mountMatch(el, q, opts){
+  const terms = shuffle(q.pairs.map(p=>p.a)); let order = shuffle(q.pairs.map((_,i)=>i));
+  let sel = {}, checked = false;
+  const allRight = () => order.every(i=>sel[i]===q.pairs[i].a);
+  const draw = () => {
+    const allSet = order.every(i=>sel[i]); const ok = checked && allRight();
+    const fbText = checked ? (ok ? q.ok : q.no) : "";
+    el.innerHTML = `${opts.label?`<div class="label">${opts.label}</div>`:""}<div class="q">${q.q}</div>
+      <div class="match">${order.map(i=>{ const p=q.pairs[i]; const r = checked && sel[i]===p.a;
+        return `<div class="mrow ${checked?(r?"right":"wrong"):""}"><p>${esc(p.b)}</p>
+          <select data-i="${i}" ${checked?"disabled":""} aria-label="Choose the match for: ${esc(p.b)}"><option value="">Choose…</option>${terms.map(t=>`<option ${sel[i]===t?"selected":""}>${esc(t)}</option>`).join("")}</select>
+          ${checked&&!r&&opts.onNext?`<span class="ans">Answer: ${esc(p.a)}</span>`:""}</div>`;}).join("")}</div>
+      ${checked?`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct":"Not quite"}</b><div>${fbText || (ok?"Every item is matched correctly.":(opts.onNext?"The right answers are shown under each item.":"The items in red aren't right yet. Try again."))}</div></div>`:""}
+      <div class="btnrow">${checked?(opts.onNext?`<button class="btn" data-a="next">${opts.last?"See my result":"Next question"}</button>`:(ok?"":`<button class="btn ghost" data-a="retry">Try again</button>`)):`<button class="btn" data-a="check" ${allSet?"":"disabled"}>Submit</button>`}</div>`;
+    el.querySelectorAll("select").forEach(s=>s.onchange=()=>{ sel[+s.dataset.i]=s.value; draw(); });
+    const b = el.querySelector("[data-a]");
+    if(b) b.onclick = () => {
+      if(b.dataset.a==="check"){ checked=true; if(opts.onAnswer) opts.onAnswer(allRight()); draw(); }
+      else if(b.dataset.a==="retry"){ checked=false; order.forEach(i=>{ if(sel[i]!==q.pairs[i].a) delete sel[i]; }); draw(); }
+      else opts.onNext();
+    };
+  };
+  draw();
+}
+
+/* ---------- drawer + routing ---------- */
+function drawer(open){
+  $("drawer").hidden = !open; $("scrim").hidden = !open; $("menuBtn").setAttribute("aria-expanded", open);
+  if(open){
+    const cur = location.hash.slice(1);
+    $("drawer").innerHTML = `<h2>${esc(C.title)}</h2>
+      <a class="navitem" href="#" ${!cur?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick">⌂</span><span><b>Course home</b></span></a>
+      ${units().map((x,i)=>`<a class="navitem" href="#${x.id}" ${cur===x.id?'aria-current="page"':""} style="color:inherit;text-decoration:none"><span class="tick ${isDone(x.id)?"done":""}">${isDone(x.id)?"✓":(x.id==="quiz"?"Q":i+1)}</span><span><small>${esc(x.kind)}</small><b>${esc(x.title)}</b></span></a>`).join("")}
+      <button class="closebtn" id="closeD">Close</button>`;
+    $("closeD").onclick = () => drawer(false);
+    $("drawer").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>drawer(false)));
+    $("drawer").querySelector("a").focus();
+  }
+}
+$("menuBtn").onclick = () => drawer($("drawer").hidden);
+$("scrim").onclick = () => drawer(false);
+document.addEventListener("keydown", e => { if(e.key==="Escape" && !$("drawer").hidden) drawer(false); });
+function route(){
+  const fresh = main.cloneNode(false); main.replaceWith(fresh); main = fresh;
+  const h = location.hash.slice(1); const m = /^lesson-(\d+)$/.exec(h);
+  if(m) lesson(+m[1]-1); else if(h==="quiz") quiz(); else home();
+  updateProgress(); window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+})();
+</script>
+</body>
+</html>
